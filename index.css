@@ -2,7 +2,6 @@
     border: 5px black;
     height: 590px; /* 590px */
     width: 50%; /* 120px */
-    /background-color: black;
     text-align: center;
 
     /* Draggable */
@@ -14,8 +13,7 @@
     height: 30px; /* 20px */
     width: 100%; /* 120px */
     background-color: white;
-    /vertical-align: middle;
-    /padding-left: 10px;
+    vertical-align: middle;
     display: inline-block;
 
     /* Draggable */
@@ -24,7 +22,10 @@
 }
 #cmd-top-title{
     vertical-align: middle;
-    margin-left: 10px;
+    padding-left: 50px;
+    /*margin-left: 10px;
+    */
+
 }
 #cmd-text{
     overflow: auto;
@@ -46,6 +47,11 @@
 #cmdline-last{
 
 }
+
+#credits{
+
+}
+
 body{
     background: url("default.jpg");
     background-size: cover;

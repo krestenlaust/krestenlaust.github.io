@@ -19,8 +19,8 @@ let cmd = function () { //_namespace
         var cmdline_last = document.getElementById("cmdline_last");
 
         cmdline_last.readOnly = true; //Makes it readonly
-        cmdline_last.removeAttribute("id"); //Removes "cmdline_last" id
         cmdline_last.value = s;
+        cmdline_last.removeAttribute("id"); //Removes "cmdline_last" id
 
         document.getElementById("cmd-text").appendChild(cmdline_last); //Moves element to div
 
