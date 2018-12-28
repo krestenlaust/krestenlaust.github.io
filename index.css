@@ -1,0 +1,52 @@
+#cmd-box{
+    border: 5px black;
+    height: 590px; /* 590px */
+    width: 50%; /* 120px */
+    /background-color: black;
+    text-align: center;
+
+    /* Draggable */
+    position: absolute;
+    z-index: 9;
+}
+#cmd-top{
+    border: 1px black;
+    height: 30px; /* 20px */
+    width: 100%; /* 120px */
+    background-color: white;
+    /vertical-align: middle;
+    /padding-left: 10px;
+    display: inline-block;
+
+    /* Draggable */
+    cursor: move;
+    z-index: 10;
+}
+#cmd-top-title{
+    vertical-align: middle;
+    margin-left: 10px;
+}
+#cmd-text{
+    overflow: auto;
+    display: inline-block;
+    width: 100%;
+}
+.cmdline{
+    color: white;
+    background-color: black;
+    /text-decoration-color: white;
+    border-width: 0;
+    font-family: Consolas, serif;
+    width: 100%; /* 120px */
+    padding: 0;
+}
+.cmdline:focus{
+    outline: none;
+}
+#cmdline-last{
+
+}
+body{
+    background: url("default.jpg");
+    background-size: cover;
+}

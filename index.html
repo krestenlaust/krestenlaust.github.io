@@ -1,8 +1,19 @@
-<!DOCTYPE html>
-<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <div id="cmd-box" class="cmd">
+        <div id="cmd-top" class="cmd"><!-- <img src="icons8-command-line-filled-32.png" height="32" width="32"> -->
+            <p id="cmd-top-title" class="cmd">Command Prompt</p>
+        </div>
+        <div id="cmd-text" class="cmd">
+            <input class="cmdline cmd" type="text" value="Microsoft Windows [Version 10.0.17134.472]" readonly>
+            <input class="cmdline cmd" type="text" value="(c) 2018 Microsoft Corporation. Alle rettigheder forbeholdes." readonly>
+            <input class="cmdline cmd" type="text" value="Lavet af Kresten Laust" readonly>
+            <input class="cmdline cmd" type="text" value="" readonly>
+        </div>
+        <input class="cmdline cmd" type="text" value="" id="cmdline-last" autocomplete="off" autocapitalize="off" spellcheck="false"><!-- onkeydown="cmd_prompt_enter(this)"  -->
+    </div>
 </body>
-</html>
 <script src="index.js"></script>
+<script src="cmd.js"></script>
