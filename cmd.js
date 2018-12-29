@@ -11,20 +11,23 @@ let cmd = function () { //_namespace
         return temp_func;
     }*/
 
-    let env = {"errorlevel": 0};
+    let cmdline_last;
+
+    let env = {
+        "errorlevel": 0
+    };
 
     function echo(s) {
         console.log("cmd: " + s);
 
-        var cmdline_last = document.getElementById("cmdline_last");
+        cmdline_last = document.getElementsByClassName("cmdline")[-1];
 
         cmdline_last.readOnly = true; //Makes it readonly
         cmdline_last.value = s;
-        cmdline_last.removeAttribute("id"); //Removes "cmdline_last" id
 
         document.getElementById("cmd-text").appendChild(cmdline_last); //Moves element to div
 
-        document.getElementById("cmd-box").innerHTML += lastline_cmd_element; //Adds new last line
+        document.getElementById("cmd-box").innerHTML += cmd_last_line_element; //Adds new last line
 
         return 0;
     }

@@ -50,7 +50,7 @@ function cmd_command(s){
             if (args.length >= 2){
 
             }else {
-                cmd.echo(command_output["cookies"]);
+                cmd.env.errorlevel = cmd.echo(command_output["cookies"]);
             }
             break;
         default:

@@ -53,6 +53,6 @@
 }
 
 body{
-    background: url("default.jpg");
+    background: url("resources/default.jpg");
     background-size: cover;
 }
