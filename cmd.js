@@ -1,15 +1,5 @@
 
 let cmd = function () { //_namespace
-    /*
-    function list_functions() {
-        var temp_func = [];
-        for (var l in this) {
-            if (this.hasOwnProperty(l) && this[l] instanceof Function && !/temp_func/i.test(l)) {
-                temp_func.push(this[l]);
-            }
-        }
-        return temp_func;
-    }*/
 
     let cmdline_last;
 
@@ -18,49 +8,59 @@ let cmd = function () { //_namespace
     };
 
     function echo(s) {
+        let status_code = 0;
         console.log("cmd: " + s);
 
-        cmdline_last = document.getElementsByClassName("cmdline")[-1];
+        cmdline_last = document.getElementsByClassName("cmdline")[document.getElementsByClassName("cmdline").length - 1];
 
         cmdline_last.readOnly = true; //Makes it readonly
-        cmdline_last.value = s;
+        cmdline_last.setAttribute("value",s);
 
         document.getElementById("cmd-text").appendChild(cmdline_last); //Moves element to div
 
         document.getElementById("cmd-box").innerHTML += cmd_last_line_element; //Adds new last line
 
-        return 0;
+        env.errorlevel = status_code;
+        return status_code;
     }
 
     function exit(args = []) {
+        let status_code = 0;
 
-        return 0;
+        env.errorlevel = status_code;
+        return status_code;
     }
 
     function cls(args = []) {
+        let status_code = 0;
 
-        return 0;
+        env.errorlevel = status_code;
+        return status_code;
     }
     
     function set(args = []) {
+        let status_code = 0;
         if (args.length === 0){
             var env_keys = Object.keys(env);
             var env_values = Object.values(env);
             for (var i in env_keys){
                 echo(env_keys[i] + '=' + env_values[i]);
             }
-            return 0;
+
         }else {
 
         }
+
+        env.errorlevel = status_code;
+        return status_code;
     }
 
-    return {
-        /*list_functions: list_functions,*/
+    return { /* Globalization */
+        env: env,
         echo: echo,
         exit: exit,
-        cls: cls
+        cls: cls,
+        set: set
+
     };
 }();
-
-//let cmd_function_list = cmd_namespace.list_functions();

@@ -1,8 +1,9 @@
 //const lastline_cmd_element = document.getElementById("cmdline-last").cloneNode(false);
 
-var tmp = document.createElement("div");
-const cmd_last_line_element = tmp.appendChild(document.getElementById("cmdline-last")).innerHTML;
-delete tmp;
+//var tmp = document.createElement("div");
+//var cloned = document.getElementsByClassName("cmdline")[document.getElementsByClassName("cmdline").length -1].cloneNode(false);
+//const cmd_last_line_element = tmp.appendChild(cloned).innerHTML;
+const cmd_last_line_element = '<input class="cmdline cmd" type="text" value="" autocomplete="off" autocapitalize="off" spellcheck="false">';
 
 let _n = '\n';
 let command_output = {
@@ -24,40 +25,52 @@ document.getElementsByTagName("body")[0].onkeydown = function(e) {
 
 function cmd_prompt_enter(){
 
+    /*
     let cmdline_last = document.getElementById("cmdline_last");    //document.getElementById("cmdline-last");
     cmdline_last.readOnly = true;
     cmdline_last.removeAttribute("id");
     document.getElementById("cmd-text").appendChild(cmdline_last);
     //document.getElementById("cmd-box").appendChild(lastline_cmd_element);
-    document.getElementById("cmd-box").innerHTML += lastline_cmd_element;
-    cmd_command(cmdline_last.innerText);
+    document.getElementById("cmd-box").innerHTML += lastline_cmd_element;*/
+
+    let lastline_value = document.getElementsByClassName("cmdline")[document.getElementsByClassName("cmdline").length -1].value;
+    cmd.echo(lastline_value);
+    cmd_command(lastline_value);
+
+    document.getElementsByClassName("cmdline")[document.getElementsByClassName("cmdline").length - 1].focus();
 
 }
 
 function cmd_command(s){
     let args = s.split(" "); //Command arguments
+    args[0] = args[0].toLocaleLowerCase();
     let _args = s.substring(s.indexOf(' ') + 1); //Command arguments excluding first argument
-    let _count = (temp.match(/ /g) || []).length; //Counts spaces
+    //let _count = (temp.match(/ /g) || []).length; //Counts spaces
+    let _count = (s.match(/ /g) || []).length
     if (_count === 0 || _count === _args.length){ //Prevents arguments like "" or ones that's just multiple spaces in being sent
         _args = "";
     }
 
+    console.log("args: "+args);
+    console.log("_args: "+_args);
+    console.log("_count: "+_count);
+
     switch (args[0]) {
         case "help":
-            console.log(command_output["help"]);
+            cmd.echo(command_output["help"]);
             break;
         case "cookies":
             if (args.length >= 2){
 
             }else {
-                cmd.env.errorlevel = cmd.echo(command_output["cookies"]);
+                cmd.echo(command_output["cookies"]);
             }
             break;
         default:
             if (typeof cmd[args[0]] === "function"){
                 cmd[args[0]](_args);
             }else {
-                cmd.env.errorlevel = cmd.echo("'" + args[0] + "' is not recognized as an internal or external command,\n" +
+                cmd.echo("'" + args[0] + "' is not recognized as an internal or external command,\n" +
                     "operable program or batch file.")
             }
     }
