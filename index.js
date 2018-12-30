@@ -77,7 +77,6 @@ function cmd_command(s){
 }
 
 make_draggable(document.getElementById("cmd-box"), document.getElementById("cmd-top"));
-
 /* w3schools.com */
 function make_draggable(elmnt, elmnt_dragpart){
     let pos1 = 0;

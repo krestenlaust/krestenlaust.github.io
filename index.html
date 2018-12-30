@@ -5,9 +5,12 @@
     <script src="domaincontroller.js"></script>
 </head>
 <body>
-    <div id="cmd-box" class="cmd">
-        <div id="cmd-top" class="cmd"><!-- <img src="icons8-command-line-filled-32.png" height="32" width="32"> -->
-            <p id="cmd-top-title" class="cmd">Command Prompt</p>
+    <!-- Application windows should be below here -->
+
+    <div id="cmd-box" class="cmd window">
+        <div id="cmd-top" class="cmd window-top"><!--  -->
+            <img class="window-top-icon" src="resources/windows icons/cmd_IDI_APPICON.ico" height="17" width="17">
+            <p id="cmd-top-title" class="window-title cmd">Command Prompt</p>
         </div>
         <div id="cmd-text" class="cmd">
             <input class="cmdline cmd" type="text" value="Microsoft Windows [Version 10.0.17134.472]" readonly>
@@ -18,11 +21,30 @@
 
         <input class="cmdline cmd" type="text" value="" autocomplete="off" autocapitalize="off" spellcheck="false">
     </div>
+
+    <!-- Application windows should be above -->
+
     <div id="credits">
         <!-- Place this tag where you want the button to render. -->
         <a class="github-button" href="https://github.com/kres0345" data-size="large" aria-label="Follow @kres0345 on GitHub">Follow @kres0345</a>
         <a class="github-button" href="https://github.com/kres0345/kres0345.github.io" data-size="large" data-show-count="true" aria-label="Star kres0345/kres0345.github.io on GitHub">Star</a>
     </div>
+
+    <!-- Everything desktop related should be below-->
+
+    <div id="desktop">
+        <div class="desktop-icon" onclick="icon_click(this)">
+            <img class="desktop-icon-image" src="resources/windows icons/imageres_55.ico" height="50" width="50">
+            <p class="desktop-icon-text">Recycle bin</p>
+        </div>
+        <div class="desktop-icon" onclick="icon_click(this)">
+            <img class="desktop-icon-image" src="resources/windows icons/imageres_55.ico" height="50" width="50">
+            <p class="desktop-icon-text">Recycle bin</p>
+        </div>
+
+
+    </div>
 </body>
 <script src="index.js"></script>
-<script src="cmd.js"></script>
+<script src="utility/desktop.js"></script>
+<script src="applications/command%20prompt/cmd.js"></script>

@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'consolas';
+    src: url('resources/fonts/consola.eot'); /* IE9 Compat Modes */
+    src: url('resources/fonts/consola.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('resources/fonts/Consolas.woff') format('woff'), /* Modern Browsers */
+    url('resources/fonts/consola.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('resources/fonts/consola.svg#consolas') format('svg'); /* Legacy iOS */
+}
+
 #cmd-box{
     border: 5px black;
     height: 590px; /* 590px */
@@ -19,13 +28,6 @@
     /* Draggable */
     cursor: move;
     z-index: 10;
-}
-#cmd-top-title{
-    vertical-align: middle;
-    padding-left: 50px;
-    /*margin-left: 10px;
-    */
-
 }
 #cmd-text{
     overflow: auto;
@@ -51,6 +53,34 @@
 #credits{
 
 }
+
+.window-top-icon{
+    float: left;
+    top:0;
+    bottom:0;
+    /max-height: 25px;
+    /min-height:25px;
+    /height: 100%;
+    /width: 30px;
+    /vertical-align: middle;
+    padding-left: 7px;
+    padding-top: 1%; /*5px*/
+}
+.window-title{
+    height: 100%;
+    /vertical-align: middle;
+    float: left;
+    padding-left: 2px;
+}
+/*
+#cmd-top-title{
+    vertical-align: middle;
+    float: left;
+    padding-left: 0px;
+    //margin-left: 10px;
+
+}*/
+
 
 body{
     background: url("resources/default.jpg");

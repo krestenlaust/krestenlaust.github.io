@@ -20,6 +20,8 @@ let cmd = function () { //_namespace
 
         document.getElementById("cmd-box").innerHTML += cmd_last_line_element; //Adds new last line
 
+        make_draggable(document.getElementById("cmd-box"), document.getElementById("cmd-top"));
+
         env.errorlevel = status_code;
         return status_code;
     }
