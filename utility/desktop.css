@@ -1,22 +1,23 @@
 #desktop{
-    display: grid;
-    grid-template-columns: repeat(12, auto);
-    grid-template-rows: repeat(8, auto);
-    /padding: 2px 0;
+    display: grid !important;
+    grid-template-columns: auto; /* repeat(12, auto); */
+    grid-template-rows: auto; /* repeat(8, auto) */
+    /*padding: 2px 0;*/
     /*grid-template-columns: auto auto auto;*/
-    padding: 10px;
+    padding: 5px;
 }
 .desktop-icon{
-    border: 5px solid black;
-    background-color: rgba(255, 255, 255, 0.8);
+    /*border: 1px solid black;*/
+    width: 140px;
+    height: 90px;
+    border: 1px solid transparent;
+    margin:1px;
     text-align: center;
 }
 .desktop-icon:hover{
-    border: 5px solid dodgerblue;
-    background-color: dodgerblue;
-}
-.desktop-icon-image{
-
+    /opacity: .8;
+    border: 1px solid grey;
+    background-color: rgb(177, 201, 239);
 }
 .desktop-icon-text{
     color: white;

@@ -12,6 +12,10 @@ let cmd = function () { //_namespace
         return prompt_var.replace("%cd%", filesystem.cd);
     }
 
+    function exit(args, pid) {
+        taskmanager.kill_application(pid);
+    }
+
     function echo(s, pid) {
         let status_code = 0;
 

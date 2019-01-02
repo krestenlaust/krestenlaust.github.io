@@ -78,21 +78,6 @@
     transition: 0.2s;
 }
 
-
-
-
-.notepad-window{
-    border: 5px black;
-    height: 450px; /* 590px */
-    width: 120%; /* 120px */
-    /text-align: center;
-
-    /* Draggable */
-    /*
-    position: absolute;
-    z-index: 9;*/
-}
-
 body{
     background: url("resources/default.jpg");
     background-size: cover;

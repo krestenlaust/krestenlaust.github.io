@@ -2,6 +2,7 @@
 
 let cmd_log = [];
 
+/*
 let _n = '\n';
 let command_output = {
     "help":
@@ -12,7 +13,7 @@ let command_output = {
         'Run command \'cookies accept\' to accept cookies' + _n +
         'Run command \'cookies deny\' to deny cookies(prevents using some commands)' + _n +
         'I use cookies for different stuff'
-};
+};*/
 
 document.getElementsByTagName("body")[0].onkeydown = function(e) {
     if (document.activeElement.classList.contains("cmd")){
@@ -35,7 +36,6 @@ function cmd_prompt_enter(e){
     cmd_command(lastline_value, pid);
 
     cmdlines[cmdlines.length-1].focus();
-    //document.getElementsByClassName("cmdline")[document.getElementsByClassName("cmdline").length - 1].focus();
 }
 
 function cmd_command(s, pid){

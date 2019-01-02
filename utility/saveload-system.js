@@ -35,6 +35,7 @@ let saveload = function () {
             return new_addr;
         }
 
+        /* Public - Returns compressed byte-size or -1 */
         function write(addr, data) {
             if (supported){
                 var compressed = LZString.compress(data);
@@ -44,9 +45,13 @@ let saveload = function () {
             return -1
         }
 
+        /* Public - Returns string at address or -1 */
         function read(addr) {
             if (supported){
                 var data = localStorage.getItem("f-" + addr);
+                if (data === null){
+                    return -1
+                }
                 return LZString.decompress(data);
             }
             return -1
@@ -69,11 +74,19 @@ let saveload = function () {
 
     }
 
+    function write_file_auto(data) {
+        /* Automatically generates memory address and returns it */
+        let new_address = address.generate();
+        address.write(new_address, data);
+    }
+
 
     return { /* Globalization */
         supported: supported,
 
-        address: address
+        address: address,
+
+        write_file_auto: write_file_auto
     };
 }();
 

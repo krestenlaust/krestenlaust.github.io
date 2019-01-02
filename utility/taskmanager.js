@@ -12,7 +12,9 @@ let taskmanager = function (){
             var pid = generate_pid();
             document.getElementById("applications").innerHTML += data.replace(/00fff/g, pid);
 
-            //jQuery.getScript('applications/'+appname+"/"+appname+".js");
+            if (document.querySelector("script[src*='cmd.js']") === null){
+                $.getScript('applications/'+appname+"/"+appname+".js");
+            }
             var appref = document.getElementsByClassName(appname + "-window");
             var apptopref = document.getElementsByClassName(appname + "-window-top");
             appref[appref.length-1].setAttribute("id", "window-"+pid);
@@ -32,6 +34,8 @@ let taskmanager = function (){
     function kill_application(pid) {
         document.getElementById("window-"+pid).parentElement.removeChild(document.getElementById("window-"+pid));
         running_applications = running_applications.filter(e => e !== pid);
+
+        //$('link[rel=stylesheet][href*="mystyle"]').remove();
     }
 
     return {

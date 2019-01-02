@@ -1,0 +1,11 @@
+.notepad-window{
+    border: 5px black;
+    height: 450px; /* 590px */
+    width: 120%; /* 120px */
+/text-align: center;
+
+    /* Draggable */
+    /*
+    position: absolute;
+    z-index: 9;*/
+}
