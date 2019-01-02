@@ -133,6 +133,14 @@ let cmd = function () { //_namespace
         prompt: prompt,
         md: md,
         dir: dir
-
     };
 }();
+
+function focus_cmd(e) {
+    console.log(e);
+    var pid = "";
+    document.getElementsByClassName("cmdline-"+pid)[document.getElementsByClassName("cmdline-"+pid).length-1].focus();
+}
+function cmd_onload(pid) {
+    document.getElementById("cmd-text-"+pid).addEventListener("click", focus_cmd);
+}
