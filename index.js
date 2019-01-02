@@ -1,9 +1,6 @@
-//const lastline_cmd_element = document.getElementById("cmdline-last").cloneNode(false);
+//const cmd_last_line_element = '<input class="cmdline cmdline-empty-00fff cmd" type="text" value="" autocomplete="off" autocapitalize="off" spellcheck="false" readonly>';
 
-//var tmp = document.createElement("div");
-//var cloned = document.getElementsByClassName("cmdline")[document.getElementsByClassName("cmdline").length -1].cloneNode(false);
-//const cmd_last_line_element = tmp.appendChild(cloned).innerHTML;
-const cmd_last_line_element = '<input class="cmdline cmd" type="text" value="" autocomplete="off" autocapitalize="off" spellcheck="false">';
+let cmd_log = [];
 
 let _n = '\n';
 let command_output = {
@@ -18,44 +15,48 @@ let command_output = {
 };
 
 document.getElementsByTagName("body")[0].onkeydown = function(e) {
-    if (e.key === "Enter" && document.activeElement.classList.contains("cmd")){
-        cmd_prompt_enter()
+    if (document.activeElement.classList.contains("cmd")){
+        if (e.key === "Enter"){ // && document.activeElement.classList.contains("cmd")
+            cmd_prompt_enter(e)
+        }
+        else if(e.key === "ArrowUp"){
+
+        }else if(e.key === "ArrowDown"){
+
+        }
     }
 };
 
-function cmd_prompt_enter(){
+function cmd_prompt_enter(e){
+    var pid = e.srcElement.offsetParent.dataset.pid;
+    var cmdlines = document.getElementsByClassName("cmdline-"+pid);
+    let lastline_value = cmdlines[cmdlines.length -1].value;
+    //cmd.echo(lastline_value, pid);
+    cmd_command(lastline_value, pid);
 
-    /*
-    let cmdline_last = document.getElementById("cmdline_last");    //document.getElementById("cmdline-last");
-    cmdline_last.readOnly = true;
-    cmdline_last.removeAttribute("id");
-    document.getElementById("cmd-text").appendChild(cmdline_last);
-    //document.getElementById("cmd-box").appendChild(lastline_cmd_element);
-    document.getElementById("cmd-box").innerHTML += lastline_cmd_element;*/
-
-    let lastline_value = document.getElementsByClassName("cmdline")[document.getElementsByClassName("cmdline").length -1].value;
-    cmd.echo(lastline_value);
-    cmd_command(lastline_value);
-
-    document.getElementsByClassName("cmdline")[document.getElementsByClassName("cmdline").length - 1].focus();
-
+    cmdlines[cmdlines.length-1].focus();
+    //document.getElementsByClassName("cmdline")[document.getElementsByClassName("cmdline").length - 1].focus();
 }
 
-function cmd_command(s){
-    let args = s.split(" "); //Command arguments
-    args[0] = args[0].toLocaleLowerCase();
-    let _args = s.substring(s.indexOf(' ') + 1); //Command arguments excluding first argument
-    //let _count = (temp.match(/ /g) || []).length; //Counts spaces
-    let _count = (s.match(/ /g) || []).length
-    if (_count === 0 || _count === _args.length){ //Prevents arguments like "" or ones that's just multiple spaces in being sent
-        _args = "";
+function cmd_command(s, pid){
+    s = s.replace(s.slice(0, s.indexOf(">") + 1), "");
+
+    cmd_log.push(s);
+    //let args = s.split(">")[s.split(">").length - 1].split(" "); //Command arguments
+    let args = s.split(" ");
+
+    let args_only = s.substring(s.indexOf(' ') + 1); //Command arguments excluding first argument
+
+
+    let _count = (s.match(/ /g) || []).length;
+    if (_count === 0 || _count === args_only.length){ //Prevents arguments like "" or ones that's just multiple spaces in being sent
+        args_only = "";
     }
 
-    console.log("args: "+args);
-    console.log("_args: "+_args);
-    console.log("_count: "+_count);
-
-    switch (args[0]) {
+    switch (args[0].toLowerCase()) {
+        case "":
+            
+            break;
         case "help":
             cmd.echo(command_output["help"]);
             break;
@@ -67,8 +68,8 @@ function cmd_command(s){
             }
             break;
         default:
-            if (typeof cmd[args[0]] === "function"){
-                cmd[args[0]](_args);
+            if (typeof cmd[args[0].toLowerCase()] === "function"){
+                cmd[args[0]](args_only, pid);
             }else {
                 cmd.echo("'" + args[0] + "' is not recognized as an internal or external command,\n" +
                     "operable program or batch file.")
@@ -76,9 +77,20 @@ function cmd_command(s){
     }
 }
 
-make_draggable(document.getElementById("cmd-box"), document.getElementById("cmd-top"));
-/* w3schools.com */
-function make_draggable(elmnt, elmnt_dragpart){
+function close_window(window){
+    taskmanager.kill_application(window.parentElement.parentElement.getAttribute("data-pid"));
+    //window.parentElement.dataset.pid
+    //window.parentElement.parentElement.parentElement.removeChild(window.parentElement.parentElement);
+}
+function minimize_window(window){
+    //window.parentElement.parentElement.style.display = "none";
+}
+function maximize_window(window){
+
+}
+
+//make_draggable(document.getElementById("cmd-box"), document.getElementById("cmd-top"));
+function make_draggable(elmnt, elmnt_dragpart){ /* w3schools.com */
     let pos1 = 0;
     let pos2 = 0;
     let pos3 = 0;
@@ -120,5 +132,37 @@ function make_draggable(elmnt, elmnt_dragpart){
         document.onmousemove = null;
     }
 }
+/*
+(function() {
+    "use strict";
+
+    var menu = document.querySelector("#context-menu");
+    var menuState = 0;
+    var active = "context-menu--active";
+
+    document.addEventListener( "contextmenu", function(e) {
+        e.preventDefault();
+        console.log(e);
+
+    });
+
+})();
+*//*
+(function() {
+
+    "use strict";
+
+    var desktopicons = document.getElementsByClassName("desktop-icon");
+    for (var item in desktopicons){
+        contextMenuListener(desktopicons[item])
+    }
+
+    function contextMenuListener(el) {
+        el.addEventListener( "contextmenu", function(e) {
+            console.log(e, el);
+        });
+    }
+
+})();*/
 
 console.log(atob("ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIApOTk5OTk5OTiAgICAgICAgTk5OTk5OTk4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR0dHQgICAgICAgICAgICAgICB0dHR0ICAgICAgICAgICAgMTExMTExMSAgICAgICAgODg4ODg4ODg4ICAgICAKTjo6Ojo6OjpOICAgICAgIE46Ojo6OjpOICAgICAgICAgICAgICAgICAgICAgICAgICB0dHQ6Ojp0ICAgICAgICAgICAgdHR0Ojo6dCAgICAgICAgICAgMTo6Ojo6OjEgICAgICA4ODo6Ojo6Ojo6Ojg4ICAgCk46Ojo6Ojo6Ok4gICAgICBOOjo6Ojo6TiAgICAgICAgICAgICAgICAgICAgICAgICAgdDo6Ojo6dCAgICAgICAgICAgIHQ6Ojo6OnQgICAgICAgICAgMTo6Ojo6OjoxICAgIDg4Ojo6Ojo6Ojo6Ojo6Ojg4IApOOjo6Ojo6Ojo6TiAgICAgTjo6Ojo6Ok4gICAgICAgICAgICAgICAgICAgICAgICAgIHQ6Ojo6OnQgICAgICAgICAgICB0Ojo6Ojp0ICAgICAgICAgIDExMTo6Ojo6MSAgIDg6Ojo6Ojo4ODg4ODo6Ojo6OjgKTjo6Ojo6Ojo6OjpOICAgIE46Ojo6OjpOICAgIGVlZWVlZWVlZWVlZSAgICB0dHR0dHR0Ojo6Ojp0dHR0dHR0dHR0dHR0dDo6Ojo6dHR0dHR0dCAgICAgICAxOjo6OjEgICA4Ojo6Ojo4ICAgICA4Ojo6Ojo4Ck46Ojo6Ojo6Ojo6Ok4gICBOOjo6Ojo6TiAgZWU6Ojo6Ojo6Ojo6OjplZSAgdDo6Ojo6Ojo6Ojo6Ojo6Ojo6dHQ6Ojo6Ojo6Ojo6Ojo6Ojo6OnQgICAgICAgMTo6OjoxICAgODo6Ojo6OCAgICAgODo6Ojo6OApOOjo6Ojo6Ok46Ojo6TiAgTjo6Ojo6Ok4gZTo6Ojo6OmVlZWVlOjo6OjplZXQ6Ojo6Ojo6Ojo6Ojo6Ojo6OnR0Ojo6Ojo6Ojo6Ojo6Ojo6Ojp0ICAgICAgIDE6Ojo6MSAgICA4Ojo6Ojo4ODg4ODo6Ojo6OCAKTjo6Ojo6Ok4gTjo6OjpOIE46Ojo6OjpOZTo6Ojo6OmUgICAgIGU6Ojo6OmV0dHR0dHQ6Ojo6Ojo6dHR0dHR0dHR0dHR0Ojo6Ojo6OnR0dHR0dCAgICAgICAxOjo6OmwgICAgIDg6Ojo6Ojo6Ojo6Ojo6OCAgCk46Ojo6OjpOICBOOjo6Ok46Ojo6Ojo6TmU6Ojo6Ojo6ZWVlZWU6Ojo6OjplICAgICAgdDo6Ojo6dCAgICAgICAgICAgIHQ6Ojo6OnQgICAgICAgICAgICAgMTo6OjpsICAgIDg6Ojo6Ojg4ODg4Ojo6Ojo4IApOOjo6Ojo6TiAgIE46Ojo6Ojo6Ojo6Ok5lOjo6Ojo6Ojo6Ojo6Ojo6OjplICAgICAgIHQ6Ojo6OnQgICAgICAgICAgICB0Ojo6Ojp0ICAgICAgICAgICAgIDE6Ojo6bCAgIDg6Ojo6OjggICAgIDg6Ojo6OjgKTjo6Ojo6Ok4gICAgTjo6Ojo6Ojo6OjpOZTo6Ojo6OmVlZWVlZWVlZWVlICAgICAgICB0Ojo6Ojp0ICAgICAgICAgICAgdDo6Ojo6dCAgICAgICAgICAgICAxOjo6OmwgICA4Ojo6Ojo4ICAgICA4Ojo6Ojo4Ck46Ojo6OjpOICAgICBOOjo6Ojo6Ojo6TmU6Ojo6Ojo6ZSAgICAgICAgICAgICAgICAgdDo6Ojo6dCAgICB0dHR0dHQgIHQ6Ojo6OnQgICAgdHR0dHR0ICAgMTo6OjpsICAgODo6Ojo6OCAgICAgODo6Ojo6OApOOjo6Ojo6TiAgICAgIE46Ojo6Ojo6Ok5lOjo6Ojo6OjplICAgICAgICAgICAgICAgIHQ6Ojo6Ojp0dHR0Ojo6Ojp0ICB0Ojo6Ojo6dHR0dDo6Ojo6dDExMTo6Ojo6OjExMTg6Ojo6Ojo4ODg4ODo6Ojo6OjgKTjo6Ojo6Ok4gICAgICAgTjo6Ojo6OjpOIGU6Ojo6Ojo6OmVlZWVlZWVlICAgICAgICB0dDo6Ojo6Ojo6Ojo6Ojo6dCAgdHQ6Ojo6Ojo6Ojo6Ojo6OnQxOjo6Ojo6Ojo6OjEgODg6Ojo6Ojo6Ojo6Ojo6ODggCk46Ojo6OjpOICAgICAgICBOOjo6Ojo6TiAgZWU6Ojo6Ojo6Ojo6Ojo6ZSAgICAgICAgICB0dDo6Ojo6Ojo6Ojo6dHQgICAgdHQ6Ojo6Ojo6Ojo6OnR0MTo6Ojo6Ojo6OjoxICAgODg6Ojo6Ojo6Ojo4OCAgIApOTk5OTk5OTiAgICAgICAgIE5OTk5OTk4gICAgZWVlZWVlZWVlZWVlZWUgICAgICAgICAgICB0dHR0dHR0dHR0dCAgICAgICAgdHR0dHR0dHR0dHQgIDExMTExMTExMTExMSAgICAgODg4ODg4ODg4ICAgICAKCmh0dHA6Ly9wYXRvcmprLmNvbS9zb2Z0d2FyZS90YWFnLyNwPWRpc3BsYXkmZj1Eb2gmdD1OZXR0MTg="));

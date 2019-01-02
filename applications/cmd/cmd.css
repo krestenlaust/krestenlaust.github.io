@@ -1,0 +1,52 @@
+.cmd-text{
+    overflow-y: scroll;
+    height: 450px;
+}
+.cmd-window{ /* #cmd-box */
+    /border: 5px black;
+    /height: 450px; /* 590px */
+    /width: 50%; /* 120px */
+    /text-align: center;
+
+    /* Draggable //Included in .window
+    position: absolute;
+    z-index: 9;*/
+}
+.cmd-window-top{ /* #cmd-top */
+    border: 1px black;
+    height: 30px; /* 20px */
+    width: 100%; /* 120px */
+    background-color: white;
+    vertical-align: middle;
+    display: inline-block;
+
+    /* Draggable */
+    cursor: move;
+    z-index: 10;
+}
+
+.cmd-text{ /* #cmd-text */
+    overflow: auto;
+    display: inline-block;
+    width: 100%;
+}
+.cmdline{
+    color: white;
+    background-color: black;
+    /text-decoration-color: white;
+    border-width: 0;
+    font-family: Consolas, serif;
+    width: 100%; /* 120px */
+    padding: 0;
+}
+.cmdline:focus{
+    outline: none;
+}
+/*
+.cmd-top-title{ //#cmd-top-title
+    vertical-align: middle;
+    float: left;
+    padding-left: 0px;
+    //margin-left: 10px;
+
+}*/

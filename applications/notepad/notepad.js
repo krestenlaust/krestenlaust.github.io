@@ -1,0 +1,1 @@
+//make_draggable(document.getElementById("notepad-window-1"), document.getElementById("notepad-window-top-1"));

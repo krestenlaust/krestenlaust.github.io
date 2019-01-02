@@ -1,15 +1,17 @@
 @font-face {
     font-family: 'consolas';
-    src: url('resources/fonts/consola.eot'); /* IE9 Compat Modes */
-    src: url('resources/fonts/consola.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    /*src: url('resources/fonts/consola.eot');*/ /* IE9 Compat Modes */
+    /*src: url('resources/fonts/consola.eot?#iefix') format('embedded-opentype'),*/ /* IE6-IE8 */
     url('resources/fonts/Consolas.woff') format('woff'), /* Modern Browsers */
-    url('resources/fonts/consola.ttf')  format('truetype'), /* Safari, Android, iOS */
-    url('resources/fonts/consola.svg#consolas') format('svg'); /* Legacy iOS */
+    url('resources/fonts/consola.ttf')  format('truetype')/*, Safari, Android, iOS */
+    /*url('resources/fonts/consolas.svg#consolas') format('svg'); *//* Legacy iOS */
 }
 
-#cmd-box{
+
+.window{ /* Full window */
+
     border: 5px black;
-    height: 590px; /* 590px */
+    height: 450px; /* 590px */
     width: 50%; /* 120px */
     text-align: center;
 
@@ -17,8 +19,8 @@
     position: absolute;
     z-index: 9;
 }
-#cmd-top{
-    border: 1px black;
+.window-top{ /* Window top bar */
+    border: 10px black;
     height: 30px; /* 20px */
     width: 100%; /* 120px */
     background-color: white;
@@ -29,60 +31,70 @@
     cursor: move;
     z-index: 10;
 }
-#cmd-text{
-    overflow: auto;
-    display: inline-block;
-    width: 100%;
-}
-.cmdline{
-    color: white;
-    background-color: black;
-    /text-decoration-color: white;
-    border-width: 0;
-    font-family: Consolas, serif;
-    width: 100%; /* 120px */
-    padding: 0;
-}
-.cmdline:focus{
-    outline: none;
-}
-#cmdline-last{
-
-}
-
-#credits{
-
-}
-
-.window-top-icon{
-    float: left;
-    top:0;
-    bottom:0;
-    /max-height: 25px;
-    /min-height:25px;
-    /height: 100%;
-    /width: 30px;
-    /vertical-align: middle;
-    padding-left: 7px;
-    padding-top: 1%; /*5px*/
-}
-.window-title{
+.window-title{ /* Part of top, the text */
     height: 100%;
     /vertical-align: middle;
     float: left;
     padding-left: 2px;
 }
-/*
-#cmd-top-title{
-    vertical-align: middle;
+.window-top-icon{ /* Part of top, the icon */
     float: left;
-    padding-left: 0px;
-    //margin-left: 10px;
+    top:0;
+    bottom:0;
+    padding-left: 7px;
+    padding-top: 1%; /*5px*/
+}
 
-}*/
 
+/* Top bar buttons */
+.window-top-button{
+    height: inherit;
+    width: 46.6px;
+    border-width: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    float: right;
+}
+
+.window-top-button-close{
+    color: black;
+    background-color: white;
+    transition: 0.2s;
+}
+.window-top-button-close:hover{
+    background-color: red; /*#CDCDCD */
+    color: white;
+    transition: 0.2s;
+}
+.window-top-button-other{
+    color: black;
+    background-color: white;
+    transition: 0.2s;
+}
+.window-top-button-other:hover{
+    background-color: #CDCDCD;
+    transition: 0.2s;
+}
+
+
+
+
+.notepad-window{
+    border: 5px black;
+    height: 450px; /* 590px */
+    width: 120%; /* 120px */
+    /text-align: center;
+
+    /* Draggable */
+    /*
+    position: absolute;
+    z-index: 9;*/
+}
 
 body{
     background: url("resources/default.jpg");
     background-size: cover;
+    overflow: hidden;
 }

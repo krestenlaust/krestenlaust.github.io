@@ -1,26 +1,30 @@
 <head>
     <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="utility/context-menu/context-menu.css">
+    <link rel="stylesheet" type="text/css" href="applications/notepad/notepad.css">
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="domaincontroller.js"></script>
 </head>
 <body>
+
     <!-- Application windows should be below here -->
 
-    <div id="cmd-box" class="cmd window">
-        <div id="cmd-top" class="cmd window-top"><!--  -->
-            <img class="window-top-icon" src="resources/windows icons/cmd_IDI_APPICON.ico" height="17" width="17">
-            <p id="cmd-top-title" class="window-title cmd">Command Prompt</p>
-        </div>
-        <div id="cmd-text" class="cmd">
-            <input class="cmdline cmd" type="text" value="Microsoft Windows [Version 10.0.17134.472]" readonly>
-            <input class="cmdline cmd" type="text" value="(c) 2018 Microsoft Corporation. All rights reserved." readonly>
-            <input class="cmdline cmd" type="text" value="Made by Kresten Laust" readonly>
-            <input class="cmdline cmd" type="text" value="" readonly>
-        </div>
+    <div id="applications"></div>
 
-        <input class="cmdline cmd" type="text" value="" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <!--
+    <div class="nodepad-window windoww" id="notepad-window-1">
+        <div class="notepad-window-top windoww-top" id="notepad-window-top-1">
+            <img class="window-top-icon" src="resources/windows%20icons/notepad_2.ico" height="17" width="17">
+            <p class="window-title notepad">Notepad</p>
+            <button class="window-top-button window-top-button-close" onclick="close_window(this)">X</button>
+            <button class="window-top-button window-top-button-other" onclick="maximize_window(this)">¤</button>
+            <button class="window-top-button window-top-button-other" onclick="minimize_window(this)">—</button>
+        </div>
+        <div class="notepad-text window-body">
+        <textarea rows="25" cols="100" data-gramm="false" autocapitalize="off" spellcheck="false" autocomplete="off"></textarea>
+        </div>
     </div>
+    </div>-->
 
     <!-- Application windows should be above -->
 
@@ -32,6 +36,8 @@
 
     <!-- Everything desktop related should be below-->
 
+
+
     <div id="desktop">
         <div class="desktop-icon" onclick="icon_click(this)">
             <img class="desktop-icon-image" src="resources/windows icons/imageres_55.ico" height="50" width="50">
@@ -41,10 +47,17 @@
             <img class="desktop-icon-image" src="resources/windows icons/imageres_55.ico" height="50" width="50">
             <p class="desktop-icon-text">Recycle bin</p>
         </div>
-
-
     </div>
+
 </body>
+
+<script language="javascript" src="ext/jquery-3.3.1.min.js"></script>
 <script src="index.js"></script>
 <script src="utility/desktop.js"></script>
-<script src="applications/command%20prompt/cmd.js"></script>
+<script src="utility/saveload-system.js"></script>
+<script src="utility/filesystem.js"></script>
+<script src="applications/cmd/cmd.js"></script>
+<script language="javascript" src="ext/lz-string.min.js"></script>
+<script src="utility/taskmanager.js"></script>
+
+<script src="applications/notepad/notepad.js"></script>
