@@ -1,6 +1,6 @@
 .cmd-text{
     overflow-y: scroll;
-    height: 450px;
+    height: 420px;
 }
 .cmd-window{ /* #cmd-box */
     /border: 5px black;
@@ -33,7 +33,6 @@
 .cmdline{
     color: white;
     background-color: black;
-    /text-decoration-color: white;
     border-width: 0;
     font-family: Consolas, serif;
     width: 100%; /* 120px */

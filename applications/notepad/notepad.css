@@ -1,8 +1,25 @@
+.notepad-window-top{
+    width: inherit !important;
+}
+
+.notepad-textarea{
+    width: inherit;
+    font-size: 11pt;
+    font-family: Consolas, serif;
+}
+.notepad-textarea:focus{
+    outline: none;
+}
+
+.notepad-text{
+    width: inherit;
+}
+
 .notepad-window{
     border: 5px black;
     height: 450px; /* 590px */
-    width: 120%; /* 120px */
-/text-align: center;
+    width: 700px !important; /* 120% - 120px */
+    /text-align: center;
 
     /* Draggable */
     /*

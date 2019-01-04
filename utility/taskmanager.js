@@ -30,8 +30,8 @@ let taskmanager = function (){
 
             var onload = document.getElementById("window-"+pid).dataset.onload;
             if (onload !== null){
-                console.log(`Onload ${pid}: ${onload}("${pid}")`);
-                eval(onload+"("+pid+")");
+                //console.log(`Onload ${pid}: ${onload}("${pid}")`);
+                //eval(onload+"("+pid+")");
             }
         });
     }
