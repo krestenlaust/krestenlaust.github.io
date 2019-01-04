@@ -27,12 +27,16 @@
 
     <div id="desktop">
         <div class="desktop-icon" onclick="icon_click(this)">
-            <img class="desktop-icon-image" src="resources/windows%20icons/recycle_bin.ico" height="50" width="50">
+            <img class="desktop-icon-image" src="resources/windows%20icons/recycle_bin.ico">
             <p class="desktop-icon-text">Recycle bin</p>
         </div>
         <div class="desktop-icon" data-launch="taskmanager.start_application('cmd')" onclick="icon_click(this)">
-            <img class="desktop-icon-image" src="resources/windows%20icons/cmd.ico" height="50" width="50">
+            <img class="desktop-icon-image" src="resources/windows%20icons/cmd.ico">
             <p class="desktop-icon-text">Command Prompt</p>
+        </div>
+        <div class="desktop-icon" data-launch="taskmanager.start_application('notepad')" onclick="icon_click(this)">
+            <img class="desktop-icon-image" src="resources/windows%20icons/notepad.ico">
+            <p class="desktop-icon-text">Notepad</p>
         </div>
     </div>
 

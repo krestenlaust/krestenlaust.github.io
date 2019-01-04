@@ -36,6 +36,34 @@ let taskmanager = function (){
         });
     }
 
+
+
+    function interpret_onload(elmnt){
+        var target_str = elmnt; //elmnt.dataset.onload;
+        var occurences = (target_str.match(/\${/g) || []).length;
+        let variables = [];
+        var lastfound = 0;
+
+
+        for (var i=0; i < occurences; i++){
+            var openbracket = target_str.indexOf("${", lastfound);
+            if (1 - openbracket >= 0 && target_str.slice(openbracket-1,openbracket) === "\\"){
+                continue;
+            }
+            var closingbracket = target_str.indexOf("}", openbracket);
+            if (openbracket < closingbracket && 2 + openbracket < closingbracket){
+                variables.push(target_str.slice(openbracket + 2, closingbracket));
+                lastfound = closingbracket;
+            }
+        }
+        console.log(variables);
+
+        for (var i=0; i< variables.length;i++){
+            target_str = target_str.replace("${"+variables[i]+"}", eval(variables[i].slice(2, variables[i].length-1)));
+        }
+        return target_str;
+    }
+
     function kill_application(pid) {
         document.getElementById("window-"+pid).parentElement.removeChild(document.getElementById("window-"+pid));
         running_applications = running_applications.filter(e => e !== pid);
