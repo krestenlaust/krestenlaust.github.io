@@ -47,32 +47,31 @@ function cmd_command(s, pid){
 
     let args_only = s.substring(s.indexOf(' ') + 1); //Command arguments excluding first argument
 
-
     let _count = (s.match(/ /g) || []).length;
     if (_count === 0 || _count === args_only.length){ //Prevents arguments like "" or ones that's just multiple spaces in being sent
-        args_only = "";
+        args_only = [];
+    }else {
+        args_only = args_only.split(" ");
     }
 
     switch (args[0].toLowerCase()) {
         case "":
             
             break;
-        case "help":
-            cmd.echo(command_output["help"]);
-            break;
         case "cookies":
             if (args.length >= 2){
 
             }else {
-                cmd.echo(command_output["cookies"]);
+                cmd.echo(pid, command_output["cookies"]);
             }
             break;
         default:
             if (typeof cmd[args[0].toLowerCase()] === "function"){
-                cmd[args[0]](args_only, pid);
+                cmd[args[0]](pid, args_only);
             }else {
-                cmd.echo("'" + args[0] + "' is not recognized as an internal or external command,\n" +
-                    "operable program or batch file.")
+                cmd.echo(pid, ["'" + args[0] + "' is not recognized as an internal or external command,\n" +
+                    "operable program or batch file."]);
+                cmd.env.errorlevel = 9009;
             }
     }
 }

@@ -28,7 +28,7 @@ let taskmanager = function (){
             make_draggable(document.getElementById("window-"+pid), document.getElementById("window-top-"+pid));
             running_applications.push(pid);
 
-            var onload = document.getElementById("window-"+pid).dataset.onload;
+            var onload = interpret_onload(pid, document.getElementById("window-"+pid));
             if (onload !== null){
                 //console.log(`Onload ${pid}: ${onload}("${pid}")`);
                 //eval(onload+"("+pid+")");
@@ -38,8 +38,8 @@ let taskmanager = function (){
 
 
 
-    function interpret_onload(elmnt){
-        var target_str = elmnt; //elmnt.dataset.onload;
+    function interpret_onload(PID, elmnt){
+        var target_str = elmnt.dataset.onload;
         var occurences = (target_str.match(/\${/g) || []).length;
         let variables = [];
         var lastfound = 0;
@@ -56,10 +56,10 @@ let taskmanager = function (){
                 lastfound = closingbracket;
             }
         }
-        console.log(variables);
 
-        for (var i=0; i< variables.length;i++){
-            target_str = target_str.replace("${"+variables[i]+"}", eval(variables[i].slice(2, variables[i].length-1)));
+        for (var i=0; i<variables.length;i++){
+            var variablevalue = eval(variables[i]);
+            target_str = target_str.replace("${" + variables[i] + "}", variablevalue)
         }
         return target_str;
     }

@@ -12,11 +12,11 @@ let cmd = function () { //_namespace
         return prompt_var.replace("%cd%", filesystem.cd);
     }
 
-    function exit(args, pid) {
+    function exit(pid, args = []) {
         taskmanager.kill_application(pid);
     }
 
-    function echo(s, pid) {
+    function echo(pid, args) {
         let status_code = 0;
 
         var current_lines = document.getElementsByClassName("cmdline-"+pid);
@@ -24,7 +24,7 @@ let cmd = function () { //_namespace
 
         var empty_lines = document.getElementsByClassName("cmdline-empty-"+pid);
         $(empty_lines[0]).clone().appendTo("#cmd-text-"+pid);
-        empty_lines[0].value = s;
+        empty_lines[0].value = args[0];
         empty_lines[0].readOnly = true;
         empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
 
@@ -36,34 +36,39 @@ let cmd = function () { //_namespace
         empty_lines[0].readOnly = false;
         empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
 
-        //make_draggable(document.getElementById("window-"+pid), document.getElementById("window-top-"+pid));
-
-        //document.getElementById("cmd-text-"+pid).innerHTML += cmd_last_line_element.replace("00fff", pid);
-        //document.getElementById("cmd-text-"+pid).innerHTML += cmd_last_line_element.replace("00fff", pid);
         env.errorlevel = status_code;
         return status_code;
     }
     
-    function prompt(new_prompt) {
+    function prompt(pid, new_prompt) {
         prompt_var = new_prompt;
     }
 
-    function md(dirname) {
+    function md(pid, args = []) {
         let status_code = 0;
-
-        filesystem.make_directory(dirname);
-        echo("");
+        if (args.length >= 1){
+            filesystem.make_directory(args[0]);
+            echo(pid, [""]);
+        } else {
+            status_code = 1;
+        }
 
         env.errorlevel = status_code;
         return status_code;
     }
 
-    function cd(path) {
+    function cd(pid, path) {
 
     }
 
-    function dir(path = "%cd%") {
+    function dir(pid, args = []) {
         let status_code = 0;
+        var path = "%cd%";
+        switch (args.length) {
+            case 1:
+                path = args[0];
+                break;
+        }
 
         var cur_dir = filesystem.get_directory(path);
         var output = [];
@@ -85,34 +90,60 @@ let cmd = function () { //_namespace
             cur_line++;
         }
         for (var i=0;i<output.length;i++){
-            echo(output[i]);
+            echo(pid, [output[i]]);
         }
 
         env.errorlevel = status_code;
         return status_code;
     }
 
-    function exit(args = []) {
+    function cls(pid, args = []) {
         let status_code = 0;
+        //26
+        var cmdbox = document.getElementById("cmd-text-"+pid);
 
-        env.errorlevel = status_code;
-        return status_code;
-    }
+        var children = cmdbox.children;
+        var amount = children.length;
+        for (var child in children){
+            cmdbox.removeChild(children[child]);
+            amount--;
+            if (amount <= 26) {
+                break;
+            }
+        }
 
-    function cls(args = []) {
-        let status_code = 0;
+        var notempty = document.getElementsByClassName("cmdline-"+pid);
+        for (var i=0; i<notempty.length;i++){
+            notempty[0].value = "";
+            notempty[0].readOnly = true;
+            notempty[0].setAttribute("class", `cmdline cmdline-empty-${pid} cmd`);
+        }
+
+        children = document.getElementById("cmd-text-"+pid).children;
+        children[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
+        children[0].value = "";
+        children[0].readOnly = true;
+
+        $(document.getElementsByClassName("cmdline-empty-"+pid)[0]).clone().appendTo("#cmd-text-"+pid);
+
+        children[1].setAttribute("class", `cmdline cmdline-${pid} cmd`);
+        children[1].value = get_prompt();
+        children[1].readOnly = false;
+
+        $(document.getElementsByClassName("cmdline-empty-"+pid)[0]).clone().appendTo("#cmd-text-"+pid);
 
         env.errorlevel = status_code;
         return status_code;
     }
     
-    function set(args = []) {
+    function set(pid, args = []) {
         let status_code = 0;
+        console.log("Args: "+args);
         if (args.length === 0){
             var env_keys = Object.keys(env);
             var env_values = Object.values(env);
             for (var i in env_keys){
-                echo(env_keys[i] + '=' + env_values[i]);
+                echo(pid, [env_keys[i] + '=' + env_values[i]]);
             }
 
         }else {
@@ -121,6 +152,10 @@ let cmd = function () { //_namespace
 
         env.errorlevel = status_code;
         return status_code;
+    }
+
+    function help(pid, args = []){
+
     }
 
     return { /* Globalization */
@@ -132,7 +167,8 @@ let cmd = function () { //_namespace
         set: set,
         prompt: prompt,
         md: md,
-        dir: dir
+        dir: dir,
+        help: help
     };
 }();
 
