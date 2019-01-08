@@ -6,6 +6,9 @@
     width: inherit;
     font-size: 11pt;
     font-family: Consolas, serif;
+    resize: none;
+    /overflow-x: scroll;
+    /overflow-y: scroll;
 }
 .notepad-textarea:focus{
     outline: none;
@@ -19,10 +22,30 @@
     border: 5px black;
     height: 450px; /* 590px */
     width: 700px !important; /* 120% - 120px */
-    /text-align: center;
+}
 
-    /* Draggable */
-    /*
-    position: absolute;
-    z-index: 9;*/
+.toolbar{
+    background-color: white;
+    /*height: 50%;*/
+    height: 16px;
+    border-bottom: 2px #F0F0F0;
+}
+.toolbar-button{
+    background-color: inherit;
+/margin: 1px 2px;
+
+    border-width: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    float: left;
+}
+.toolbar-button:hover{
+    /*background-color: lightblue;*/
+    background-color: #E5F3FF;
+    border: 1px #CCE8FF;
+}
+.toolbar-button:focus{
+    outline-width: 0;
 }

@@ -7,6 +7,7 @@
     /*url('resources/fonts/consolas.svg#consolas') format('svg'); *//* Legacy iOS */
 }
 
+p, input, span{cursor: default}
 
 .window{ /* Full window */
 
@@ -20,22 +21,8 @@
     position: absolute;
     z-index: 9;
 }
-.toolbar{
-    background-color: white;
-    height: 50%;
-}
-.toolbar-button{
-    background-color: inherit;
-    margin: 1px 2px;
-    border-width: 0;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    float: left;
-}
-.toolbar-button:hover{
-    background-color: lightblue;
+.window:focus{
+    border: 1px dodgerblue;
 }
 
 .window-top{ /* Window top bar */
@@ -54,7 +41,10 @@
     height: 100%;
     /vertical-align: middle;
     float: left;
-    padding-left: 2px;
+    padding-top: 7px;
+    padding-left: 10px;
+    font-size: 9.5pt;
+    font-family: "Segoe UI", serif;
 }
 .window-top-icon{ /* Part of top, the icon */
     float: left;
@@ -103,4 +93,68 @@ body{
     background: url("resources/default.jpg");
     background-size: cover;
     overflow: hidden;
+}
+
+
+/* Taskbar stuff */
+#taskbar{
+    height: 40px;
+    overflow: hidden;
+    position: fixed;
+    margin-left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    z-index: 500;
+}
+.taskbar-icon{
+    float: left;
+    width: 50px;
+    height: inherit;
+    text-decoration: none;
+    background-color: inherit;
+    text-align: center;
+    vertical-align: middle;
+}
+.taskbar-icon:hover{
+    background-color: #2A2726;
+}
+
+.taskbar-icon-image{
+    width: 20px;
+    height: 20px;
+}
+.taskbar-icon-image:focus{
+    outline-width: 0;
+}
+
+
+img.windows-start-button{
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+div.windows-start-button:hover > img.windows-start-button{
+    filter: none;
+    -webkit-filter: none;
+}
+
+
+/* Taskbar tray and misc. */
+#taskbar-misc{
+    float: right;
+    background-color: inherit;
+}
+
+#windows-peek{
+    height: 100%;
+    width: 5px;
+    border-left: 1px #6B6D6E;
+    background-color: #1F2225;
+    opacity: 20%;
+}
+#windows-peek:focus{
+    outline-width: 0;
+}
+#windows-peek:hover{
+    background-color: #212427;
 }

@@ -21,7 +21,7 @@
     display: inline-block;
 
     /* Draggable */
-    cursor: move;
+    /*cursor: move;*/
     z-index: 10;
 }
 

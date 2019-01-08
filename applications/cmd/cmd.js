@@ -173,10 +173,12 @@ let cmd = function () { //_namespace
 }();
 
 function focus_cmd(e) {
-    console.log(e);
-    var pid = "";
-    document.getElementsByClassName("cmdline-"+pid)[document.getElementsByClassName("cmdline-"+pid).length-1].focus();
-}
-function cmd_onload(pid) {
-    document.getElementById("cmd-text-"+pid).addEventListener("click", focus_cmd);
+    //console.log(e);
+    var pid = e.srcElement.parentNode.parentNode.dataset.pid;
+    if (pid !== undefined){
+        var cmdlines = document.getElementsByClassName("cmdline-"+pid);
+        cmdlines[cmdlines.length-1].focus();
+
+        //[document.getElementsByClassName("cmdline-"+pid).length-1].focus();
+    }
 }

@@ -30,13 +30,11 @@ let taskmanager = function (){
 
             var onload = interpret_onload(pid, document.getElementById("window-"+pid));
             if (onload !== null){
-                //console.log(`Onload ${pid}: ${onload}("${pid}")`);
-                //eval(onload+"("+pid+")");
+                eval(onload);
+                console.log("Onload running");
             }
         });
     }
-
-
 
     function interpret_onload(PID, elmnt){
         var target_str = elmnt.dataset.onload;

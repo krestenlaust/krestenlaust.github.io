@@ -1,13 +1,17 @@
 <div class="notepad-window window notepad" id="window-00fff" data-onload='console.log("Notepad initiated")'>
     <div class="window-top notepad-window-top notepad" id="window-top-00fff">
         <img class="window-top-icon" src="resources/windows icons/notepad.ico"> <!-- height="17" width="17" -->
-        <p class="window-title notepad">Notepad</p>
+        <span class="window-title notepad">Untitled - Notepad</span>
         <button class="window-top-button window-top-button-close" onclick="close_window(this)">X</button>
         <button class="window-top-button window-top-button-other" onclick="maximize_window(this)">¤</button>
         <button class="window-top-button window-top-button-other" onclick="minimize_window(this)">—</button>
-        <div class="toolbar">
-            <button class="toolbar-button">Files</button>
-        </div>
+    </div>
+    <div class="toolbar">
+        <button class="toolbar-button">File</button>
+        <button class="toolbar-button">Edit</button>
+        <button class="toolbar-button">Format</button>
+        <button class="toolbar-button">View</button>
+        <button class="toolbar-button">Help</button>
     </div>
     <div class="notepad-text notepad" id="notepad-text-00fff">
         <textarea class="notepad-textarea" rows="25" data-gramm="false" autocapitalize="off" spellcheck="false" autocomplete="off"></textarea>
