@@ -24,22 +24,18 @@ let desktop_selection_properties = {
 
 function update_selected_icons() {
     var desktopiconlist = document.getElementsByClassName("desktop-icon");
-    console.log(desktopiconlist);
-    for (var i=0;i<desktopiconlist.length;i++){
-        if (i in desktop_selection_properties.selected_icons){
+    for (var i=0; i<desktopiconlist.length; i++){
+        if (desktop_selection_properties.selected_icons.indexOf(i) !== -1){
             desktopiconlist[i].classList.add("selected")
         }else {
             try{
                 desktopiconlist[i].classList.remove("selected");
-            }catch (e) {
-
-            }
+            }catch (e) {}
         }
     }
 }
 
 function desktop_click(e){
-    console.log(e);
     var objectdiv;
     switch (e.target.tagName) {
         case "IMG":
@@ -52,12 +48,18 @@ function desktop_click(e){
             objectdiv = e.target;
             break;
         default:
+            desktop_selection_properties.selected_icons = [];
     }
-    if (objectdiv.classList.contains("desktop-icon")){
+    if (objectdiv.getAttribute("class") === "desktop-icon"){
         var desktopiconlist = document.getElementsByClassName("desktop-icon");
-        for (var i=0;i<desktopiconlist.length;i++){
+        for (var i=0; i<desktopiconlist.length; i++){
+
             if (desktopiconlist[i] === objectdiv && desktop_selection_properties.selected_icons.indexOf(i) === -1){
-                desktop_selection_properties.selected_icons.push(i);
+                if (e.ctrlKey || e.shiftKey){
+                    desktop_selection_properties.selected_icons.push(i);
+                }else {
+                    desktop_selection_properties.selected_icons = [i];
+                }
             }
         }
     }else{
@@ -65,7 +67,38 @@ function desktop_click(e){
     }
     update_selected_icons();
 }
+function desktop_keydown(e){
+    console.log(e);
+    var desktopiconlist = document.getElementsByClassName("desktop-icon");
+    if (e.srcElement === document.body){
+        switch (e.code) {
+            case "Enter":
+                for (var i=0; i < desktop_selection_properties.selected_icons.length; i++){
+                    eval(desktopiconlist[desktop_selection_properties.selected_icons[i]].dataset.launch);
+                }
+                break;
+            case "ArrowUp":
+                //selection
+
+                break;
+            case "ArrowDown":
+                //selection
+
+                break;
+            case "ArrowLeft":
+                //selection
+                break;
+            case "ArrowRight":
+                //selection
+                break;
+        }
+        if (e.code === "Enter"){
+
+        }
+    }
+}
 document.getElementById("desktop").addEventListener("click", desktop_click);
+document.addEventListener("keydown", desktop_keydown);
 
 /*
 function doubleclick_timer() {

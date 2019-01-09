@@ -11,9 +11,7 @@ let taskmanager = function (){
         jQuery.get('applications/'+appname+"/"+appname+".html", function (data) {
             var pid = generate_pid();
             document.getElementById("applications").innerHTML += data.replace(/00fff/g, pid);
-            if (document.querySelector("script[src*='cmd.js']") === null){
-                $.getScript('applications/'+appname+"/"+appname+".js");
-            }
+
             if (!document.getElementById(appname+"-css")){
                 document.getElementsByTagName("head")[0].innerHTML += `<link rel="stylesheet" type="text/css" id="${appname}-css" href="applications/${appname}/${appname}.css">`
             }
@@ -23,15 +21,16 @@ let taskmanager = function (){
             appref[appref.length-1].setAttribute("id", "window-"+pid);
             appref[appref.length-1].setAttribute("data-pid", pid);
             apptopref[apptopref.length-1].setAttribute("id", "window-top-"+pid);
-            //appref[appref.length-1].classList.add(pid + "-window");
-            //apptopref[apptopref.length-1].classList.add(pid + "-window-top");
             make_draggable(document.getElementById("window-"+pid), document.getElementById("window-top-"+pid));
             running_applications.push(pid);
+
+            if (document.querySelector("script[src*='cmd.js']") === null){
+                $.getScript('applications/'+appname+"/"+appname+".js");
+            }
 
             var onload = interpret_onload(pid, document.getElementById("window-"+pid));
             if (onload !== null){
                 eval(onload);
-                console.log("Onload running");
             }
         });
     }
