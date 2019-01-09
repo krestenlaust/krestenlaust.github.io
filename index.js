@@ -1,6 +1,7 @@
 //const cmd_last_line_element = '<input class="cmdline cmdline-empty-00fff cmd" type="text" value="" autocomplete="off" autocapitalize="off" spellcheck="false" readonly>';
 
 let cmd_log = [];
+let cmd_log_index = 0;
 
 /*
 let _n = '\n';
@@ -18,12 +19,23 @@ let command_output = {
 document.getElementsByTagName("body")[0].onkeydown = function(e) {
     if (document.activeElement.classList.contains("cmd")){
         if (e.key === "Enter"){ // && document.activeElement.classList.contains("cmd")
-            cmd_prompt_enter(e)
+            cmd_prompt_enter(e);
+            cmd_log_index = 0;
         }
         else if(e.key === "ArrowUp"){
-
+            console.log(cmd_log[cmd_log_index]);
+            if (cmd_log_index < cmd_log.length-1){
+                cmd_log_index++;
+            }else {
+                cmd_log_index = 0;
+            }
         }else if(e.key === "ArrowDown"){
+            console.log(cmd_log[cmd_log_index]);
+            if (cmd_log_index-1 >= 0){
 
+            } else {
+
+            }
         }
     }
 };
@@ -41,7 +53,9 @@ function cmd_prompt_enter(e){
 function cmd_command(s, pid){
     s = s.replace(s.slice(0, s.indexOf(">") + 1), "");
 
-    cmd_log.push(s);
+    //cmd_log.push(s);
+    cmd_log.unshift(s);
+
     //let args = s.split(">")[s.split(">").length - 1].split(" "); //Command arguments
     let args = s.split(" ");
 
@@ -76,6 +90,36 @@ function cmd_command(s, pid){
     }
 }
 
+
+/* Windows Peek */
+let windows_peek = function(){
+    //let mouse_hovering = false;
+    let mouse_hover_timeout;
+
+    function peek_on(){
+
+    }
+    function peek_off(){
+
+    }
+
+    document.getElementById("windows-peek").addEventListener("mouseenter", function(e){
+        mouse_hover_timeout = setTimeout(function () {
+            peek_on();
+        }, 500)
+    }, false);
+    document.getElementById("windows-peek").addEventListener("mouseleave", function(e){
+        //mouse_hovering = false;
+        clearTimeout(mouse_hover_timeout);
+        peek_off();
+    }, false);
+
+    return{
+        //mouse_hovering: mouse_hovering
+    }
+}();
+
+
 function close_window(window){
     taskmanager.kill_application(window.parentElement.parentElement.getAttribute("data-pid"));
     //window.parentElement.dataset.pid
@@ -88,8 +132,10 @@ function maximize_window(window){
 
 }
 
-//make_draggable(document.getElementById("cmd-box"), document.getElementById("cmd-top"));
-function make_draggable(elmnt, elmnt_dragpart){ /* w3schools.com */
+//Compressed
+function make_draggable(a,b){function c(k){k=k||window.event,k.preventDefault(),i=k.clientX,j=k.clientY,document.onmouseup=f,document.onmousemove=d}function d(k){k=k||window.event,k.preventDefault(),g=i-k.clientX,h=j-k.clientY,i=k.clientX,j=k.clientY,a.style.top=a.offsetTop-h+"px",a.style.left=a.offsetLeft-g+"px"}function f(){document.onmouseup=null,document.onmousemove=null}let g=0,h=0,i=0,j=0;b?b.onmousedown=c:a.onmousedown=c}
+/* //Uncompressed
+function make_draggable(elmnt, elmnt_dragpart){ // w3schools.com
     let pos1 = 0;
     let pos2 = 0;
     let pos3 = 0;
@@ -130,7 +176,8 @@ function make_draggable(elmnt, elmnt_dragpart){ /* w3schools.com */
         document.onmouseup = null;
         document.onmousemove = null;
     }
-}
+}*/
+
 /*
 (function() {
     "use strict";

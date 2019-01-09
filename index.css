@@ -121,23 +121,25 @@ body{
 }
 
 .taskbar-icon-image{
-    width: 20px;
-    height: 20px;
+    height: 18px;
+    width: 18px;
+    top: 50%;
+    left: 50%;
+    margin-top: 11px;
 }
 .taskbar-icon-image:focus{
     outline-width: 0;
 }
 
-
 img.windows-start-button{
-    -webkit-filter: invert(100%);
-    filter: invert(100%);
+    content: url("resources/start-button.png");
 }
 div.windows-start-button:hover > img.windows-start-button{
-    filter: none;
-    -webkit-filter: none;
+    content: url("resources/start-button-blue.png");
 }
-
+#taskbar-process{
+    height: inherit;
+}
 
 /* Taskbar tray and misc. */
 #taskbar-misc{
