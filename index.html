@@ -1,9 +1,11 @@
 <head>
 	<title>Kresten's Hobby Project</title>
     <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="utility/context-menu/context-menu.css">
     <link rel="stylesheet" type="text/css" href="applications/notepad/notepad.css">
     <link rel="stylesheet" type="text/css" href="utility/desktop.css">
+
+    <link rel="stylesheet" type="text/css" href="utility/context-menu/contextMenu.css">
+
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
@@ -18,7 +20,7 @@
         </div>
         <div id="taskbar-process">
             <div class="taskbar-icon">
-                <img class="taskbar-icon-image" src="resources/windows%20icons/cmd.png">
+                <img class="taskbar-icon-image" src="resources/Windows-icons/cmd.png">
             </div>
         </div>
 
@@ -52,15 +54,15 @@
 
     <div id="desktop">
         <div class="desktop-icon" onclick="icon_click(this)">
-            <img class="desktop-icon-image" src="resources/windows%20icons/recycle_bin.ico">
+            <img class="desktop-icon-image" src="resources/Windows-icons/recycle_bin.ico">
             <p class="desktop-icon-text">Recycle bin</p>
         </div>
         <div class="desktop-icon" data-launch="taskmanager.start_application('cmd')" onclick="icon_click(this)">
-            <img class="desktop-icon-image" src="resources/windows%20icons/cmd.ico">
+            <img class="desktop-icon-image" src="resources/Windows-icons/cmd.ico">
             <p class="desktop-icon-text">Command Prompt</p>
         </div>
         <div class="desktop-icon" data-launch="taskmanager.start_application('notepad')" onclick="icon_click(this)">
-            <img class="desktop-icon-image" src="resources/windows%20icons/notepad.ico">
+            <img class="desktop-icon-image" src="resources/Windows-icons/notepad.ico">
             <p class="desktop-icon-text">Notepad</p>
         </div>
     </div>
@@ -71,6 +73,8 @@
 <script language="JavaScript" src="ext/lodash.min.js"></script>
 <script src="index.js"></script>
 <script src="utility/desktop.js"></script>
+<script src="utility/context-menu/contextMenuLib.js"></script>
+<script src="utility/context-menu/context-menu-base.js"></script>
 <script src="utility/saveload-system.js"></script>
 <script src="utility/filesystem.js"></script>
 <script src="applications/cmd/cmd.js"></script>

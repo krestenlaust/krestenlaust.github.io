@@ -79,7 +79,7 @@ function desktop_keydown(e){
                 break;
             case "ArrowUp":
                 //selection
-
+                
                 break;
             case "ArrowDown":
                 //selection
