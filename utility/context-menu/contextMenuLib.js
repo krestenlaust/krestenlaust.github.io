@@ -102,6 +102,7 @@
                     for (var i = 0; i < selector.length; i++) {
                         var name = selector[i].name,
                             disable = selector[i].disable,
+                            seperator = selector[i].seperator,
                             fun = selector[i].fun,
                             icon = selector[i].icon,
                             img = selector[i].img,
@@ -116,6 +117,9 @@
 
                         //toggle disable if provided on update method
                         disable != undefined && (disable ? elm.addClass('iw-mDisable') : elm.removeClass('iw-mDisable'));
+
+                        seperator != undefined && (seperator ? elm.addClass('iw-mSeperator') : elm.removeClass('iw-mSeperator'));
+                        console.log(elm);
 
                         //bind new function if provided
                         fun && elm.unbind('click.contextMenu').bind('click.contextMenu', fun);
@@ -684,6 +688,7 @@
                         icon = selObj.icon || '',
                         title = selObj.title || "",
                         className = selObj.className || "",
+                        seperator = selObj.seperator,
                         disable = selObj.disable,
                         list = $('<li title="' + title + '" class="' + className + '">' + name + '</li>');
 
@@ -695,6 +700,11 @@
                     //to add disable
                     if (disable) {
                         list.addClass('iw-mDisable');
+                    }
+                    if (seperator){
+                        list.addClass('iw-mSeperator');
+                        console.log(list)
+                        list.prepend('<hr class="iw-mSeperator">');
                     }
 
                     if (!subMenu) {
@@ -755,6 +765,13 @@
         onOff: function(menu) {
 
             menu.find('.iw-mOverlay').remove();
+            menu.find('.iw-mSeperator').each(function () {
+                var list = $(this);
+                list.append('<div class="iw-mOverlay"/>');
+                list.find('.iw-mOverlay').bind('click mouseenter', function (event) {
+                    event.stopPropagation();
+                });
+            });
             menu.find('.iw-mDisable').each(function() {
                 var list = $(this);
                 list.append('<div class="iw-mOverlay"/>');

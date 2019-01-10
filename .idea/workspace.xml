@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15275d0b-836b-40ec-8006-7f695f22777c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/Windows-icons/folder_icon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utility/context-menu/context-menu-base.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/windows icons/cmd.ico" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Windows-icons/cmd.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/windows icons/cmd.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Windows-icons/cmd.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/windows icons/notepad.ico" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Windows-icons/notepad.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/windows icons/notepad.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Windows-icons/notepad.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/windows icons/recycle_bin.ico" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Windows-icons/recycle_bin.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/context-menu/context-menu.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/desktop.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/desktop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/context-menu/context-menu-base.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/context-menu/context-menu-base.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/context-menu/contextMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/utility/context-menu/contextMenu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/context-menu/contextMenuLib.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/context-menu/contextMenuLib.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -66,34 +58,35 @@
     <session id="2045960362">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="26" />
+          <entry key="project.closed" value="29" />
           <entry key="project.open.time.10" value="4" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="4" />
-          <entry key="project.open.time.8" value="6" />
-          <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.open.time.8" value="7" />
+          <entry key="project.open.time.9" value="5" />
+          <entry key="project.opened" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="4985" />
+          <entry key="css" value="5455" />
           <entry key="html" value="3386" />
-          <entry key="js" value="18059" />
+          <entry key="js" value="18657" />
           <entry key="scss" value="11" />
           <entry key="txt" value="163" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="4985" />
+          <entry key="CSS" value="5455" />
           <entry key="HTML" value="3386" />
-          <entry key="JavaScript" value="18059" />
+          <entry key="JavaScript" value="18657" />
           <entry key="PLAIN_TEXT" value="163" />
           <entry key="SCSS" value="11" />
         </counts>
@@ -119,8 +112,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="132" column="1" lean-forward="true" selection-start-line="132" selection-start-column="1" selection-end-line="132" selection-end-column="1" />
+            <state relative-caret-position="2244">
+              <caret line="132" column="1" selection-start-line="132" selection-start-column="1" selection-end-line="132" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -128,8 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utility/context-menu/contextMenu.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="52" column="2" lean-forward="true" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
+            <state relative-caret-position="441">
+              <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -137,26 +130,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="139" column="17" lean-forward="true" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/utility/desktop.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-68">
-              <caret line="68" column="1" lean-forward="true" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+            <state relative-caret-position="2363">
+              <caret line="139" column="17" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utility/desktop.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1377">
+              <caret line="81" column="16" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utility/context-menu/context-menu-base.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="102" column="2" lean-forward="true" selection-start-line="102" selection-start-column="2" selection-end-line="102" selection-end-column="2" />
+            <state relative-caret-position="731">
+              <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -165,7 +158,7 @@
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1309">
-              <caret line="77" column="50" lean-forward="true" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
+              <caret line="77" column="50" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -173,7 +166,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utility/context-menu/contextMenuLib.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="451">
+              <caret line="704" column="24" lean-forward="true" selection-start-line="704" selection-start-column="24" selection-end-line="704" selection-end-column="24" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -193,7 +187,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/applications/cmd/cmd.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
+            <state relative-caret-position="391">
               <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
             </state>
           </provider>
@@ -217,6 +211,11 @@
       <find>focus</find>
       <find>cmd</find>
       <find>cursor</find>
+      <find>fun</find>
+      <find>fun =</find>
+      <find>name</find>
+      <find>disable</find>
+      <find>iw-mDisable</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -251,9 +250,10 @@
         <option value="$PROJECT_DIR$/utility/desktop.js" />
         <option value="$PROJECT_DIR$/utility/context-menu/context-menu.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/utility/context-menu/contextMenuLib.js" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/utility/context-menu/contextMenuLib.js" />
         <option value="$PROJECT_DIR$/utility/context-menu/contextMenu.css" />
+        <option value="$PROJECT_DIR$/utility/context-menu/context-menu-base.js" />
       </list>
     </option>
   </component>
@@ -269,11 +269,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1028" />
-    <option name="y" value="108" />
-    <option name="width" value="774" />
-    <option name="height" value="892" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="831" />
+    <option name="y" value="85" />
+    <option name="width" value="1060" />
+    <option name="height" value="895" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -347,11 +347,11 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dev.bat" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -414,6 +414,9 @@
       <workItem from="1547032747171" duration="4524000" />
       <workItem from="1547044082566" duration="3266000" />
       <workItem from="1547061997061" duration="4343000" />
+      <workItem from="1547107542339" duration="236000" />
+      <workItem from="1547110565663" duration="1380000" />
+      <workItem from="1547114152670" duration="4126000" />
     </task>
     <task id="LOCAL-00001" summary="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?">
       <created>1546041435632</created>
@@ -440,18 +443,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155238000" />
+    <option name="totallyTimeSpent" value="160980000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="823" y="87" width="619" height="713" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.3257143" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17382683" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32702237" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -536,6 +539,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/utility/context-menu/context-menu.css" />
+    <entry file="file://$PROJECT_DIR$/applications/notepad/notepad.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2244">
+          <caret line="132" column="1" selection-start-line="132" selection-start-column="1" selection-end-line="132" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2363">
+          <caret line="139" column="17" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utility/desktop.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="81" column="16" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1309">
+          <caret line="77" column="50" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utility/taskmanager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -545,73 +584,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/applications/cmd/cmd.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
+        <state relative-caret-position="391">
           <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/context-menu/context-menu.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/applications/notepad/notepad.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="77" column="50" lean-forward="true" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="139" column="17" lean-forward="true" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="132" column="1" lean-forward="true" selection-start-line="132" selection-start-column="1" selection-end-line="132" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utility/context-menu/contextMenuLib.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="451">
+          <caret line="704" column="24" lean-forward="true" selection-start-line="704" selection-start-column="24" selection-end-line="704" selection-end-column="24" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utility/context-menu/context-menu-base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="102" column="2" lean-forward="true" selection-start-line="102" selection-start-column="2" selection-end-line="102" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utility/context-menu/contextMenu.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="52" column="2" lean-forward="true" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
+        <state relative-caret-position="441">
+          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utility/desktop.js">
+    <entry file="file://$PROJECT_DIR$/utility/context-menu/context-menu-base.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="68" column="1" lean-forward="true" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+        <state relative-caret-position="731">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
         </state>
       </provider>
     </entry>

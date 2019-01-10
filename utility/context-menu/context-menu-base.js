@@ -24,6 +24,10 @@ let desktop_menu = [
                 }
             },
             {
+                name: '',
+                seperator: true
+            },
+            {
                 name: 'Arrange icons automatically',
                 fun: function () {
                     alert("Arranging icons automatically");
@@ -34,6 +38,10 @@ let desktop_menu = [
                 fun: function () {
                     alert("Adjusting icons to grid");
                 }
+            },
+            {
+                name: '',
+                seperator: true
             },
             {
                 name: 'Show icons on desktop',
@@ -57,6 +65,10 @@ let desktop_menu = [
         fun: function () {
             alert("Refreshing");
         }
+    },
+    {
+        name: '',
+        seperator: true
     },
     {
         name: 'Paste',
@@ -87,6 +99,10 @@ let desktop_menu = [
                 }
             },
             {
+                name: '',
+                seperator: true
+            },
+            {
                 name: 'Text Document',
                 fun: function () {
                     alert("Txt");
@@ -96,6 +112,7 @@ let desktop_menu = [
     },
     {
         name: 'Personalize',
+        img: 'resources/Windows-icons/personalize_icon.ico',
         fun: function () {
             alert("Opening");
         }

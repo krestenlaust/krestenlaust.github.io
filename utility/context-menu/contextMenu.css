@@ -27,7 +27,7 @@
   padding: 3px;
   padding-left: 35px;
   padding-right: 125px;
-  border-bottom: 1px solid #CCC;
+  /* border-bottom: 1px solid #CCC; */
   cursor: default;
   position: relative;
 }
@@ -42,6 +42,17 @@
 }
 .iw-contextMenu li.iw-mDisable {
   opacity: .3;
+}
+.iw-contextMenu li.iw-mSeperator {
+  background: #F2F2F2 !important;
+  color: #F2F2F2;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.iw-contextMenu hr.iw-mSeperator{
+  margin-block-start: 1px;
+  margin-block-end: 1px;
+  border-width: 2px;
 }
 .iw-mSelected {
   background-color: #D9D9D9; /* Hovered field color */
