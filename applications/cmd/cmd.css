@@ -3,14 +3,12 @@
     height: 420px;
 }
 .cmd-window{ /* #cmd-box */
-    /border: 5px black;
-    /height: 450px; /* 590px */
-    /width: 50%; /* 120px */
-    /text-align: center;
-
-    /* Draggable //Included in .window
-    position: absolute;
-    z-index: 9;*/
+    /*
+    border: 5px black;
+    height: 450px; /* 590px * /
+    width: 50%; /* 120px * /
+    text-align: center;
+    */
 }
 .cmd-window-top{ /* #cmd-top */
     border: 1px black;
@@ -41,11 +39,3 @@
 .cmdline:focus{
     outline: none;
 }
-/*
-.cmd-top-title{ //#cmd-top-title
-    vertical-align: middle;
-    float: left;
-    padding-left: 0px;
-    //margin-left: 10px;
-
-}*/

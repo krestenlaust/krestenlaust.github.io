@@ -39,7 +39,6 @@ p, input, span{cursor: default}
 }
 .window-title{ /* Part of top, the text */
     height: 100%;
-    /vertical-align: middle;
     float: left;
     padding-top: 7px;
     padding-left: 10px;
@@ -93,6 +92,7 @@ body{
     background: url("resources/default.jpg");
     background-size: cover;
     overflow: hidden;
+    margin: 0;
 }
 
 
@@ -138,10 +138,11 @@ div.windows-start-button:hover > img.windows-start-button{
     content: url("resources/start-button-blue.png");
 }
 #taskbar-process{
-    height: inherit;
+
 }
 
 /* Taskbar tray and misc. */
+
 #taskbar-misc{
     float: right;
     background-color: inherit;
@@ -152,6 +153,7 @@ div.windows-start-button:hover > img.windows-start-button{
     width: 5px;
     border-left: 1px #6B6D6E;
     background-color: #1F2225;
+
     opacity: 20%;
 }
 #windows-peek:focus{
@@ -159,4 +161,8 @@ div.windows-start-button:hover > img.windows-start-button{
 }
 #windows-peek:hover{
     background-color: #212427;
+}
+#credits{
+    margin-top: 8px;
+    margin-left: 5px;
 }

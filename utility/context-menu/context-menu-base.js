@@ -111,6 +111,10 @@ let desktop_menu = [
         ]
     },
     {
+        name: '',
+        seperator: true
+    },
+    {
         name: 'Personalize',
         img: 'resources/Windows-icons/personalize_icon.ico',
         fun: function () {
@@ -118,4 +122,5 @@ let desktop_menu = [
         }
     }
 ];
+
 $('body').contextMenu(desktop_menu,{triggerOn:'contextmenu'});

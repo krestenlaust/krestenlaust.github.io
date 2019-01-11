@@ -1,129 +1,41 @@
-//const cmd_last_line_element = '<input class="cmdline cmdline-empty-00fff cmd" type="text" value="" autocomplete="off" autocapitalize="off" spellcheck="false" readonly>';
-
-let cmd_log = [];
-let cmd_log_index = 0;
-
-/*
-let _n = '\n';
-let command_output = {
-    "help":
-        'Help options:' + _n +
-        ' help - ' + _n +
-        '',
-    "cookies":
-        'Run command \'cookies accept\' to accept cookies' + _n +
-        'Run command \'cookies deny\' to deny cookies(prevents using some commands)' + _n +
-        'I use cookies for different stuff'
-};*/
-
-document.getElementsByTagName("body")[0].onkeydown = function(e) {
-    if (document.activeElement.classList.contains("cmd")){
-        if (e.key === "Enter"){ // && document.activeElement.classList.contains("cmd")
-            cmd_prompt_enter(e);
-            cmd_log_index = 0;
-        }
-        else if(e.key === "ArrowUp"){
-            console.log(cmd_log[cmd_log_index]);
-            if (cmd_log_index < cmd_log.length-1){
-                cmd_log_index++;
-            }else {
-                cmd_log_index = 0;
-            }
-        }else if(e.key === "ArrowDown"){
-            console.log(cmd_log[cmd_log_index]);
-            if (cmd_log_index-1 >= 0){
-
-            } else {
-
-            }
-        }
-    }
-};
-
-function cmd_prompt_enter(e){
-    var pid = e.srcElement.offsetParent.dataset.pid;
-    var cmdlines = document.getElementsByClassName("cmdline-"+pid);
-    let lastline_value = cmdlines[cmdlines.length -1].value;
-    //cmd.echo(lastline_value, pid);
-    cmd_command(lastline_value, pid);
-
-    cmdlines[cmdlines.length-1].focus();
-}
-
-function cmd_command(s, pid){
-    s = s.replace(s.slice(0, s.indexOf(">") + 1), "");
-
-    //cmd_log.push(s);
-    cmd_log.unshift(s);
-
-    //let args = s.split(">")[s.split(">").length - 1].split(" "); //Command arguments
-    let args = s.split(" ");
-
-    let args_only = s.substring(s.indexOf(' ') + 1); //Command arguments excluding first argument
-
-    let _count = (s.match(/ /g) || []).length;
-    if (_count === 0 || _count === args_only.length){ //Prevents arguments like "" or ones that's just multiple spaces in being sent
-        args_only = [];
-    }else {
-        args_only = args_only.split(" ");
-    }
-
-    switch (args[0].toLowerCase()) {
-        case "":
-            
-            break;
-        case "cookies":
-            if (args.length >= 2){
-
-            }else {
-                cmd.echo(pid, command_output["cookies"]);
-            }
-            break;
-        default:
-            if (typeof cmd[args[0].toLowerCase()] === "function"){
-                cmd[args[0]](pid, args_only);
-            }else {
-                cmd.echo(pid, ["'" + args[0] + "' is not recognized as an internal or external command,\n" +
-                    "operable program or batch file."]);
-                cmd.env.errorlevel = 9009;
-            }
-    }
-}
-
-
 /* Windows Peek */
 let windows_peek = function(){
-    //let mouse_hovering = false;
     let mouse_hover_timeout;
+    let peek_clicked = false;
 
     function peek_on(){
-
+        console.log("Peek on")
     }
     function peek_off(){
-
+        console.log("Peek off")
+    }
+    function peek_click(){
+        console.log("Peek clicked");
     }
 
-    document.getElementById("windows-peek").addEventListener("mouseenter", function(e){
-        mouse_hover_timeout = setTimeout(function () {
-            peek_on();
-        }, 500)
-    }, false);
-    document.getElementById("windows-peek").addEventListener("mouseleave", function(e){
-        //mouse_hovering = false;
-        clearTimeout(mouse_hover_timeout);
-        peek_off();
-    }, false);
+    function __init__(){
+        document.getElementById("windows-peek").addEventListener("mouseenter", function(e){
+            mouse_hover_timeout = setTimeout(function () {
+                peek_on();
+            }, 500)
+        }, false);
+        document.getElementById("windows-peek").addEventListener("mouseleave", function(e){
+            //mouse_hovering = false;
+            clearTimeout(mouse_hover_timeout);
+            peek_off();
+        }, false);
+        document.getElementById("windows-peek").addEventListener("click", peek_click);
+    }
 
     return{
-        //mouse_hovering: mouse_hovering
+        __init__: __init__
     }
 }();
+windows_peek.__init__();
 
 
 function close_window(window){
     taskmanager.kill_application(window.parentElement.parentElement.getAttribute("data-pid"));
-    //window.parentElement.dataset.pid
-    //window.parentElement.parentElement.parentElement.removeChild(window.parentElement.parentElement);
 }
 function minimize_window(window){
     //window.parentElement.parentElement.style.display = "none";

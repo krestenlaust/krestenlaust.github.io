@@ -182,3 +182,81 @@ function focus_cmd(e) {
         //[document.getElementsByClassName("cmdline-"+pid).length-1].focus();
     }
 }
+
+
+let cmd_log = [];
+let cmd_log_index = 0;
+
+document.getElementsByTagName("body")[0].onkeydown = function(e) {
+    if (document.activeElement.classList.contains("cmd")){
+        if (e.key === "Enter"){ // && document.activeElement.classList.contains("cmd")
+            cmd_prompt_enter(e);
+            cmd_log_index = 0;
+        }
+        else if(e.key === "ArrowUp"){
+            console.log(cmd_log[cmd_log_index]);
+            if (cmd_log_index < cmd_log.length-1){
+                cmd_log_index++;
+            }else {
+                cmd_log_index = 0;
+            }
+        }else if(e.key === "ArrowDown"){
+            console.log(cmd_log[cmd_log_index]);
+            if (cmd_log_index-1 >= 0){
+
+            } else {
+
+            }
+        }
+    }
+};
+
+function cmd_prompt_enter(e){
+    var pid = e.srcElement.offsetParent.dataset.pid;
+    var cmdlines = document.getElementsByClassName("cmdline-"+pid);
+    let lastline_value = cmdlines[cmdlines.length -1].value;
+    //cmd.echo(lastline_value, pid);
+    cmd_command(lastline_value, pid);
+
+    cmdlines[cmdlines.length-1].focus();
+}
+
+function cmd_command(s, pid){
+    s = s.replace(s.slice(0, s.indexOf(">") + 1), "");
+
+    //cmd_log.push(s);
+    cmd_log.unshift(s);
+
+    //let args = s.split(">")[s.split(">").length - 1].split(" "); //Command arguments
+    let args = s.split(" ");
+
+    let args_only = s.substring(s.indexOf(' ') + 1); //Command arguments excluding first argument
+
+    let _count = (s.match(/ /g) || []).length;
+    if (_count === 0 || _count === args_only.length){ //Prevents arguments like "" or ones that's just multiple spaces in being sent
+        args_only = [];
+    }else {
+        args_only = args_only.split(" ");
+    }
+
+    switch (args[0].toLowerCase()) {
+        case "":
+
+            break;
+        case "cookies":
+            if (args.length >= 2){
+
+            }else {
+                cmd.echo(pid, command_output["cookies"]);
+            }
+            break;
+        default:
+            if (typeof cmd[args[0].toLowerCase()] === "function"){
+                cmd[args[0]](pid, args_only);
+            }else {
+                cmd.echo(pid, ["'" + args[0] + "' is not recognized as an internal or external command,\n" +
+                "operable program or batch file."]);
+                cmd.env.errorlevel = 9009;
+            }
+    }
+}

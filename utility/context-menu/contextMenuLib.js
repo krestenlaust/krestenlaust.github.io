@@ -119,7 +119,6 @@
                         disable != undefined && (disable ? elm.addClass('iw-mDisable') : elm.removeClass('iw-mDisable'));
 
                         seperator != undefined && (seperator ? elm.addClass('iw-mSeperator') : elm.removeClass('iw-mSeperator'));
-                        console.log(elm);
 
                         //bind new function if provided
                         fun && elm.unbind('click.contextMenu').bind('click.contextMenu', fun);
@@ -681,7 +680,7 @@
             if ((typeof selector == 'object') && (!selector.nodeType) && (!selector.jquery)) {
                 var menuList = $('<ul class="iw-contextMenu iw-created iw-cm-menu" id="iw-contextMenu' + randomNum + '"></ul>');
                 $.each(selector, function(index, selObj) {
-                    var name = selObj.name,
+                    var name = selObj.name || '',
                         fun = selObj.fun || function() {},
                         subMenu = selObj.subMenu,
                         img = selObj.img || '',

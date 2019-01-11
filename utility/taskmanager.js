@@ -4,8 +4,15 @@ let taskmanager = function (){
     let running_applications = [
 
     ];
+    let window_hierarchy = [
+
+    ];
 
     /* Public methods */
+
+    function bring_front(pid){
+        console.log("Brought to front");
+    }
 
     function start_application(appname) {
         jQuery.get('applications/'+appname+"/"+appname+".html", function (data) {
@@ -23,6 +30,8 @@ let taskmanager = function (){
             apptopref[apptopref.length-1].setAttribute("id", "window-top-"+pid);
             make_draggable(document.getElementById("window-"+pid), document.getElementById("window-top-"+pid));
             running_applications.push(pid);
+            window_hierarchy.unshift(pid);
+            taskbar.add_process(appname, pid);
 
             if (document.querySelector("script[src*='cmd.js']") === null){
                 $.getScript('applications/'+appname+"/"+appname+".js");
@@ -33,6 +42,51 @@ let taskmanager = function (){
                 eval(onload);
             }
         });
+    }
+
+    function kill_application(pid) {
+        document.getElementById("window-"+pid).parentElement.removeChild(document.getElementById("window-"+pid));
+        running_applications = running_applications.filter(e => e !== pid);
+
+
+        //$('link[rel=stylesheet][href*="mystyle"]').remove();
+    }
+
+    let zindex_window_min = 9, zindex_window_max = 5000;
+    
+    function update_window_hierarchy() {
+        /*
+        for (i = 0; i < window_hierarchy.length; i++) {
+            if (i + 9 % 2 === 0) {
+                console.log(i);
+            }
+        }*/
+    }
+
+    return {
+        //running_applications: running_applications,
+        bring_front: bring_front,
+        start_application: start_application,
+        kill_application: kill_application
+    };
+
+    
+    /* Private methods */
+    function generate_pid() { /* 10*10*6*6*6 */
+        do {
+            var cur_pid = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10);
+            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
+            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
+            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
+        }
+        while (running_applications.includes(cur_pid)){
+            cur_pid = Math.floor(Math.random() * 10).toString() + Math.floor(Math.random() * 10).toString();
+            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
+            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
+            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
+        }
+
+        return cur_pid;
     }
 
     function interpret_onload(PID, elmnt){
@@ -61,36 +115,4 @@ let taskmanager = function (){
         return target_str;
     }
 
-    function kill_application(pid) {
-        document.getElementById("window-"+pid).parentElement.removeChild(document.getElementById("window-"+pid));
-        running_applications = running_applications.filter(e => e !== pid);
-
-        //$('link[rel=stylesheet][href*="mystyle"]').remove();
-    }
-
-    return {
-        //running_applications: running_applications,
-
-        start_application: start_application,
-        kill_application: kill_application
-    };
-
-    
-    /* Private methods */
-    function generate_pid() { /* 10*10*6*6*6 */
-        do {
-            var cur_pid = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10);
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-        }
-        while (running_applications.includes(cur_pid)){
-            cur_pid = Math.floor(Math.random() * 10).toString() + Math.floor(Math.random() * 10).toString();
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-        }
-
-        return cur_pid;
-    }
 }();
