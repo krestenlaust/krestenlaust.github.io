@@ -7,7 +7,7 @@ let cmd = function () { //_namespace
 
     let prompt_var = "%cd%>";
     //let prompt_cur = prompt_var.replace("%cd%", filesystem.cd);
-
+    
     function get_prompt(){
         return prompt_var.replace("%cd%", filesystem.cd);
     }
@@ -19,6 +19,11 @@ let cmd = function () { //_namespace
     function echo(pid, args) {
         let status_code = 0;
 
+        var echo_on = true;
+        if (args.length >= 2){
+            echo_on = args[1];
+        }
+
         var current_lines = document.getElementsByClassName("cmdline-"+pid);
         current_lines[current_lines.length-1].readOnly = true;
 
@@ -28,13 +33,16 @@ let cmd = function () { //_namespace
         empty_lines[0].readOnly = true;
         empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
 
+        /*
         $(empty_lines[0]).clone().appendTo("#cmd-text-"+pid);
         empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
-
-        $(empty_lines[0]).clone().appendTo("#cmd-text-"+pid);
-        empty_lines[0].value = get_prompt();
-        empty_lines[0].readOnly = false;
-        empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
+        */
+        if (echo_on){
+            $(empty_lines[0]).clone().appendTo("#cmd-text-"+pid);
+            empty_lines[0].value = get_prompt();
+            empty_lines[0].readOnly = false;
+            empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
+        }
 
         env.errorlevel = status_code;
         return status_code;
@@ -57,8 +65,34 @@ let cmd = function () { //_namespace
         return status_code;
     }
 
-    function cd(pid, path) {
+    function cd(pid, args = []) {
+        let status_code = 0;
 
+        if (args.length === 0){
+            echo(pid, [filesystem.cd]);
+
+        }else{
+            var target_path;
+            if (args[0] === ".."){
+                target_path = filesystem.cd.split("\\");
+                if (target_path.length !== 1){
+                    target_path.pop();
+                }
+                target_path = target_path.join("\\");
+            }else{
+                target_path = args[0];
+            }
+            if (filesystem.change_directory(target_path)){
+                
+            }else{
+                echo(pid, ['Cannot find the path specified.']);
+                status_code = 1;
+            }
+
+        }
+
+        env.errorlevel = status_code;
+        return status_code;
     }
 
     function dir(pid, args = []) {
@@ -90,8 +124,9 @@ let cmd = function () { //_namespace
             cur_line++;
         }
         for (var i=0;i<output.length;i++){
-            echo(pid, [output[i]]);
+            echo(pid, [output[i], false]);
         }
+        echo(pid, ['', true]);
 
         env.errorlevel = status_code;
         return status_code;
@@ -154,12 +189,24 @@ let cmd = function () { //_namespace
         return status_code;
     }
 
+    /*
     function help(pid, args = []){
 
-    }
+    }*/
+    
+    let utils = function() { /* Tab completion and other that should not be accessible from cmd, but from js*/
+        function tab_suggest(s) {
+
+        }
+
+        return {
+            tab_suggest: tab_suggest
+        }
+    }();
 
     return { /* Globalization */
         env: env,
+        utils: utils,
 
         echo: echo,
         exit: exit,
@@ -168,7 +215,8 @@ let cmd = function () { //_namespace
         prompt: prompt,
         md: md,
         dir: dir,
-        help: help
+        cd: cd
+        //help: help
     };
 }();
 
@@ -223,7 +271,7 @@ function cmd_prompt_enter(e){
 
 function cmd_command(s, pid){
     s = s.replace(s.slice(0, s.indexOf(">") + 1), "");
-
+    console.log(s);
     //cmd_log.push(s);
     cmd_log.unshift(s);
 
@@ -238,17 +286,9 @@ function cmd_command(s, pid){
     }else {
         args_only = args_only.split(" ");
     }
-
     switch (args[0].toLowerCase()) {
         case "":
-
-            break;
-        case "cookies":
-            if (args.length >= 2){
-
-            }else {
-                cmd.echo(pid, command_output["cookies"]);
-            }
+            cmd.echo(pid, ['']);
             break;
         default:
             if (typeof cmd[args[0].toLowerCase()] === "function"){

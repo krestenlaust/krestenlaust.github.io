@@ -68,7 +68,7 @@ function desktop_click(e){
     update_selected_icons();
 }
 function desktop_keydown(e){
-    console.log(e);
+    //console.log(e);
     var desktopiconlist = document.getElementsByClassName("desktop-icon");
     if (e.srcElement === document.body){
         switch (e.code) {
