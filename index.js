@@ -1,13 +1,28 @@
 /* Windows Peek */
 let windows_peek = function(){
     let mouse_hover_timeout;
-    let peek_clicked = false;
+    //let peek_clicked = false;
+
+    /**
+     * @type {{peek_opacity}}
+     * @description Note, to also change animation, change keyframe called "peek_opacity" in index.css.
+     */
+    let peek_opacity = "0.1";
+
 
     function peek_on(){
-        console.log("Peek on")
+        let windows = document.getElementsByClassName("window");
+        for (var i=0;i < windows.length; i++){
+            windows[i].style.animation = "peek_opacity 0.3s";
+            windows[i].style.opacity = "0.1";
+        }
     }
     function peek_off(){
-        console.log("Peek off")
+        let windows = document.getElementsByClassName("window");
+        for (var i=0;i < windows.length; i++){
+            windows[i].style.animation = "";
+            windows[i].style.opacity = "";
+        }
     }
     function peek_click(){
         console.log("Peek clicked");
@@ -28,7 +43,8 @@ let windows_peek = function(){
     }
 
     return{
-        __init__: __init__
+        __init__: __init__,
+        peek_opacity
     }
 }();
 windows_peek.__init__();

@@ -15,7 +15,7 @@ let taskmanager = function (){
     }
 
     function start_application(appname) {
-        jQuery.get('applications/'+appname+"/"+appname+".html", function (data) {
+        $.get('applications/'+appname+"/"+appname+".html", function (data) {
             var pid = generate_pid();
             document.getElementById("applications").innerHTML += data.replace(/00fff/g, pid);
 
@@ -50,6 +50,10 @@ let taskmanager = function (){
 
 
         //$('link[rel=stylesheet][href*="mystyle"]').remove();
+    }
+
+    function minimize_application(pid){
+
     }
 
     let zindex_window_min = 9, zindex_window_max = 5000;

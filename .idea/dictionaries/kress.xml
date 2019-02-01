@@ -1,3 +1,12 @@
 <component name="ProjectDictionaryState">
-  <dictionary name="kress" />
+  <dictionary name="kress">
+    <words>
+      <w>appref</w>
+      <w>apptopref</w>
+      <w>doubleclick</w>
+      <w>keydown</w>
+      <w>onload</w>
+      <w>taskbar</w>
+    </words>
+  </dictionary>
 </component>

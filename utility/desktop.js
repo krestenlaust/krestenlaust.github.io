@@ -2,9 +2,9 @@ const doubleclick_interval = 500; //Windows standard according to https://ux.sta
 
 let doubleclick_pending = false;
 
-function icon_click(object){
+function icon_click(element){
     if (doubleclick_pending){
-        eval(object.dataset.launch);
+        eval(element.dataset.launch);
         doubleclick_pending = false;
     }
 
@@ -19,7 +19,6 @@ let doubleclick_timer_start = _.debounce(function () {
 
 let desktop_selection_properties = {
     selected_icons: []
-
 };
 
 function update_selected_icons() {
@@ -51,10 +50,10 @@ function desktop_click(e){
             desktop_selection_properties.selected_icons = [];
     }
     if (objectdiv.getAttribute("class") === "desktop-icon"){
-        var desktopiconlist = document.getElementsByClassName("desktop-icon");
-        for (var i=0; i<desktopiconlist.length; i++){
+        var desktopIconList = document.getElementsByClassName("desktop-icon");
+        for (var i=0; i<desktopIconList.length; i++){
 
-            if (desktopiconlist[i] === objectdiv && desktop_selection_properties.selected_icons.indexOf(i) === -1){
+            if (desktopIconList[i] === objectdiv && desktop_selection_properties.selected_icons.indexOf(i) === -1){
                 if (e.ctrlKey || e.shiftKey){
                     desktop_selection_properties.selected_icons.push(i);
                 }else {

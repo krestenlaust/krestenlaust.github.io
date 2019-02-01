@@ -8,6 +8,12 @@
     /*grid-template-columns: auto auto auto;*/
     padding: 5px;
     overflow: fragments;
+
+    /* Prevents icon text and image selection with default browser drag */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 .desktop-icon{
     /*border: 1px solid black;*/
