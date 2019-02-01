@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15275d0b-836b-40ec-8006-7f695f22777c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/github.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/kress.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/kress.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domaincontroller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/desktop.css" beforeDir="false" afterPath="$PROJECT_DIR$/utility/desktop.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/desktop.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/desktop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskmanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/taskmanager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/context-menu/contextMenuLib.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/context-menu/contextMenuLib.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -65,11 +56,12 @@
     <session id="2045960362">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="36" />
+          <entry key="project.closed" value="38" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="4" />
           <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.2" value="1" />
@@ -78,14 +70,14 @@
           <entry key="project.open.time.7" value="6" />
           <entry key="project.open.time.8" value="10" />
           <entry key="project.open.time.9" value="6" />
-          <entry key="project.opened" value="37" />
+          <entry key="project.opened" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="6267" />
           <entry key="html" value="3737" />
-          <entry key="js" value="23212" />
+          <entry key="js" value="23216" />
           <entry key="scss" value="11" />
           <entry key="txt" value="163" />
         </counts>
@@ -94,7 +86,7 @@
         <counts>
           <entry key="CSS" value="6267" />
           <entry key="HTML" value="3741" />
-          <entry key="JavaScript" value="23208" />
+          <entry key="JavaScript" value="23212" />
           <entry key="PLAIN_TEXT" value="163" />
           <entry key="SCSS" value="11" />
         </counts>
@@ -103,7 +95,7 @@
         <counts>
           <entry key="css" value="22" />
           <entry key="html" value="20" />
-          <entry key="js" value="44" />
+          <entry key="js" value="46" />
           <entry key="ts" value="2" />
         </counts>
       </usages-collector>
@@ -111,7 +103,7 @@
         <counts>
           <entry key="CSS" value="22" />
           <entry key="HTML" value="20" />
-          <entry key="JavaScript" value="44" />
+          <entry key="JavaScript" value="46" />
           <entry key="TypeScript" value="2" />
         </counts>
       </usages-collector>
@@ -123,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
-              <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -134,13 +126,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utility/taskmanager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="689">
-              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="935">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/github.html">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -150,9 +142,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utility/context-menu/contextMenuLib.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="11968">
+              <caret line="710" column="53" selection-start-line="710" selection-start-column="53" selection-end-line="710" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/utility/context-menu/context-menu-base.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="553">
+              <caret line="125" column="62" lean-forward="true" selection-start-line="125" selection-start-column="62" selection-end-line="125" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2813">
+            <state relative-caret-position="289">
               <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
             </state>
           </provider>
@@ -161,7 +171,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="408">
               <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
             </state>
           </provider>
@@ -191,6 +201,7 @@
       <find>iw-mDisable</find>
       <find>name</find>
       <find>..</find>
+      <find>console.log</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,8 +228,6 @@
         <option value="$PROJECT_DIR$/applications/cmd/cmd.html" />
         <option value="$PROJECT_DIR$/applications/notepad/notepad.html" />
         <option value="$PROJECT_DIR$/utility/context-menu/contextMenu.css" />
-        <option value="$PROJECT_DIR$/utility/context-menu/context-menu-base.js" />
-        <option value="$PROJECT_DIR$/utility/context-menu/contextMenuLib.js" />
         <option value="$PROJECT_DIR$/applications/notepad/notepad.js" />
         <option value="$PROJECT_DIR$/applications/explorer/explorer.css" />
         <option value="$PROJECT_DIR$/applications/explorer/explorer.html" />
@@ -233,6 +242,8 @@
         <option value="$PROJECT_DIR$/domaincontroller.js" />
         <option value="$PROJECT_DIR$/utility/taskmanager.js" />
         <option value="$PROJECT_DIR$/github.html" />
+        <option value="$PROJECT_DIR$/utility/context-menu/contextMenuLib.js" />
+        <option value="$PROJECT_DIR$/utility/context-menu/context-menu-base.js" />
       </list>
     </option>
   </component>
@@ -252,7 +263,7 @@
     <option name="x" value="375" />
     <option name="y" value="90" />
     <option name="width" value="1205" />
-    <option name="height" value="834" />
+    <option name="height" value="835" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -273,6 +284,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -290,11 +302,16 @@
               <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="utility" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="kres0345.github.io website" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="utility" type="462c0819:PsiDirectoryNode" />
+              <item name="context-menu" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -377,7 +394,8 @@
       <workItem from="1547218744113" duration="6669000" />
       <workItem from="1547308890685" duration="402000" />
       <workItem from="1547398324096" duration="16000" />
-      <workItem from="1549023069472" duration="9645000" />
+      <workItem from="1549023069472" duration="10854000" />
+      <workItem from="1549037296110" duration="62000" />
     </task>
     <task id="LOCAL-00001" summary="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?">
       <created>1546041435632</created>
@@ -404,7 +422,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195513000" />
+    <option name="totallyTimeSpent" value="196784000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -473,13 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utility/context-menu/contextMenuLib.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="170" column="10" lean-forward="true" selection-start-line="170" selection-start-column="10" selection-end-line="170" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/applications/explorer/explorer.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -497,13 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/context-menu/context-menu-base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="123" column="2" selection-start-line="123" selection-start-column="2" selection-end-line="123" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -556,34 +560,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2813">
-          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/domaincontroller.js" />
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
-          <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domaincontroller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -592,8 +573,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utility/taskmanager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="689">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="935">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
         </state>
       </provider>
     </entry>
@@ -601,6 +582,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="69" lean-forward="true" selection-start-column="69" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utility/context-menu/contextMenuLib.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11968">
+          <caret line="710" column="53" selection-start-line="710" selection-start-column="53" selection-end-line="710" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utility/context-menu/context-menu-base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="125" column="62" lean-forward="true" selection-start-line="125" selection-start-column="62" selection-end-line="125" selection-end-column="62" />
         </state>
       </provider>
     </entry>

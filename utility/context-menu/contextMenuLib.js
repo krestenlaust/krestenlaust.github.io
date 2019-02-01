@@ -702,7 +702,6 @@
                     }
                     if (seperator){
                         list.addClass('iw-mSeperator');
-                        console.log(list)
                         list.prepend('<hr class="iw-mSeperator">');
                     }
 
