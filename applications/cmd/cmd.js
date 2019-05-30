@@ -1,15 +1,16 @@
 
 let cmd = function () { //_namespace
 
-    let env = {
-        "errorlevel": 0
+    let local_env = {
+        "errorlevel": 0,
+        "cd": ""
     };
 
     let prompt_var = "%cd%>";
     //let prompt_cur = prompt_var.replace("%cd%", filesystem.cd);
     
     function get_prompt(){
-        return prompt_var.replace("%cd%", filesystem.cd);
+        return prompt_var.replace("%cd%", local_env["cd"]);
     }
 
     function exit(pid, args = []) {
@@ -44,7 +45,7 @@ let cmd = function () { //_namespace
             empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
         }
 
-        env.errorlevel = status_code;
+        local_env.errorlevel = status_code;
         return status_code;
     }
     
@@ -61,7 +62,7 @@ let cmd = function () { //_namespace
             status_code = 1;
         }
 
-        env.errorlevel = status_code;
+        local_env.errorlevel = status_code;
         return status_code;
     }
 
@@ -91,7 +92,7 @@ let cmd = function () { //_namespace
 
         }
 
-        env.errorlevel = status_code;
+        local_env.errorlevel = status_code;
         return status_code;
     }
 
@@ -128,7 +129,7 @@ let cmd = function () { //_namespace
         }
         echo(pid, ['', true]);
 
-        env.errorlevel = status_code;
+        local_env.errorlevel = status_code;
         return status_code;
     }
 
@@ -167,7 +168,7 @@ let cmd = function () { //_namespace
 
         $(document.getElementsByClassName("cmdline-empty-"+pid)[0]).clone().appendTo("#cmd-text-"+pid);
 
-        env.errorlevel = status_code;
+        local_env.errorlevel = status_code;
         return status_code;
     }
     
@@ -175,8 +176,8 @@ let cmd = function () { //_namespace
         let status_code = 0;
         console.log("Args: "+args);
         if (args.length === 0){
-            var env_keys = Object.keys(env);
-            var env_values = Object.values(env);
+            var env_keys = Object.keys(local_env);
+            var env_values = Object.values(local_env);
             for (var i in env_keys){
                 echo(pid, [env_keys[i] + '=' + env_values[i]]);
             }
@@ -185,7 +186,7 @@ let cmd = function () { //_namespace
 
         }
 
-        env.errorlevel = status_code;
+        local_env.errorlevel = status_code;
         return status_code;
     }
 
@@ -205,7 +206,7 @@ let cmd = function () { //_namespace
     }();
 
     return { /* Globalization */
-        env: env,
+        env: local_env,
         utils: utils,
 
         echo: echo,

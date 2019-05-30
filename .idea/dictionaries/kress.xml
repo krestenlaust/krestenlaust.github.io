@@ -7,6 +7,7 @@
       <w>keydown</w>
       <w>onload</w>
       <w>taskbar</w>
+      <w>truename</w>
     </words>
   </dictionary>
 </component>

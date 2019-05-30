@@ -21,7 +21,10 @@ let filesystem = function () {
 
             },
             "Windows": {
-                "@property": {truename: "Windows", directory: true}
+                "@property": {truename: "Windows", directory: true},
+                "System32": {
+                    "@property": {truename: "System32", directory: true}
+                }
 
             }
         },
@@ -43,6 +46,7 @@ let filesystem = function () {
     let cd_drive = "C";
     //let cd_p = (typeof cd.split("\\")[cd.split("\\").length - 2] === "undefined") ? cd_drive + ':\\' : cd.split("\\")[cd.split("\\").length - 2];
 
+    /*
     function change_directory(targ_path) {
         var new_path;
         if (targ_path.indexOf(":") === 1){ //Absolute path.
@@ -59,6 +63,10 @@ let filesystem = function () {
         }else { //Directory doesnt exist
             return false;
         }
+    }*/
+
+    function validate_directory(targ_path) {
+        return get_directory(targ_path) !== undefined
     }
 
     /*
@@ -79,9 +87,10 @@ let filesystem = function () {
         return eval(query);
     }
 
-    function make_directory(dirname, path = cd) {
+    function make_directory(instance, dirname, path = cd) {
         if (illegal_names.indexOf(dirname) !== -1){
             cmd.env.errorlevel = 1;
+
             return false;
         }
         for (var i=0;i<illegal_characters.length;i++){
@@ -113,6 +122,7 @@ let filesystem = function () {
         change_directory: change_directory,
         //level_down: level_down,
         make_directory: make_directory,
-        get_directory: get_directory
+        get_directory: get_directory,
+        validate_directory: validate_directory
     };
 }();
