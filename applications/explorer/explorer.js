@@ -1,0 +1,6 @@
+let explorer = function () {
+
+    return {
+
+    };
+}();
