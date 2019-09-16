@@ -1,23 +1,35 @@
 
 let cmd = function () { //_namespace
 
+
+    /* DEPRECATED
     let local_env = {
         "errorlevel": 0,
         "cd": ""
-    };
+    };*/
 
     let prompt_var = "%cd%>";
     //let prompt_cur = prompt_var.replace("%cd%", filesystem.cd);
     
-    function get_prompt(){
-        return prompt_var.replace("%cd%", local_env["cd"]);
+    function change_directory(pid, path) {
+        if (filesystem.validate_directory(path)){
+            native.set(pid, "working_directory", path);
+            //local_env.cd = path;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    function get_prompt(pid){
+        return prompt_var.replace("%cd%", native.get(pid, "working_directory"));
     }
 
     function exit(pid, args = []) {
         taskmanager.kill_application(pid);
     }
 
-    function echo(pid, args) {
+    function echo(pid, args = []) {
         let status_code = 0;
 
         var echo_on = true;
@@ -45,12 +57,16 @@ let cmd = function () { //_namespace
             empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
         }
 
-        local_env.errorlevel = status_code;
+        //local_env.errorlevel = status_code;
+        set_errorlevel(pid, status_code);
         return status_code;
     }
     
-    function prompt(pid, new_prompt) {
-        prompt_var = new_prompt;
+    function prompt(pid, args = []) {
+        if (args.length === 0 || typeof args[0] !== "string"){
+            return;
+        }
+        prompt_var = args[0];
     }
 
     function md(pid, args = []) {
@@ -62,7 +78,8 @@ let cmd = function () { //_namespace
             status_code = 1;
         }
 
-        local_env.errorlevel = status_code;
+        //local_env.errorlevel = status_code;
+        set_errorlevel(pid, status_code);
         return status_code;
     }
 
@@ -92,7 +109,8 @@ let cmd = function () { //_namespace
 
         }
 
-        local_env.errorlevel = status_code;
+        //local_env.errorlevel = status_code;
+        set_errorlevel(pid, status_code);
         return status_code;
     }
 
@@ -116,7 +134,8 @@ let cmd = function () { //_namespace
 
         for (var item in cur_dir) {
             output[cur_line] = "";
-            if (cur_dir[item]["@property"]["directory"] === true){
+            //if (cur_dir[item]["@property"]["directory"] === true){
+            if (item["@property"]["directory"] === true) {
                 output[cur_line] += "   <DIR>   "
             }else {
                 output[cur_line] += "           "
@@ -129,7 +148,8 @@ let cmd = function () { //_namespace
         }
         echo(pid, ['', true]);
 
-        local_env.errorlevel = status_code;
+        //local_env.errorlevel = status_code;
+        set_errorlevel(pid, status_code);
         return status_code;
     }
 
@@ -168,7 +188,8 @@ let cmd = function () { //_namespace
 
         $(document.getElementsByClassName("cmdline-empty-"+pid)[0]).clone().appendTo("#cmd-text-"+pid);
 
-        local_env.errorlevel = status_code;
+        //local_env.errorlevel = status_code;
+        set_errorlevel(pid, status_code);
         return status_code;
     }
     
@@ -186,7 +207,8 @@ let cmd = function () { //_namespace
 
         }
 
-        local_env.errorlevel = status_code;
+        //local_env.errorlevel = status_code;
+        set_errorlevel(pid, status_code);
         return status_code;
     }
 
@@ -194,6 +216,11 @@ let cmd = function () { //_namespace
     function help(pid, args = []){
 
     }*/
+
+    /* Private */
+    function set_errorlevel(pid, errorcode){
+        native.set(pid, "working_directory", errorcode)
+    }
     
     let utils = function() { /* Tab completion and other that should not be accessible from cmd, but from js*/
         function tab_suggest(s) {
@@ -206,7 +233,7 @@ let cmd = function () { //_namespace
     }();
 
     return { /* Globalization */
-        env: local_env,
+        //env: local_env,
         utils: utils,
 
         echo: echo,

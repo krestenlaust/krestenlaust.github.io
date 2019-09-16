@@ -1,18 +1,14 @@
 let taskmanager = function (){
 
     /* Public variables */
-    let running_applications = [
+    const running_applications = [
 
     ];
-    let window_hierarchy = [
+    const window_hierarchy = [
 
     ];
 
     /* Public methods */
-
-    function bring_front(pid){
-        console.log("Brought to front");
-    }
 
     function start_application(appname) {
         $.get('applications/'+appname+"/"+appname+".html", function (data) {
@@ -46,61 +42,48 @@ let taskmanager = function (){
 
     function kill_application(pid) {
         document.getElementById("window-"+pid).parentElement.removeChild(document.getElementById("window-"+pid));
-        running_applications = running_applications.filter(e => e !== pid);
-
+        //running_applications = running_applications.filter(e => e !== pid);
+        pidIndex = running_applications.indexOf(pid);
+        if (pidIndex !== -1){
+            running_applications.pop(pidIndex)
+        }
 
         //$('link[rel=stylesheet][href*="mystyle"]').remove();
     }
-
-    function minimize_application(pid){
-
-    }
-
-    let zindex_window_min = 9, zindex_window_max = 5000;
     
-    function update_window_hierarchy() {
-        /*
-        for (i = 0; i < window_hierarchy.length; i++) {
-            if (i + 9 % 2 === 0) {
-                console.log(i);
-            }
-        }*/
+    function get_running_programs() {
+        return running_applications;
     }
 
     return {
         //running_applications: running_applications,
-        bring_front: bring_front,
         start_application: start_application,
-        kill_application: kill_application
+        kill_application: kill_application,
+        get_running_programs: get_running_programs
     };
 
     
     /* Private methods */
     function generate_pid() { /* 10*10*6*6*6 */
         do {
-            var cur_pid = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10);
+            var cur_pid = Math.floor(Math.random() * 10).toString() + Math.floor(Math.random() * 10).toString();
             cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
             cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
             cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
         }
-        while (running_applications.includes(cur_pid)){
-            cur_pid = Math.floor(Math.random() * 10).toString() + Math.floor(Math.random() * 10).toString();
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-        }
+        while (running_applications.includes(cur_pid));
 
         return cur_pid;
     }
 
-    function interpret_onload(PID, elmnt){
-        var target_str = elmnt.dataset.onload;
-        var occurences = (target_str.match(/\${/g) || []).length;
+    function interpret_onload(PID, element){
+        var target_str = element.dataset.onload;
+        var occurrences = (target_str.match(/\${/g) || []).length;
         let variables = [];
         var lastfound = 0;
 
 
-        for (var i=0; i < occurences; i++){
+        for (var i=0; i < occurrences; i++){
             var openbracket = target_str.indexOf("${", lastfound);
             if (1 - openbracket >= 0 && target_str.slice(openbracket-1,openbracket) === "\\"){
                 continue;

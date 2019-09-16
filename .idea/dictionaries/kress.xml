@@ -4,7 +4,9 @@
       <w>appref</w>
       <w>apptopref</w>
       <w>doubleclick</w>
+      <w>errorlevel</w>
       <w>keydown</w>
+      <w>kress</w>
       <w>onload</w>
       <w>taskbar</w>
       <w>truename</w>

@@ -4,7 +4,7 @@ let filesystem = function () {
     const illegal_characters = [':', ';', '+', '\\'];
     const illegal_names = ['..'];
 
-    let systemdrive = {
+    const systemdrive = {
         "c": {
             "@property": {truename: "C", directory: true},
 
@@ -42,7 +42,7 @@ let filesystem = function () {
 	};
 
 
-    let cd = "C:\\Users\\kress";
+    //let cd = "C:\\Users\\kress";
     let cd_drive = "C";
     //let cd_p = (typeof cd.split("\\")[cd.split("\\").length - 2] === "undefined") ? cd_drive + ':\\' : cd.split("\\")[cd.split("\\").length - 2];
 
@@ -87,14 +87,14 @@ let filesystem = function () {
         return eval(query);
     }
 
-    function make_directory(instance, dirname, path = cd) {
-        if (illegal_names.indexOf(dirname) !== -1){
+    function make_directory(instance, directory_name, path) {
+        if (illegal_names.indexOf(directory_name) !== -1){
             cmd.env.errorlevel = 1;
 
             return false;
         }
         for (var i=0;i<illegal_characters.length;i++){
-            if (dirname.indexOf(illegal_characters[i])){
+            if (directory_name.indexOf(illegal_characters[i])){
                 cmd.env.errorlevel = 1;
                 return false;
             }
@@ -102,14 +102,14 @@ let filesystem = function () {
 
 
         var new_dir = empty_dir;
-        new_dir["@property"].truename = dirname;
+        new_dir["@property"].truename = directory_name;
 
         var directories = path.replace(":","").toLowerCase().split("\\");
         var query = "systemdrive";
-        for(var i=0;i<directories.length; i++){
+        for (i=0; i<directories.length; i++){
             query += '["' + directories[i] + '"]'
         }
-        query += '["' + dirname.toLowerCase() + '"]=' + JSON.stringify(new_dir);
+        query += '["' + directory_name.toLowerCase() + '"]=' + JSON.stringify(new_dir);
 
         eval(query);
     }
@@ -119,7 +119,7 @@ let filesystem = function () {
         cd_drive: cd_drive,
         //cd_p: cd_p,
 
-        change_directory: change_directory,
+        //change_directory: change_directory,
         //level_down: level_down,
         make_directory: make_directory,
         get_directory: get_directory,
