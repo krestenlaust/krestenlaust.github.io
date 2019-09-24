@@ -21,14 +21,8 @@ let saveload = function () {
                 new_addr += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
                 new_addr += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
             }
-            while (exists(new_addr)){ //Will result in page freeze if more than 129600 addresses exist
-                new_addr = Math.floor(Math.random() * 10).toString();
-                new_addr += Math.floor(Math.random() * 10).toString();
-                new_addr += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-                new_addr += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-                new_addr += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-                new_addr += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-            }
+            while (exists(new_addr)); //Will result in page freeze if more than 129600 addresses exist
+
             if (supported){
                 write(new_addr, ""); //Opens address
             }
@@ -42,7 +36,7 @@ let saveload = function () {
                 localStorage.setItem("f-" + addr, compressed);
                 return compressed.length;
             }
-            return -1
+            return -1;
         }
 
         /* Public - Returns string at address or -1 */
@@ -54,7 +48,7 @@ let saveload = function () {
                 }
                 return LZString.decompress(data);
             }
-            return -1
+            return -1;
         }
 
         return {
@@ -78,6 +72,7 @@ let saveload = function () {
         /* Automatically generates memory address and returns it */
         let new_address = address.generate();
         address.write(new_address, data);
+        return new_address;
     }
 
 

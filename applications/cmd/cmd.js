@@ -71,8 +71,9 @@ let cmd = function () { //_namespace
 
     function md(pid, args = []) {
         let status_code = 0;
+        console.log(args);
         if (args.length >= 1){
-            filesystem.make_directory(args[0]);
+            console.log(filesystem.make_directory(args[0], native.get(pid, "working_directory")));
             echo(pid, [""]);
         } else {
             status_code = 1;
@@ -87,12 +88,13 @@ let cmd = function () { //_namespace
         let status_code = 0;
 
         if (args.length === 0){
-            echo(pid, [filesystem.cd]);
+
+            echo(pid, [native.get(pid, "working_directory")]);
 
         }else{
             var target_path;
             if (args[0] === ".."){
-                target_path = filesystem.cd.split("\\");
+                target_path = native.get(pid, "working_directory").split("\\");
                 if (target_path.length !== 1){
                     target_path.pop();
                 }
@@ -100,8 +102,8 @@ let cmd = function () { //_namespace
             }else{
                 target_path = args[0];
             }
-            if (filesystem.change_directory(target_path)){
-                
+            if (change_directory(pid, target_path)){
+                echo(pid, [''])
             }else{
                 echo(pid, ['Cannot find the path specified.']);
                 status_code = 1;
@@ -116,26 +118,38 @@ let cmd = function () { //_namespace
 
     function dir(pid, args = []) {
         let status_code = 0;
-        var path = "%cd%";
-        switch (args.length) {
-            case 1:
-                path = args[0];
-                break;
+
+        var path;
+        if (args.length === 0){
+            path = native.get(pid, "working_directory")
+        }else{
+            path = args[0];
         }
 
         var cur_dir = filesystem.get_directory(path);
+        console.log(cur_dir);
         var output = [];
         output[0] = "";
-        output[1] = " Directory of " + filesystem.cd;
+        output[1] = " Directory of " + path;
         output[2] = "";
         var cur_line = 3;
 
         delete cur_dir["@property"];
 
         for (var item in cur_dir) {
+            if (!cur_dir.hasOwnProperty(item)){
+                continue;
+            }
+
             output[cur_line] = "";
             //if (cur_dir[item]["@property"]["directory"] === true){
-            if (item["@property"]["directory"] === true) {
+            console.log(item);
+            //if (item["@property"]["directory"] === true) {
+            let property = cur_dir[item]["@property"];
+            if (property === undefined) {
+                continue;
+            }
+            if (property.directory === true) {
                 output[cur_line] += "   <DIR>   "
             }else {
                 output[cur_line] += "           "
@@ -219,7 +233,7 @@ let cmd = function () { //_namespace
 
     /* Private */
     function set_errorlevel(pid, errorcode){
-        native.set(pid, "working_directory", errorcode)
+        native.set(pid, "errorlevel", errorcode)
     }
     
     let utils = function() { /* Tab completion and other that should not be accessible from cmd, but from js*/
@@ -297,18 +311,18 @@ function cmd_prompt_enter(e){
     cmdlines[cmdlines.length-1].focus();
 }
 
-function cmd_command(s, pid){
-    s = s.replace(s.slice(0, s.indexOf(">") + 1), "");
-    console.log(s);
+function cmd_command(stdin, pid){
+    stdin = stdin.replace(stdin.slice(0, stdin.indexOf(">") + 1), "");
+    console.log(stdin);
     //cmd_log.push(s);
-    cmd_log.unshift(s);
+    cmd_log.unshift(stdin);
 
     //let args = s.split(">")[s.split(">").length - 1].split(" "); //Command arguments
-    let args = s.split(" ");
+    let args = stdin.split(" ");
 
-    let args_only = s.substring(s.indexOf(' ') + 1); //Command arguments excluding first argument
+    let args_only = stdin.substring(stdin.indexOf(' ') + 1); //Command arguments excluding first argument
 
-    let _count = (s.match(/ /g) || []).length;
+    let _count = (stdin.match(/ /g) || []).length;
     if (_count === 0 || _count === args_only.length){ //Prevents arguments like "" or ones that's just multiple spaces in being sent
         args_only = [];
     }else {

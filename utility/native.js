@@ -5,7 +5,7 @@ let native = function () {
     };
 
     const envObject = {
-        "working_directory": "",
+        "working_directory": system.env.user_home,
         "errorlevel": 0
     };
 
