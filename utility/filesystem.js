@@ -14,6 +14,10 @@ let filesystem = function () {
                 "kress": {
                     "@property": {truename: "kress", directory: true},
 
+                    "desktop": {
+                        "@property": {truename: "Desktop", directory: true}
+                    },
+
                     "readme.txt": {
                         "@property": {address: ""}
                     }
@@ -40,76 +44,106 @@ let filesystem = function () {
 		"@property": {address: null}
 	};
 
-
-    //let cd = "C:\\Users\\kress";
-    //let cd_drive = "C";
-    //let cd_p = (typeof cd.split("\\")[cd.split("\\").length - 2] === "undefined") ? cd_drive + ':\\' : cd.split("\\")[cd.split("\\").length - 2];
-
-    function validate_directory(targ_path) {
-        return get_directory(targ_path).length !== 0;
+    function isPathAbsolute(path) {
+        return path.length >= 2 && path.slice(1, 2) === ":";
+    }
+	
+    function validate_directory(path) {
+        return get_directory(path).length !== 0;
     }
 
-    /*
-    function level_down(){
-        cd = cd_p;
-    }*/
-
-    function get_directory(targ_path) {
-        /*if (targ_path  === "%cd%" || targ_path === ""){
-            targ_path = filesystem.cd;
-        }*/
-        if (targ_path === undefined){
+    function get_directory(path) {
+        if (path === undefined){
             return []
         }
-        var directories = targ_path.replace(":","").toLowerCase().split("\\");
-        var query = "systemdrive";
-        for(var i=0;i<directories.length; i++){
-            query += '["' + directories[i] + '"]'
+        let path_array = path.replace(":","").toLowerCase().split("\\");
+
+        // Generate directory-query string
+        let query = "systemdrive";
+        for (var i=0; i<path_array.length; i++){
+            query += '["' + path_array[i] + '"]'
         }
-        console.log(query);
+
         return eval(query);
     }
 
     // instance, first arg
-    function make_directory(directory_name, path) {
-        console.log("dirname: ");
-        console.log(directory_name);
-        console.log("path");
-        console.log(path);
+    function make_directory(path, directory_name) {
+        // Verify that the directory name is valid
         if (illegal_names.indexOf(directory_name) !== -1){
             return 1;
         }
-        for (var i=0;i<illegal_characters.length;i++){
+
+        for (var i=0; i < illegal_characters.length; i++){
             if (directory_name.indexOf(illegal_characters[i])){
                 return 1;
             }
         }
 
+        // Initialize new directory object
+        let directory_obj = EMPTY_DIR;
+        directory_obj["@property"].truename = directory_name;
 
-        var new_dir = EMPTY_DIR;
-        new_dir["@property"].truename = directory_name;
+        let path_array = path.replace(":","").toLowerCase().split("\\");
 
-        var directories = path.replace(":","").toLowerCase().split("\\");
-        var query = "systemdrive";
-        for (i=0; i<directories.length; i++){
-            query += '["' + directories[i] + '"]'
+        // Generate directory-creation string
+        let query = "systemdrive";
+        for (var i=0; i < path_array.length; i++){
+            query += '["' + path_array[i] + '"]'
         }
-        query += '["' + directory_name.toLowerCase() + '"]=' + JSON.stringify(new_dir);
+        query += '["' + directory_name.toLowerCase() + '"]=' + JSON.stringify(directory_obj);
 
         eval(query);
         return 0;
     }
+    
+    function make_file(path, filename, data) {
+        console.log(path);
+        console.log(filename);
+        console.log(data);
+        // Check if filename is invalid.
+
+        // Initialize new file object
+        let file_obj = EMPTY_FILE;
+        let address = saveload.address.generate();
+        file_obj["@property"].address = address;
+        saveload.address.write(address, data);
+
+        let path_array = path.replace(":", "").toLowerCase().split("\\");
+        console.log(path_array);
+        // Generate file-creation string
+        let evaluation = "systemdrive";
+        for (var i=0; i < path_array.length; i++) {
+            evaluation += '["' + path_array[i] + '"]'
+        }
+        evaluation += '["' + filename.toLowerCase() + '"]=' + JSON.stringify(file_obj);
+        console.log(evaluation);
+        eval(evaluation);
+        return 0;
+    }
+    
+    function read_file(filepath) {
+        let path_array = filepath.replace(":", "").toLowerCase().split("\\");
+
+        // Generate file-query string
+        let query = "systemdrive";
+        for (var i=0; i<path_array.length; i++){
+            query += '["' + path_array[i] + '"]'
+        }
+        query += '["@property"]["address"]';
+        let file_address = eval(query);
+        return saveload.address.read(file_address);
+    }
 
     return { /* Globalization */
-        //cd: cd,
-        //cd_drive: cd_drive,
-        //cd_p: cd_p,
-
-        //change_directory: change_directory,
-        //level_down: level_down,
         make_directory: make_directory,
         get_directory: get_directory,
         validate_directory: validate_directory,
+        read_file: read_file,
+        make_file: make_file,
+
+        isPathAbsolute: isPathAbsolute,
+        
         systemdrive: systemdrive
     };
 }();

@@ -29,6 +29,7 @@ let cmd = function () { //_namespace
         taskmanager.kill_application(pid);
     }
 
+    // Maybe look into implementing some sort of stdout and some sort of spool to update the command-line window
     function echo(pid, args = []) {
         let status_code = 0;
 
@@ -207,6 +208,32 @@ let cmd = function () { //_namespace
         return status_code;
     }
     
+    function type(pid, args = []) {
+        if (args.length === 0){
+            echo(pid, ["The syntax of the command is incorrect."]);
+            set_errorlevel(pid, 1);
+            return 1;
+        }
+
+        let path = args[0];
+        if (!filesystem.isPathAbsolute(path)){
+            path = native.get(pid, "working_directory") + "\\" + path;
+        }
+
+        // Echo file contents
+        let file_contents = filesystem.read_file(path);
+        if (file_contents === -1) {
+            echo(pid, ["Could not read file."]);
+
+            set_errorlevel(pid, 1);
+            return 1;
+        }
+        echo(pid, [file_contents]);
+
+        set_errorlevel(pid, 0);
+        return 0;
+    }
+    
     function set(pid, args = []) {
         let status_code = 0;
         console.log("Args: "+args);
@@ -254,6 +281,7 @@ let cmd = function () { //_namespace
         exit: exit,
         cls: cls,
         set: set,
+        type: type,
         prompt: prompt,
         md: md,
         dir: dir,

@@ -6,9 +6,10 @@ let saveload = function () {
     let address = function () { //Addresses are strictly used for content of files
 
         function exists(addr) {
-            if (supported){
-                return localStorage.getItem("f-" + addr) !== null
+            if (saveload.supported){
+                return localStorage.getItem("f" + addr) !== null
             }
+            return false;
         }
 
         function generate() {
@@ -23,17 +24,15 @@ let saveload = function () {
             }
             while (exists(new_addr)); //Will result in page freeze if more than 129600 addresses exist
 
-            if (supported){
-                write(new_addr, ""); //Opens address
-            }
+            write(new_addr, ""); //Opens address
             return new_addr;
         }
 
         /* Public - Returns compressed byte-size or -1 */
         function write(addr, data) {
-            if (supported){
+            if (saveload.supported){
                 var compressed = LZString.compress(data);
-                localStorage.setItem("f-" + addr, compressed);
+                localStorage.setItem("f" + addr, compressed);
                 return compressed.length;
             }
             return -1;
@@ -41,8 +40,8 @@ let saveload = function () {
 
         /* Public - Returns string at address or -1 */
         function read(addr) {
-            if (supported){
-                var data = localStorage.getItem("f-" + addr);
+            if (saveload.supported){
+                var data = localStorage.getItem("f" + addr);
                 if (data === null){
                     return -1
                 }
@@ -51,9 +50,16 @@ let saveload = function () {
             return -1;
         }
 
+        function reset(addr){
+            if (saveload.supported){
+                localStorage.removeItem("f" + addr);
+            }
+        }
+
         return {
             write: write,
             read: read,
+            reset: reset,
             exists: exists,
             generate: generate
         };
@@ -78,7 +84,6 @@ let saveload = function () {
 
     return { /* Globalization */
         supported: supported,
-
         address: address,
 
         write_file_auto: write_file_auto
