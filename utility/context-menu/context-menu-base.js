@@ -63,7 +63,7 @@ let desktop_menu = [
     {
         name: 'Refresh',
         fun: function () {
-            alert("Refreshing");
+            desktop.refresh_desktop();
         }
     },
     {

@@ -15,7 +15,11 @@ let filesystem = function () {
                     "@property": {truename: "kress", directory: true},
 
                     "desktop": {
-                        "@property": {truename: "Desktop", directory: true}
+                        "@property": {truename: "Desktop", directory: true},
+
+                        "notepad.lnk": {
+                            "@property": {address: ""}
+                        }
                     },
 
                     "readme.txt": {
@@ -134,6 +138,10 @@ let filesystem = function () {
         let file_address = eval(query);
         return saveload.address.read(file_address);
     }
+    
+    function filedrop(event, path) {
+        console.log(event);
+    }
 
     return { /* Globalization */
         make_directory: make_directory,
@@ -143,6 +151,7 @@ let filesystem = function () {
         make_file: make_file,
 
         isPathAbsolute: isPathAbsolute,
+        filedrop: filedrop,
         
         systemdrive: systemdrive
     };

@@ -1,6 +1,72 @@
 const doubleclick_interval = 500; //Windows standard according to https://ux.stackexchange.com/a/40366
+const gridwidth = 8;
+const gridheight = 4;
+const gridicons = {
+    0: {
+        "type": "shortcut",
+        "launch": "",
+        "name": "Recycle bin",
+        "icon": "resources/Windows-icons/recycle_bin.ico"
+    },
+    3: {
+        "type": "shortcut",
+        "launch": "taskmanager.start_application('cmd')",
+        "icon": "resources/Windows-icons/cmd.ico",
+        "name": "Command Prompt"
+    },
+    2: {
+        "type": "shortcut",
+        "launch": "taskmanager.start_application('notepad')",
+        "icon": "resources/Windows-icons/notepad.ico",
+        "name": "Notepad"
+    }
+};
 
 let doubleclick_pending = false;
+
+let desktop = function () {
+
+    let icon_array = [];
+
+    function generate_shortcut(icon_href, icon_text, icon_launch) {
+        return `<div class="desktop-icon" data-launch="${icon_launch}" onclick="icon_click(this)"><img class="desktop-icon-image" src="${icon_href}"><p class="desktop-icon-text">${icon_text}</p></div>`
+    }
+    function empty_icon(index) {
+        return `<div data-index="${index}"></div>`
+    }
+
+    function refresh_desktop() {
+        let desktop_directory = filesystem.get_directory("C:\\Users\\kress\\desktop");
+        let icons = [];
+        document.getElementById("desktop").innerHTML = "";
+
+        for (var i=0; i < gridheight * gridwidth; i++){
+            var current_icon = gridicons[i];
+            if (current_icon === undefined){
+                document.getElementById("desktop").innerHTML += empty_icon(i);
+            }else if (current_icon["type"] === "shortcut"){
+                document.getElementById("desktop").innerHTML += generate_shortcut(current_icon["icon"], current_icon["name"], current_icon["launch"])
+            }
+        }/*
+        for (var item in desktop_directory) {
+            if (item === "@property") {
+                continue;
+            }
+            if (!desktop_directory.hasOwnProperty(item)) {
+                continue;
+            }
+
+            // Implement this
+            let icon_obj = {"directory": desktop_directory[item]["@property"].directory === true};
+
+            icons.push(item);
+        }*/
+    }
+
+    return {
+        refresh_desktop: refresh_desktop
+    };
+}();
 
 function icon_click(element){
     if (doubleclick_pending){
@@ -51,7 +117,7 @@ function desktop_click(e){
     }
     if (objectdiv.getAttribute("class") === "desktop-icon"){
         var desktopIconList = document.getElementsByClassName("desktop-icon");
-        for (var i=0; i<desktopIconList.length; i++){
+        for (var i=0; i < desktopIconList.length; i++){
 
             if (desktopIconList[i] === objectdiv && desktop_selection_properties.selected_icons.indexOf(i) === -1){
                 if (e.ctrlKey || e.shiftKey){

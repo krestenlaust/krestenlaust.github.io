@@ -57,7 +57,7 @@
 
 
 
-    <div id="desktop">
+    <div id="desktop" ondrop="filesystem.filedrop(event, )"><!--
         <div class="desktop-icon" onclick="icon_click(this)">
             <img class="desktop-icon-image" src="resources/Windows-icons/recycle_bin.ico">
             <p class="desktop-icon-text">Recycle bin</p>
@@ -69,7 +69,7 @@
         <div class="desktop-icon" data-launch="taskmanager.start_application('notepad')" onclick="icon_click(this)">
             <img class="desktop-icon-image" src="resources/Windows-icons/notepad.ico">
             <p class="desktop-icon-text">Notepad</p>
-        </div>
+        </div>-->
     </div>
 
 </body>
@@ -89,5 +89,7 @@
 <script language="javascript" src="ext/lz-string.min.js"></script>
 <script src="utility/taskmanager.js"></script>
 <script src="utility/taskbar/taskbar.js"></script>
+<script>desktop.refresh_desktop()</script>
+
 
 <!--<script src="applications/notepad/notepad.js"></script>-->
