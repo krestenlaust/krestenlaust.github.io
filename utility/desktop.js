@@ -28,11 +28,11 @@ let desktop = function () {
 
     let icon_array = [];
 
-    function generate_shortcut(icon_href, icon_text, icon_launch) {
-        return `<div class="desktop-icon" data-launch="${icon_launch}" onclick="icon_click(this)"><img class="desktop-icon-image" src="${icon_href}"><p class="desktop-icon-text">${icon_text}</p></div>`
+    function generate_shortcut(icon_href, icon_text, icon_launch, index) {
+        return `<div ondrop="desktop_drop(event)" ondragover="desktop_dragOver(event)" class="icon-parent"><div class="space desktop-icon" data-index="${index}" data-launch="${icon_launch}" onclick="icon_click(this)" draggable="true" ondragstart="desktop_dragStart(event)"><img class="desktop-icon-image" src="${icon_href}"><p class="desktop-icon-text">${icon_text}</p></div></div>`
     }
     function empty_icon(index) {
-        return `<div data-index="${index}"></div>`
+        return `<div ondrop="desktop_drop(event)" ondragover="desktop_dragOver(event)" class="icon-parent"><div class="space" data-index="${index}"></div></div>`
     }
 
     function refresh_desktop() {
@@ -40,14 +40,15 @@ let desktop = function () {
         let icons = [];
         document.getElementById("desktop").innerHTML = "";
 
-        for (var i=0; i < gridheight * gridwidth; i++){
-            var current_icon = gridicons[i];
+        for (let i=0; i < gridheight * gridwidth; i++){
+            let current_icon = gridicons[i];
             if (current_icon === undefined){
                 document.getElementById("desktop").innerHTML += empty_icon(i);
             }else if (current_icon["type"] === "shortcut"){
-                document.getElementById("desktop").innerHTML += generate_shortcut(current_icon["icon"], current_icon["name"], current_icon["launch"])
+                document.getElementById("desktop").innerHTML += generate_shortcut(current_icon["icon"], current_icon["name"], current_icon["launch"], i)
             }
-        }/*
+        }
+        /*
         for (var item in desktop_directory) {
             if (item === "@property") {
                 continue;
@@ -131,6 +132,50 @@ function desktop_click(e){
         desktop_selection_properties.selected_icons = [];
     }
     update_selected_icons();
+}
+function desktop_dragStart(e) {
+    let targetElement = e.target;
+    console.log(targetElement);
+    if (!targetElement.classList.contains("space")) {
+        if (targetElement.classList.contains("icon-parent")){
+            targetElement = targetElement.children[0];
+        }else{
+            targetElement = targetElement.parentElement;
+        }
+    }
+    console.log(targetElement);
+    draggingIndex = parseInt(targetElement.dataset.index);
+}
+let draggingIndex = 0;
+function desktop_drop(e) {
+    e.preventDefault();
+    let fromIndex = draggingIndex;
+    let targetElement = e.target;
+    if (!targetElement.classList.contains("space")) {
+        if (targetElement.classList.contains("icon-parent")){
+            targetElement = targetElement.children[0];
+        }else{
+            targetElement = targetElement.parentElement;
+        }
+    }
+    let toIndex = parseInt(targetElement.dataset.index);
+    console.log("From index: ", fromIndex);
+    console.log("To: ", e.target);
+
+    if (targetElement.classList.contains("desktop-icon")) { // Not empty
+
+    }else{
+        let tempObj = gridicons[fromIndex];
+        gridicons[fromIndex] = gridicons[toIndex];
+        gridicons[toIndex] = tempObj;
+        desktop.refresh_desktop();
+        //e.target.appendChild(document.getElementsByClassName("space")[parseInt(dataIndex)]);
+    }
+    
+    console.log(e);
+}
+function desktop_dragOver(e) {
+    e.preventDefault();
 }
 function desktop_keydown(e){
     //console.log(e);
