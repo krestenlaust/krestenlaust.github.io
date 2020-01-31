@@ -84,14 +84,15 @@ let doubleclick_timer_start = _.debounce(function () {
 }, doubleclick_interval);
 
 
-let desktop_selection_properties = {
-    selected_icons: []
+let selectionProperties = {
+    selected_icons: [],
+    keyboardSelectionIndex: 0
 };
 
 function update_selected_icons() {
     var desktopiconlist = document.getElementsByClassName("desktop-icon");
     for (var i=0; i<desktopiconlist.length; i++){
-        if (desktop_selection_properties.selected_icons.indexOf(i) !== -1){
+        if (selectionProperties.selected_icons.indexOf(i) !== -1){
             desktopiconlist[i].classList.add("selected")
         }else {
             try{
@@ -114,22 +115,22 @@ function desktop_click(e){
             objectdiv = e.target;
             break;
         default:
-            desktop_selection_properties.selected_icons = [];
+            selectionProperties.selected_icons = [];
     }
     if (objectdiv.getAttribute("class") === "desktop-icon"){
         var desktopIconList = document.getElementsByClassName("desktop-icon");
         for (var i=0; i < desktopIconList.length; i++){
 
-            if (desktopIconList[i] === objectdiv && desktop_selection_properties.selected_icons.indexOf(i) === -1){
+            if (desktopIconList[i] === objectdiv && selectionProperties.selected_icons.indexOf(i) === -1){
                 if (e.ctrlKey || e.shiftKey){
-                    desktop_selection_properties.selected_icons.push(i);
+                    selectionProperties.selected_icons.push(i);
                 }else {
-                    desktop_selection_properties.selected_icons = [i];
+                    selectionProperties.selected_icons = [i];
                 }
             }
         }
     }else{
-        desktop_selection_properties.selected_icons = [];
+        selectionProperties.selected_icons = [];
     }
     update_selected_icons();
 }
@@ -149,8 +150,18 @@ function desktop_dragStart(e) {
 let draggingIndex = 0;
 function desktop_drop(e) {
     e.preventDefault();
-    let fromIndex = draggingIndex;
+
     let targetElement = e.target;
+    if (e.dataTransfer.items){
+        for (let i=0; i < e.dataTransfer.items.length; i++){
+            if (e.dataTransfer.items[i].kind === "file"){
+                let file = e.dataTransfer.items[i].getAsFile();
+                filesystem.make_file("C:\\Users\\kress\\desktop", file.name, file, file.text);
+            }
+        }
+    }
+
+    let fromIndex = draggingIndex;
     if (!targetElement.classList.contains("space")) {
         if (targetElement.classList.contains("icon-parent")){
             targetElement = targetElement.children[0];
@@ -181,25 +192,49 @@ function desktop_keydown(e){
     //console.log(e);
     var desktopiconlist = document.getElementsByClassName("desktop-icon");
     if (e.srcElement === document.body){
+        let lastIndex = selectionProperties.keyboardSelectionIndex;
         switch (e.code) {
             case "Enter":
-                for (var i=0; i < desktop_selection_properties.selected_icons.length; i++){
-                    eval(desktopiconlist[desktop_selection_properties.selected_icons[i]].dataset.launch);
+                for (var i=0; i < selectionProperties.selected_icons.length; i++){
+                    eval(desktopiconlist[selectionProperties.selected_icons[i]].dataset.launch);
                 }
                 break;
             case "ArrowUp":
-                //selection
+                //selection = index - width
+                selectionProperties.keyboardSelectionIndex -= gridwidth;
+                if (selectionProperties.keyboardSelectionIndex < 0){
+                    selectionProperties.keyboardSelectionIndex += gridwidth;
+                }
+                
+                if (e.shiftKey){
+                    //selectionProperties.selected_icons = [... range(lastIndex, dawdwa)]
+                }else{
+                    selectionProperties.selected_icons = [selectionProperties.keyboardSelectionIndex];
+                }
                 
                 break;
             case "ArrowDown":
-                //selection
+                //selection = index + width
+                selectionProperties.keyboardSelectionIndex += gridwidth;
+                if (selectionProperties.keyboardSelectionIndex >= gridwidth * gridheight){
+                    selectionProperties.keyboardSelectionIndex -= gridwidth;
+                }
 
                 break;
             case "ArrowLeft":
-                //selection
+                //selection = index - 1
+                selectionProperties.keyboardSelectionIndex -= 1;
+                if (selectionProperties.keyboardSelectionIndex < 0){
+                    selectionProperties.keyboardSelectionIndex += 1;
+                }
+
                 break;
             case "ArrowRight":
-                //selection
+                //selection = index + 1
+                selectionProperties.keyboardSelectionIndex += 1;
+                if (selectionProperties.keyboardSelectionIndex >= gridwidth * gridheight){
+                    selectionProperties.keyboardSelectionIndex -= 1;
+                }
                 break;
         }
         if (e.code === "Enter"){
