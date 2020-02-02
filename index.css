@@ -104,7 +104,7 @@ body{
     margin-left: 0;
     bottom: 0;
     width: 100%;
-    background-color: black;
+    background-color: #1A222A;
     z-index: 500;
 
     /* Prevents icon text and image selection with default browser drag */

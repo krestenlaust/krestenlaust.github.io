@@ -4,17 +4,44 @@ let windowmanager = function () {
     const window_hierarchy = [
 
     ];
+    const maximized_windows = [
+
+    ];
 
     function minimize_window(pid){
 
-    }
-    
+    }    
     function maximize_window(pid) {
-        
-    }
-    
-    function restore_window(pid) {
+        let window = document.getElementById(`window-${pid}`);
+        window.setAttribute("data-top", window.style.top);
+        window.setAttribute("data-left", window.style.left);
 
+        // Add window to fullscreen list
+        maximized_windows.push(pid);
+    }
+    function refresh_maximized_windows(){
+        for (let i=0;i<maximized_windows.length; i++){
+            let window = document.getElementById(`window-${maximized_windows[i]}`);
+            
+            window.style.width = document.body.clientWidth;
+            window.style.height = document.body.clientHeight;
+        }
+    }
+    function restore_window(pid) {
+        let window = document.getElementById(`window-${pid}`);
+        let top = window.getAttribute("data-top");
+        let left = window.getAttribute("data-left");
+
+        window.style.top = top === undefined ? 0 : top;
+        window.style.left = left === undefined ? 0 : left;
+
+        // Remove window from fullscreen list
+        let index = maximized_windows.indexOf(pid);
+        do{
+            maximized_windows.splice(index, 1);
+            index = maximized_windows.indexOf(pid);
+        }
+        while(index !== -1);
     }
 
     function bring_front(pid){
