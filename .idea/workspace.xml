@@ -56,7 +56,7 @@
     <session id="2045960362">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="51" />
+          <entry key="project.closed" value="52" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="4" />
           <entry key="project.open.time.11" value="3" />
@@ -418,7 +418,7 @@
       <workItem from="1572871947283" duration="263000" />
       <workItem from="1576656952527" duration="5900000" />
       <workItem from="1580455999049" duration="6670000" />
-      <workItem from="1580463911033" duration="2090000" />
+      <workItem from="1580463911033" duration="2123000" />
     </task>
     <task id="LOCAL-00001" summary="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?">
       <created>1546041435632</created>
@@ -452,7 +452,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232628000" />
+    <option name="totallyTimeSpent" value="232661000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
