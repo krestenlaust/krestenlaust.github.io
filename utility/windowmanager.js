@@ -1,4 +1,5 @@
 let windowmanager = function () {
+//function taskmanager() {
 
     const zindex_window_min = 9, zindex_window_max = 5000;
     const window_hierarchy = [
@@ -23,8 +24,8 @@ let windowmanager = function () {
         for (let i=0;i<maximized_windows.length; i++){
             let window = document.getElementById(`window-${maximized_windows[i]}`);
             
-            window.style.width = document.body.clientWidth;
-            window.style.height = document.body.clientHeight;
+            window.style.width = document.body.clientWidth.toString();
+            window.style.height = document.body.clientHeight.toString();
         }
     }
     function restore_window(pid) {
@@ -66,3 +67,4 @@ let windowmanager = function () {
         restore_window: restore_window
     };
 }();
+

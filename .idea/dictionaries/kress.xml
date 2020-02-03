@@ -2,6 +2,7 @@
   <dictionary name="kress">
     <words>
       <w>addr</w>
+      <w>appname</w>
       <w>appref</w>
       <w>apptopref</w>
       <w>doubleclick</w>
@@ -10,10 +11,13 @@
       <w>gridicons</w>
       <w>keydown</w>
       <w>kress</w>
+      <w>krestens</w>
       <w>onload</w>
+      <w>programname</w>
       <w>saveload</w>
       <w>systemdrive</w>
       <w>taskbar</w>
+      <w>taskmanager</w>
       <w>truename</w>
     </words>
   </dictionary>
