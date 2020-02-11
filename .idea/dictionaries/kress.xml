@@ -8,6 +8,7 @@
       <w>doubleclick</w>
       <w>errorlevel</w>
       <w>filedrop</w>
+      <w>filepath</w>
       <w>gridicons</w>
       <w>keydown</w>
       <w>kress</w>
@@ -19,6 +20,7 @@
       <w>taskbar</w>
       <w>taskmanager</w>
       <w>truename</w>
+      <w>windowmanager</w>
     </words>
   </dictionary>
 </component>

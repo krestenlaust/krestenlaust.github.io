@@ -1,22 +1,22 @@
 /* Windows Peek */
-var windows_peek = function () {
-    var mouse_hover_timeout;
+let windows_peek = function () {
+    let mouse_hover_timeout;
     //let peek_clicked = false;
     /**
      * @type {{peek_opacity}}
      * @description Note, to also change animation, change keyframe called "peek_opacity" in index.css.
      */
-    var peek_opacity = "0.1";
+    let peek_opacity = "0.1";
     function peek_on() {
-        var windows = document.getElementsByClassName("window");
-        for (var i = 0; i < windows.length; i++) {
+        let windows = document.getElementsByClassName("window");
+        for (let i = 0; i < windows.length; i++) {
             windows[i].style.animation = "peek_opacity 0.3s";
             windows[i].style.opacity = "0.1";
         }
     }
     function peek_off() {
-        var windows = document.getElementsByClassName("window");
-        for (var i = 0; i < windows.length; i++) {
+        let windows = document.getElementsByClassName("window");
+        for (let i = 0; i < windows.length; i++) {
             windows[i].style.animation = "";
             windows[i].style.opacity = "";
         }
@@ -39,7 +39,7 @@ var windows_peek = function () {
     }
     return {
         __init__: __init__,
-        peek_opacity: peek_opacity
+        peek_opacity
     };
 }();
 windows_peek.__init__();
@@ -53,10 +53,10 @@ function minimize_window(window) {
 function maximize_window(window) {
 }
 //Compressed
-function make_draggable(a, b) { function c(k) { k = k || window.event, k.preventDefault(), i = k.clientX, j = k.clientY, document.onmouseup = f, document.onmousemove = d; } function d(k) { k = k || window.event, k.preventDefault(), g = i - k.clientX, h = j - k.clientY, i = k.clientX, j = k.clientY, a.style.top = a.offsetTop - h + "px", a.style.left = a.offsetLeft - g + "px"; } function f() { document.onmouseup = null, document.onmousemove = null; } var g = 0, h = 0, i = 0, j = 0; b ? b.onmousedown = c : a.onmousedown = c; }
+function make_draggable(a, b) { function c(k) { k = k || window.event, k.preventDefault(), i = k.clientX, j = k.clientY, document.onmouseup = f, document.onmousemove = d; } function d(k) { k = k || window.event, k.preventDefault(), g = i - k.clientX, h = j - k.clientY, i = k.clientX, j = k.clientY, a.style.top = a.offsetTop - h + "px", a.style.left = a.offsetLeft - g + "px"; } function f() { document.onmouseup = null, document.onmousemove = null; } let g = 0, h = 0, i = 0, j = 0; b ? b.onmousedown = c : a.onmousedown = c; }
 function range(start, end) {
-    var ans = [];
-    for (var i = start; i <= end; i++) {
+    let ans = [];
+    for (let i = start; i <= end; i++) {
         ans.push(i);
     }
     return ans;

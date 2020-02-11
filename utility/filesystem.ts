@@ -1,11 +1,12 @@
-import { saveload } from "./saveload-system"
+import { saveload } from "./saveload-system.js"
 
-let filesystem = function () {
+//let filesystem = function () {
+export class filesystem{
 
-    const illegal_characters = [':', ';', '+', '\\'];
-    const illegal_names = ['..'];
+    static illegal_characters = [':', ';', '+', '\\'];
+    static illegal_names = ['..'];
 
-    const systemdrive = {
+    static _systemdrive = {
         "c": {
             "@property": {truename: "C", directory: true},
 
@@ -42,29 +43,29 @@ let filesystem = function () {
         }
     };
 
-    const EMPTY_DIR = {
+    static EMPTY_DIR = {
         "@property": {truename: undefined, directory: true}
     };
-	const EMPTY_FILE = {
+	static EMPTY_FILE = {
 		"@property": {address: null}
 	};
 
-    function isPathAbsolute(path: string) {
+    static isPathAbsolute(path: string) {
         return path.length >= 2 && path.slice(1, 2) === ":";
     }
 	
-    function validate_directory(path: string) {
-        return get_directory(path).length !== 0;
+    static validate_directory(path: string) {
+        return filesystem.get_directory(path).length !== 0;
     }
 
-    function get_directory(path: string) {
+    static get_directory(path: string) {
         if (path === undefined){
             return []
         }
         let path_array = path.replace(":","").toLowerCase().split("\\");
 
         // Generate directory-query string
-        let query = "systemdrive";
+        let query = "_systemdrive";
         for (let i=0; i < path_array.length; i++){
             query += '["' + path_array[i] + '"]'
         }
@@ -73,26 +74,26 @@ let filesystem = function () {
     }
 
     // instance, first arg
-    function make_directory(path: string, directory_name: string) {
+    static make_directory(path: string, directory_name: string) {
         // Verify that the directory name is valid
-        if (illegal_names.indexOf(directory_name) !== -1){
+        if (filesystem.illegal_names.indexOf(directory_name) !== -1){
             return 1;
         }
 
-        for (let i=0; i < illegal_characters.length; i++){
-            if (directory_name.indexOf(illegal_characters[i])){
+        for (let i=0; i < filesystem.illegal_characters.length; i++){
+            if (directory_name.indexOf(filesystem.illegal_characters[i])){
                 return 1;
             }
         }
 
         // Initialize new directory object
-        let directory_obj = EMPTY_DIR;
+        let directory_obj = filesystem.EMPTY_DIR;
         directory_obj["@property"].truename = directory_name;
 
         let path_array: string[] = path.replace(":","").toLowerCase().split("\\");
 
         // Generate directory-creation string
-        let query = "systemdrive";
+        let query = "_systemdrive";
         for (let i=0; i < path_array.length; i++){
             query += '["' + path_array[i] + '"]'
         }
@@ -102,14 +103,14 @@ let filesystem = function () {
         return 0;
     }
     
-    function make_file(path: string, filename: string, data) {
+    static make_file(path: string, filename: string, data) {
         console.log("Path", path);
         console.log("Filename", filename);
         console.log("Data", data);
         // Check if filename is invalid.
 
         // Initialize new file object
-        let file_obj = EMPTY_FILE;
+        let file_obj = filesystem.EMPTY_FILE;
         let address = saveload.address.generate();
         file_obj["@property"].address = address;
         saveload.address.write(address, data);
@@ -118,7 +119,7 @@ let filesystem = function () {
         console.log("Parsed path", path_array);
 
         // Generate file-creation string
-        let evaluation = "systemdrive";
+        let evaluation = "_systemdrive";
         for (let i=0; i < path_array.length; i++) {
             evaluation += '["' + path_array[i] + '"]'
         }
@@ -128,11 +129,11 @@ let filesystem = function () {
         return 0;
     }
     
-    function read_file(filepath: string) {
+    static read_file(filepath: string) {
         let path_array: string[] = filepath.replace(":", "").toLowerCase().split("\\");
 
         // Generate file-query string
-        let query: string = "systemdrive";
+        let query: string = "_systemdrive";
 
         for (let i=0; i<path_array.length; i++){
             query += '["' + path_array[i] + '"]'
@@ -144,11 +145,11 @@ let filesystem = function () {
         return saveload.address.read(file_address);
     }
     
-    function filedrop(event: DragEvent, path: string) {
+    static filedrop(event: DragEvent, path: string) {
         console.log(event);
     }
-
-    return { /* Globalization */
+        /*
+    return {
         make_directory: make_directory,
         get_directory: get_directory,
         validate_directory: validate_directory,
@@ -158,9 +159,9 @@ let filesystem = function () {
         isPathAbsolute: isPathAbsolute,
         filedrop: filedrop,
         
-        systemdrive: systemdrive
-    };
-}();
+        _systemdrive: _systemdrive
+    };*/
+}
 
 
 /*

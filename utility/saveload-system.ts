@@ -1,12 +1,11 @@
 
-//let saveload = function () {
 export class saveload{
 
     static supported = typeof(Storage) !== "undefined";  // false
 
-    static address = class {
+    static address = class {  // Addresses are strictly used in context of files
         static exists(addr: string) {
-            if (saveload.supported){
+            if (saveload.supported) {
                 return localStorage.getItem("f" + addr) !== null
             }
             return false;
@@ -30,7 +29,7 @@ export class saveload{
 
         /* Public - Returns compressed byte-size or -1 */
         static write(addr: string, data: string) {
-            if (saveload.supported){
+            if (saveload.supported) {
                 // @ts-ignore
                 let compressed = LZString.compress(data);
                 localStorage.setItem("f" + addr, compressed);
@@ -41,9 +40,9 @@ export class saveload{
 
         /* Public - Returns string at address or -1 */
         static read(addr: string) {
-            if (saveload.supported){
+            if (saveload.supported) {
                 let data = localStorage.getItem("f" + addr);
-                if (data === null){
+                if (data === null) {
                     return -1
                 }
                 // @ts-ignore
@@ -52,31 +51,14 @@ export class saveload{
             return -1;
         }
 
-        static reset(addr: string){
-            if (saveload.supported){
+        static reset(addr: string) {
+            if (saveload.supported) {
                 localStorage.removeItem("f" + addr);
             }
         }
-/*
-        return {
-        write: write,
-        read: read,
-        reset: reset,
-        exists: exists,
-        generate: generate
-    };*/
+    };
 
-    //let address = function () { //Addresses are strictly used in context of files
-
-
-    /*
-    static function save_filesystem() {
-        
-    }
-    
-    function load_filesystem() {
-
-    }*/
+    //let address = function () {
 
     static write_file_auto(data) {
         /* Automatically generates memory address and returns it */
@@ -84,16 +66,6 @@ export class saveload{
         saveload.address.write(new_address, data);
         return new_address;
     }
-
-
-    /*return {
-        supported: supported,
-        address: address,
-
-        write_file_auto: write_file_auto
-    };*/
-}; //();
-
-//}();
+}
 
 //saveload.supported = typeof(Storage) !== "undefined";

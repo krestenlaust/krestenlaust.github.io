@@ -1,19 +1,22 @@
-let taskmanager = function (){
+import {saveload} from "./saveload-system";
+import {filesystem} from "./filesystem";
 
+//let taskmanager = function (){
+export class taskmanager {
     /* Public variables */
-    const running_applications: string[] = [
+    static running_applications: string[] = [
 
     ];
-    const window_hierarchy = [
+    static window_hierarchy = [
 
     ];
 
     /* Public methods */
 
-    function start_application(appname: string) {
+    static start_application(appname: string) {
         // @ts-ignore
         $.get(`applications/${appname}/${appname}.html`, function (data) {
-            let pid: string = generate_pid();
+            let pid: string = taskmanager.generate_pid();
             document.getElementById("applications").innerHTML += data.replace(/00fff/g, pid);
 
             if (!document.getElementById(`${appname}-css`)){
@@ -27,8 +30,8 @@ let taskmanager = function (){
             apptopref[apptopref.length-1].setAttribute("id", "window-top-"+pid);
             // @ts-ignore
             make_draggable(document.getElementById("window-"+pid), document.getElementById("window-top-"+pid));
-            running_applications.push(pid);
-            window_hierarchy.unshift(pid);
+            taskmanager.running_applications.push(pid);
+            taskmanager.window_hierarchy.unshift(pid);
             // @ts-ignore
             taskbar.add_process(appname, pid);
 
@@ -37,38 +40,24 @@ let taskmanager = function (){
                 $.getScript('applications/'+appname+"/"+appname+".js");
             }
 
-            let onload = interpret_onload(pid, document.getElementById("window-"+pid));
+            let onload = taskmanager.interpret_onload(pid, document.getElementById("window-"+pid));
             if (onload !== null){
                 eval(onload);
             }
         });
     }
 
-    function kill_application(pid) {
+    static kill_application(pid) {
         document.getElementById("window-"+pid).parentElement.removeChild(document.getElementById("window-"+pid));
         //running_applications = running_applications.filter(e => e !== pid);
-        let pidIndex = running_applications.indexOf(pid);
+        let pidIndex = taskmanager.running_applications.indexOf(pid);
         if (pidIndex !== -1){
-            running_applications.splice(pidIndex, 1)
+            taskmanager.running_applications.splice(pidIndex, 1)
         }
-
-        //$('link[rel=stylesheet][href*="mystyle"]').remove();
     }
-    
-    function get_running_programs() {
-        return running_applications;
-    }
-
-    return {
-        //running_applications: running_applications,
-        start_application: start_application,
-        kill_application: kill_application,
-        get_running_programs: get_running_programs
-    };
-
     
     /* Private methods */
-    function generate_pid() { /* 10*10*6*6*6 */
+    static generate_pid() { /* 10*10*6*6*6 */
         let cur_pid: string;
         do {
             cur_pid = Math.floor(Math.random() * 10).toString() + Math.floor(Math.random() * 10).toString();
@@ -76,12 +65,12 @@ let taskmanager = function (){
             cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
             cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
         }
-        while (running_applications.includes(cur_pid));
+        while (taskmanager.running_applications.includes(cur_pid));
 
         return cur_pid;
     }
 
-    function interpret_onload(pid: string, element: HTMLElement){
+    static interpret_onload(pid: string, element: HTMLElement){
         let target_str = element.dataset.onload;
         let occurrences = (target_str.match(/\${/g) || []).length;
         let variables = [];
@@ -100,11 +89,10 @@ let taskmanager = function (){
             }
         }
 
-        for (var i=0; i<variables.length;i++){
-            var variablevalue = eval(variables[i]);
+        for (let i=0; i<variables.length;i++){
+            let variablevalue = eval(variables[i]);
             target_str = target_str.replace("${" + variables[i] + "}", variablevalue)
         }
         return target_str;
     }
-
-}();
+}

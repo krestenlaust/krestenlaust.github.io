@@ -1,17 +1,19 @@
-let taskbar = function () {
+import {windowmanager} from "../windowmanager";
 
-    function icon_click(element){
+class taskbar{
+
+    static icon_click(element: HTMLElement){
         console.log(element);
-        var pid = element.dataset.pid;
+        let pid: string = element.dataset.pid;
 
-        taskmanager.bring_front(pid);
+        windowmanager.bring_front(pid);
     }
 
-    function update_process(){
+    static update_process(){
         document.getElementById("taskbar-process")
     }
 
-    function add_process(programname: string, pid: string){
+    static add_process(programname: string, pid: string){
         /*
         if (document.getElementsByClassName(`taskbar-icon-${programname}`).length !== 0){
 
@@ -20,10 +22,4 @@ let taskbar = function () {
                 <img class="taskbar-icon-image" src="resources/Windows-icons/${programname}.png">
             </div>`;
     }
-
-    return{
-        update_process: update_process,
-        icon_click: icon_click,
-        add_process: add_process
-    }
-}();
+}

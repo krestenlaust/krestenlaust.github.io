@@ -1,30 +1,21 @@
-let native = function () {
-
-    const environmental_variables = {
-
-    };
-
-    const envObject = {
-        "working_directory": system.env.user_home,
-        "errorlevel": 0
-    };
-
-    function get(pid, key) {
-        if (environmental_variables[pid] === undefined){
-            environmental_variables[pid] = envObject;
+import { system } from "./System";
+export class native {
+    static get(pid, key) {
+        if (native._environmental_variables[pid] === undefined) {
+            native._environmental_variables[pid] = native._envObject;
         }
-        return environmental_variables[pid][key];
+        return native._environmental_variables[pid][key];
     }
-
-    function set(pid, key, value) {
-        if (environmental_variables[pid] === undefined){
-            environmental_variables[pid] = envObject;
+    static set(pid, key, value) {
+        if (native._environmental_variables[pid] === undefined) {
+            native._environmental_variables[pid] = native._envObject;
         }
-        environmental_variables[pid][key] = value;
+        native._environmental_variables[pid][key] = value;
     }
-
-    return {
-        get: get,
-        set: set
-    };
-}();
+}
+native._environmental_variables = { // Er vel det samme som er i System.ts.
+};
+native._envObject = {
+    "working_directory": system.env.user_home,
+    "errorlevel": 0
+};
