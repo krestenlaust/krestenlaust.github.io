@@ -1,15 +1,35 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "es2015",
-    "lib": [
-      "dom",
-      "es2015", // es2016
-      "es6",
-      "dom.iterable"
-    ]
+      // Tillad JS kode også
+      "allowJs": true,
+      // Nemmere interop med JS libraries
+      "esModuleInterop": true,
+      "target": "es6",
+      // Output JS kode til build/ mappen
+      "outDir": "build",
+      // https://www.typescriptlang.org/docs/handbook/module-resolution.html
+      "moduleResolution": "node",
+      // ^
+      "paths": {
+          "*": ["node_modules/*"]
+      },
+      // ^
+      "module": "commonjs",
+      // ^
+      "baseUrl": ".",
+      // nemmere debugging i browseren
+      "sourceMap": true,
+      "lib": [
+          "dom",
+          "es2015",
+          "es6",
+          "dom.iterable",
+          "esnext"
+      ]
   },
-  "exclude": [
-    "node_modules"
-  ]
+    "exclude": [
+        "node_modules"
+    ],
+    // compile alle filer under src/ 
+    "include": ["src/**/*"]
 }
