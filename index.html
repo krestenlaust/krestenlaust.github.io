@@ -9,7 +9,7 @@
 <body>
     <div id="taskbar">
         <div class="taskbar-icon windows-start-button">
-            <img class="taskbar-icon-image windows-start-button">
+            <img class="taskbar-icon-image windows-start-button" />
         </div>
         <div class="taskbar-icon">
             <img class="taskbar-icon-image" src="resources/searchicon.png">
@@ -64,21 +64,28 @@
 
 <script language="JavaScript" src="ext/jquery-3.3.1.min.js"></script>
 <script language="JavaScript" src="ext/lodash.min.js"></script>
-<script>var exports = {"__esModule": true};</script>
-<script src="index.js"></script>
-<script src="utility/System.js"></script>
-<script src="utility/desktop.js"></script>
+
+<script src="build/index.js"></script>
+
 <script src="utility/context-menu/contextMenuLib.js"></script>
 <script src="utility/context-menu/context-menu-base.js"></script>
-<script src="utility/saveload-system.js"></script>
-<script src="utility/native.js"></script>
-<script src="utility/windowmanager.js"></script>
-<script src="utility/filesystem.js"></script>
+
+<script src="build/utility/System.js"></script>
+<script src="build/utility/desktop.js"></script>
+<script src="build/utility/saveload-system.js"></script>
+<script src="build/utility/native.js"></script>
+<script src="build/utility/windowmanager.js"></script>
+<script src="build/utility/filesystem.js"></script>
+
+
 <script src="applications/cmd/cmd.js"></script>
-<script language="javascript" src="ext/lz-string.min.js"></script>
-<script src="utility/taskmanager.js"></script>
-<script src="utility/taskbar/taskbar.js"></script>
-<script>desktop.refresh_desktop()</script>
+<script src="ext/lz-string.min.js"></script>
+<script src="build/utility/taskmanager.js"></script>
+<script src="build/utility/taskbar/taskbar.js"></script>
+
+<script>
+    desktop.refresh_desktop()
+</script>
 
 
 <!--<script src="applications/notepad/notepad.js"></script>-->

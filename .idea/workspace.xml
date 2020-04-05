@@ -2,238 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15275d0b-836b-40ec-8006-7f695f22777c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/utility/System.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/kress.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/kress.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/typescript-compiler.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/cmd/cmd.js" beforeDir="false" afterPath="$PROJECT_DIR$/applications/cmd/cmd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Programmer/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Programmer/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lectio.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lectioplus.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utility/System.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/desktop.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/desktop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/filesystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/filesystem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/filesystem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utility/filesystem.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/System.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/System.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/system.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/desktop.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/desktop.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/desktop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/desktop.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/filesystem.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/filesystem.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/filesystem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/filesystem.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utility/native.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/saveload-system.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/saveload-system.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/saveload-system.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utility/saveload-system.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskbar/taskbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/taskbar/taskbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskbar/taskbar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utility/taskbar/taskbar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskmanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/taskmanager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskmanager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utility/taskmanager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/windowmanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/windowmanager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/native.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/native.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/native.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/saveload-system.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/saveload-system.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/saveload-system.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/saveload-system.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/taskbar/taskbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/taskbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/taskbar/taskbar.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/taskbar.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/taskbar/taskbar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/taskbar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/taskmanager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/taskmanager.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/taskmanager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskmanager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/windowmanager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/windowmanager.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/windowmanager.ts" beforeDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-596494269">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="css" value="1" />
-          <entry key="html" value="2" />
-          <entry key="js" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CSS" value="1" />
-          <entry key="HTML" value="2" />
-          <entry key="JavaScript" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="css" value="694" />
-          <entry key="html" value="458" />
-          <entry key="js" value="3483" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="CSS" value="694" />
-          <entry key="HTML" value="458" />
-          <entry key="JavaScript" value="3483" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="2045960362">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="56" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.10" value="4" />
-          <entry key="project.open.time.11" value="4" />
-          <entry key="project.open.time.12" value="2" />
-          <entry key="project.open.time.13" value="1" />
-          <entry key="project.open.time.15" value="1" />
-          <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.24" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.5" value="4" />
-          <entry key="project.open.time.6" value="5" />
-          <entry key="project.open.time.7" value="10" />
-          <entry key="project.open.time.8" value="13" />
-          <entry key="project.open.time.9" value="7" />
-          <entry key="project.opened" value="56" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="css" value="6267" />
-          <entry key="html" value="4082" />
-          <entry key="js" value="32177" />
-          <entry key="json" value="119" />
-          <entry key="md" value="162" />
-          <entry key="scss" value="11" />
-          <entry key="ts" value="1863" />
-          <entry key="txt" value="208" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="CSS" value="6267" />
-          <entry key="HTML" value="4093" />
-          <entry key="JavaScript" value="32166" />
-          <entry key="Markdown" value="162" />
-          <entry key="PLAIN_TEXT" value="208" />
-          <entry key="SCSS" value="11" />
-          <entry key="TypeScript" value="1863" />
-          <entry key="tsconfig" value="119" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="bat" value="1" />
-          <entry key="css" value="22" />
-          <entry key="html" value="29" />
-          <entry key="js" value="81" />
-          <entry key="json" value="3" />
-          <entry key="map" value="1" />
-          <entry key="md" value="1" />
-          <entry key="ts" value="16" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Bat" value="1" />
-          <entry key="CSS" value="22" />
-          <entry key="HTML" value="29" />
-          <entry key="JavaScript" value="81" />
-          <entry key="Markdown" value="1" />
-          <entry key="SourceMap" value="1" />
-          <entry key="TypeScript" value="16" />
-          <entry key="tsconfig" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.js.language.service.starts">
-        <counts>
-          <entry key="TypeScriptServerServiceImpl" value="4" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tsconfig.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utility/windowmanager.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-525">
-              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utility/native.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="80" selection-start-line="4" selection-start-column="80" selection-end-line="4" selection-end-column="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
-              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utility/System.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider editor-type-id="Gfm" />
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="119">
-                <caret line="7" column="54" lean-forward="true" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utility/filesystem.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-              <folding>
-                <element signature="e#222#1217#0" />
-                <element signature="e#1243#1310#0" />
-                <element signature="e#1333#1368#0" />
-                <element signature="n#!!block;n#isPathAbsolute#0;n#filesystem#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/applications/cmd/cmd.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="2" selection-start-column="2" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -242,6 +48,7 @@
         <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="tsconfig.json" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -286,71 +93,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/cssint.html" />
-        <option value="$PROJECT_DIR$/cmd.js" />
-        <option value="$PROJECT_DIR$/utility/folderstructure.js" />
-        <option value="$PROJECT_DIR$/applications/command prompt/cmd.js" />
-        <option value="$PROJECT_DIR$/utility/context-menu.css" />
-        <option value="$PROJECT_DIR$/utility/context-menu/context-menu.scss" />
-        <option value="$PROJECT_DIR$/utility/context-menu/context-menu.css" />
-        <option value="$PROJECT_DIR$/applications/command prompt/cmd.html" />
-        <option value="$PROJECT_DIR$/applications/command prompt/cmd.css" />
-        <option value="$PROJECT_DIR$/utility/joblist.js" />
-        <option value="$PROJECT_DIR$/applications/notepad/notepad.css" />
-        <option value="$PROJECT_DIR$/utility/context-menu/context-menu.js" />
-        <option value="$PROJECT_DIR$/applications/cmd/cmd.css" />
-        <option value="$PROJECT_DIR$/applications/cmd/cmd.html" />
-        <option value="$PROJECT_DIR$/applications/notepad/notepad.html" />
-        <option value="$PROJECT_DIR$/utility/context-menu/contextMenu.css" />
-        <option value="$PROJECT_DIR$/applications/notepad/notepad.js" />
-        <option value="$PROJECT_DIR$/applications/explorer/explorer.css" />
-        <option value="$PROJECT_DIR$/utility/taskbar/taskbar.js" />
-        <option value="$PROJECT_DIR$/utility/desktop.css" />
-        <option value="$PROJECT_DIR$/index.css" />
-        <option value="$PROJECT_DIR$/domaincontroller.js" />
-        <option value="$PROJECT_DIR$/github.html" />
-        <option value="$PROJECT_DIR$/utility/context-menu/contextMenuLib.js" />
-        <option value="$PROJECT_DIR$/applications/explorer/explorer.html" />
-        <option value="$PROJECT_DIR$/applications/explorer/explorer.js" />
-        <option value="$PROJECT_DIR$/utility/saveload-system.js" />
-        <option value="$PROJECT_DIR$/utility/context-menu/context-menu-base.js" />
-        <option value="$PROJECT_DIR$/utility/filesystem.js" />
-        <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/utility/desktop.js" />
-        <option value="$PROJECT_DIR$/utility/taskmanager.js" />
-        <option value="$PROJECT_DIR$/index.ts" />
-        <option value="$PROJECT_DIR$/utility/desktop.ts" />
-        <option value="$PROJECT_DIR$/utility/windowmanager.js" />
-        <option value="$PROJECT_DIR$/utility/saveload-system.ts" />
-        <option value="$PROJECT_DIR$/utility/taskmanager.ts" />
-        <option value="$PROJECT_DIR$/utility/taskbar/taskbar.ts" />
-        <option value="$PROJECT_DIR$/utility/System.js" />
-        <option value="$PROJECT_DIR$/utility/native.js" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/applications/cmd/cmd.js" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/utility/native.ts" />
-        <option value="$PROJECT_DIR$/tsconfig.json" />
-        <option value="$PROJECT_DIR$/utility/System.ts" />
-        <option value="$PROJECT_DIR$/utility/filesystem.ts" />
-        <option value="$PROJECT_DIR$/utility/windowmanager.ts" />
-      </list>
-    </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
-  </component>
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="375" />
@@ -358,6 +105,7 @@
     <option name="width" value="1205" />
     <option name="height" value="835" />
   </component>
+  <component name="ProjectId" id="1XrcIhFdIi2hmNY8I2720G3pLtM" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -375,68 +123,10 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="kres0345.github.io website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kres0345.github.io website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="applications" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kres0345.github.io website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="applications" type="462c0819:PsiDirectoryNode" />
-              <item name="cmd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kres0345.github.io website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="ext" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kres0345.github.io website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kres0345.github.io website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="utility" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kres0345.github.io website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="utility" type="462c0819:PsiDirectoryNode" />
-              <item name="context-menu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kres0345.github.io website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="utility" type="462c0819:PsiDirectoryNode" />
-              <item name="taskbar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kres0345.github.io website" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kres0345.github.io" type="462c0819:PsiDirectoryNode" />
-              <item name="utility" type="462c0819:PsiDirectoryNode" />
-              <item name="filesystem.ts" type="620a8d5e:NestingTreeNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -444,33 +134,30 @@
     <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Midttrafik-Radar" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Users\kress\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\193.6494.34\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="typescript-compiler-editor-notification" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\resources\Windows-icons" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\src\utility" />
       <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\utility\context-menu" />
       <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\applications\command prompt" />
       <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\utility" />
       <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\resources\windowsicons" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\resources\Windows-icons" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -540,6 +227,11 @@
       <workItem from="1580829061350" duration="3121000" />
       <workItem from="1581149449734" duration="1800000" />
       <workItem from="1581355189835" duration="626000" />
+      <workItem from="1581408126378" duration="38000" />
+      <workItem from="1581410345554" duration="816000" />
+      <workItem from="1581627826164" duration="5059000" />
+      <workItem from="1581807581279" duration="353000" />
+      <workItem from="1586065943962" duration="2423000" />
     </task>
     <task id="LOCAL-00001" summary="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?">
       <created>1546041435632</created>
@@ -572,319 +264,12 @@
     <option name="localTasksCounter" value="5" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242697000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21543624" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3266762" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3281027" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32681563" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286119" />
-      <window_info anchor="bottom" id="TypeScript" order="11" weight="0.3282123" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="GfmBrowser" order="3" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/utility/desktop.js" />
-        <option value="$PROJECT_DIR$/utility/filesystem.js" />
-        <option value="$PROJECT_DIR$/utility/saveload-system.js" />
-        <option value="$PROJECT_DIR$/utility/taskmanager.js" />
-        <option value="$PROJECT_DIR$/utility/taskbar/taskbar.js" />
-        <option value="$PROJECT_DIR$/utility/windowmanager.js" />
-        <option value="$PROJECT_DIR$/index.js.map" />
-        <option value="$PROJECT_DIR$/utility/taskbar/taskbar.js.map" />
-        <option value="$PROJECT_DIR$/utility/filesystem.js.map" />
-        <option value="$PROJECT_DIR$/utility/saveload-system.js.map" />
-        <option value="$PROJECT_DIR$/utility/windowmanager.js.map" />
-        <option value="$PROJECT_DIR$/utility/taskmanager.js.map" />
-        <option value="$PROJECT_DIR$/utility/desktop.js.map" />
-        <option value="$PROJECT_DIR$/utility/System.js.map" />
-        <option value="$PROJECT_DIR$/utility/System.js" />
-        <option value="$PROJECT_DIR$/utility/native.js.map" />
-        <option value="$PROJECT_DIR$/utility/native.js" />
-      </list>
-    </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?" />
     <MESSAGE value="Restructering, yet again." />
     <option name="LAST_COMMIT_MESSAGE" value="Restructering, yet again." />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cssint.html" />
-    <entry file="file://$PROJECT_DIR$/utility/context-menu/context-menu.css" />
-    <entry file="file://$PROJECT_DIR$/applications/notepad/notepad.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/applications/cmd/cmd.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/context-menu/contextMenu.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="79" column="21" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/applications/explorer/explorer.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/applications/notepad/notepad.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="59" selection-start-column="59" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/desktop.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domaincontroller.js" />
-    <entry file="file://$PROJECT_DIR$/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/applications/explorer/explorer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/applications/explorer/explorer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/applications/notepad/notepad.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ext/lz-string.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dev.bat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/github.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="69" lean-forward="true" selection-start-column="69" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/context-menu/contextMenuLib.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16192">
-          <caret line="710" column="53" selection-start-line="710" selection-start-column="53" selection-end-line="710" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/applications/cmd/cmd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="1150" column="4" selection-start-line="1150" selection-start-column="4" selection-end-line="1150" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1058">
-          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/context-menu/context-menu-base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/desktop.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4554" />
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es2016.array.include.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="2988" column="4" selection-start-line="2988" selection-start-column="4" selection-end-line="2988" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/desktop.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5313">
-          <caret line="231" column="1" selection-start-line="231" selection-start-column="1" selection-end-line="231" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/saveload-system.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/taskmanager.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/taskbar/taskbar.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/desktop.js.map">
-      <provider editor-type-id="sourcemapFileViewerProvider" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lectioplus.html" />
-    <entry file="file://$PROJECT_DIR$/lectio.html" />
-    <entry file="file://$PROJECT_DIR$/utility/filesystem.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/native.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="80" selection-start-line="4" selection-start-column="80" selection-end-line="4" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/applications/cmd/cmd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" selection-start-column="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/System.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/filesystem.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#222#1217#0" />
-            <element signature="e#1243#1310#0" />
-            <element signature="e#1333#1368#0" />
-            <element signature="n#!!block;n#isPathAbsolute#0;n#filesystem#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utility/windowmanager.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="Gfm" />
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="119">
-            <caret line="7" column="54" lean-forward="true" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

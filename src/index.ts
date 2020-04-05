@@ -1,5 +1,4 @@
 
-
 /* Windows Peek */
 let windows_peek = function(){
     let mouse_hover_timeout;
@@ -51,11 +50,23 @@ let windows_peek = function(){
         peek_opacity
     }
 }();
-windows_peek.__init__();
 
+let windows_start = function () {
+    function start_click(click) {
+        console.log(click);
+    }
+
+    function __init__() {
+        document.getElementsByClassName("taskbar-icon windows-start-button")[0].addEventListener("click", start_click);
+    }
+    return{
+        __init__: __init__
+    }
+}();
+windows_peek.__init__();
+windows_start.__init__();
 
 function close_window(window){
-    // @ts-ignore
     taskmanager.kill_application(window.parentElement.parentElement.getAttribute("data-pid"));
 }
 function minimize_window(window){

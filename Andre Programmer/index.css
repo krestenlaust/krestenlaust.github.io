@@ -1,0 +1,12 @@
+body {
+	background-color: black;
+}
+#program_liste{
+	width: 90%;
+	float: right;
+	padding-right: 10%;
+}
+h1, p{
+	color: white;
+	font-family: sans-serif;
+}
