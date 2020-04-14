@@ -7,12 +7,30 @@
     <!--<script async defer src="https://buttons.github.io/buttons.js"></script>-->
 </head>
 <body>
+    <div class="startmenu">
+        <div class="startmenu-sidebar">
+            <div class="sidebar-row" style="top: 0">
+                <img class="startmenu-sidebar-icon hamburgericon" src="resources/hamburger_icon.svg.png" />
+                <p class="sidebar-text">START</p>
+            </div>
+            <div class="sidebar-row">
+                <img class="startmenu-sidebar-icon profilepicture" src="resources/profile_picture.png" />
+                <p class="sidebar-text">Kresten Sckerl</p>
+            </div>
+        </div>
+        <div class="startmenu-programview">
+
+        </div>
+        <div class="startmenu-livetiles">
+
+        </div>
+    </div>
     <div id="taskbar">
-        <div class="taskbar-icon windows-start-button">
-            <img class="taskbar-icon-image windows-start-button" />
+        <div class="taskbar-icon windows-start-button" id="windows-startbutton">
+            <img class="taskbar-icon-image windows-start-button" alt="Start" />
         </div>
         <div class="taskbar-icon">
-            <img class="taskbar-icon-image" src="resources/searchicon.png">
+            <img class="taskbar-icon-image" src="resources/searchicon.png" alt="Type here to search">
         </div>
         <div id="taskbar-misc">
             <button id="windows-peek"></button>
@@ -62,8 +80,8 @@
 
 </body>
 
-<script language="JavaScript" src="ext/jquery-3.3.1.min.js"></script>
-<script language="JavaScript" src="ext/lodash.min.js"></script>
+<script src="ext/jquery-3.3.1.min.js"></script>
+<script src="ext/lodash.min.js"></script>
 
 <script src="build/index.js"></script>
 

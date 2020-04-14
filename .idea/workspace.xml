@@ -2,39 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15275d0b-836b-40ec-8006-7f695f22777c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/typescript-compiler.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programmer/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programmer/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/desktop.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/desktop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/desktop.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/desktop.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/System.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/System.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/System.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/system.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/desktop.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/desktop.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/desktop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/desktop.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/filesystem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/filesystem.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/filesystem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/filesystem.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/native.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/native.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/native.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/native.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/saveload-system.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/saveload-system.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/saveload-system.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/saveload-system.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskbar/taskbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/taskbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskbar/taskbar.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/taskbar.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskbar/taskbar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/taskbar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskmanager.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskmanager.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/taskmanager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskmanager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/windowmanager.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/windowmanager.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility/windowmanager.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/desktop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/desktop.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,43 +27,6 @@
         <option value="TypeScript File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>focus</find>
-      <find>cmd</find>
-      <find>cursor</find>
-      <find>fun</find>
-      <find>fun =</find>
-      <find>disable</find>
-      <find>iw-mDisable</find>
-      <find>name</find>
-      <find>..</find>
-      <find>console.log</find>
-      <find>change_di</find>
-      <find>window_hierarchy</find>
-      <find>running_applications</find>
-      <find>env</find>
-      <find>get_prompt</find>
-      <find>cd</find>
-      <find>filesystem.</find>
-      <find>cd_drive</find>
-      <find>make_</find>
-      <find>make_dire</find>
-      <find>icons</find>
-      <find>½</find>
-      <find>refresh</find>
-      <find>generate_shortcut</find>
-      <find>selection</find>
-      <find>keyboardSelectionIndex</find>
-      <find>desktop_selection_properties.keyboardSelectionIndex</find>
-      <find>desktop_selection_properties</find>
-      <find>selectionProperties</find>
-      <find>ZINDEX_WINDOW_MIN</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>selectionProperties</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -231,7 +170,7 @@
       <workItem from="1581410345554" duration="816000" />
       <workItem from="1581627826164" duration="5059000" />
       <workItem from="1581807581279" duration="353000" />
-      <workItem from="1586065943962" duration="2423000" />
+      <workItem from="1586065943962" duration="6460000" />
     </task>
     <task id="LOCAL-00001" summary="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?">
       <created>1546041435632</created>
@@ -271,5 +210,19 @@
     <MESSAGE value="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?" />
     <MESSAGE value="Restructering, yet again." />
     <option name="LAST_COMMIT_MESSAGE" value="Restructering, yet again." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="243" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586070002004">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="243" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834/1920.0.1088.584@0.0.1536.834" timestamp="1586070002004" />
+    <state x="299" y="126" key="SettingsEditor" timestamp="1586070103887">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="299" y="126" key="SettingsEditor/0.0.1536.834/1920.0.1088.584@0.0.1536.834" timestamp="1586070103887" />
+    <state x="451" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586070081004">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="451" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834/1920.0.1088.584@0.0.1536.834" timestamp="1586070081004" />
   </component>
 </project>

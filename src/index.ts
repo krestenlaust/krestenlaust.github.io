@@ -45,22 +45,36 @@ let windows_peek = function(){
         document.getElementById("windows-peek").addEventListener("click", peek_click);
     }
 
-    return{
+    return {
         __init__: __init__,
         peek_opacity
     }
 }();
 
 let windows_start = function () {
-    function start_click(click) {
-        console.log(click);
+    let is_open = false;
+    
+    function refresh_menu_state() {
+        let elem = document.getElementsByClassName("startmenu")[0];
+        if (is_open){
+            elem.setAttribute("data-expanded", "1");
+        }else{
+            elem.setAttribute("data-expanded", "");
+        }
+    }
+
+    function start_click() {
+        is_open = !is_open;
+        refresh_menu_state();
     }
 
     function __init__() {
-        document.getElementsByClassName("taskbar-icon windows-start-button")[0].addEventListener("click", start_click);
+        document.getElementById("windows-startbutton").addEventListener("click", start_click);
     }
     return{
-        __init__: __init__
+        __init__: __init__,
+        is_open: is_open,
+        refresh_menu_state: refresh_menu_state
     }
 }();
 windows_peek.__init__();

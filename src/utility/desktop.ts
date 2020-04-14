@@ -93,6 +93,12 @@ function update_selected_icons() {
 }
 
 function desktop_click(e){
+    console.log("Desktop click");
+    if (windows_start.is_open){
+        windows_start.is_open = false;
+        windows_start.refresh_menu_state();
+    }
+
     let objectDiv: HTMLElement;
     switch (e.target.tagName) {
         case "IMG":

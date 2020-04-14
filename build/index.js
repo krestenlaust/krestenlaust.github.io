@@ -42,9 +42,33 @@ let windows_peek = function () {
         peek_opacity
     };
 }();
+let windows_start = function () {
+    let is_open = false;
+    function refresh_menu_state() {
+        let elem = document.getElementsByClassName("startmenu")[0];
+        if (is_open) {
+            elem.setAttribute("data-expanded", "1");
+        }
+        else {
+            elem.setAttribute("data-expanded", "");
+        }
+    }
+    function start_click() {
+        is_open = !is_open;
+        refresh_menu_state();
+    }
+    function __init__() {
+        document.getElementById("windows-startbutton").addEventListener("click", start_click);
+    }
+    return {
+        __init__: __init__,
+        is_open: is_open,
+        refresh_menu_state: refresh_menu_state
+    };
+}();
 windows_peek.__init__();
+windows_start.__init__();
 function close_window(window) {
-    // @ts-ignore
     taskmanager.kill_application(window.parentElement.parentElement.getAttribute("data-pid"));
 }
 function minimize_window(window) {

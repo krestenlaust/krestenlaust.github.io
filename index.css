@@ -152,6 +152,52 @@ img.windows-start-button{
 div.windows-start-button:hover > img.windows-start-button{
     content: url("resources/start-button-blue.png");
 }
+.startmenu{
+    float: left;
+    bottom: 0;
+    position: absolute;
+    width: 650px;
+    background-color: #CDCDCD;
+    height: 0;
+    overflow: hidden;
+    z-index: 90;
+
+    transition-property: height;
+    transition-duration: 70ms;
+}
+.startmenu[data-expanded="1"]{
+    height: 500px;
+
+    transition-property: height;
+    transition-duration: 70ms;
+}
+.startmenu-sidebar-icon{
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+}
+.startmenu-sidebar{
+    float: left;
+    width: 30px;
+    height: 100%;
+}
+.startmenu-sidebar:hover{
+    width: 40%;
+    border-right: #1A222A solid 2px;
+
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+    transition-delay: 200ms;
+}
+.startmenu-sidebar:hover .sidebar-text{
+    display: block;
+    overflow: hidden;
+}
+.sidebar-text{
+    display: none;
+    float: right;
+}
+
 #taskbar-process{
     height: inherit;
 }
