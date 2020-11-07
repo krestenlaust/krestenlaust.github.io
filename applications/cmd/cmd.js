@@ -13,7 +13,7 @@ let cmd = function () { //_namespace
     
     function change_directory(pid, path) {
         if (filesystem.validate_directory(path)){
-            native.set(pid, "working_directory", path);
+            Native.set(pid, "working_directory", path);
             //local_env.cd = path;
             return true;
         }else{
@@ -22,11 +22,11 @@ let cmd = function () { //_namespace
     }
 
     function get_prompt(pid){
-        return prompt_var.replace("%cd%", native.get(pid, "working_directory"));
+        return prompt_var.replace("%cd%", Native.get(pid, "working_directory"));
     }
 
     function exit(pid, args = []) {
-        taskmanager.kill_application(pid);
+        TaskManager.killApplication(pid);
     }
 
     // Maybe look into implementing some sort of stdout and some sort of spool to update the command-line window
@@ -74,7 +74,7 @@ let cmd = function () { //_namespace
         let status_code = 0;
         console.log(args);
         if (args.length >= 1){
-            console.log(filesystem.make_directory(args[0], native.get(pid, "working_directory")));
+            console.log(filesystem.makeDirectory(args[0], Native.get(pid, "working_directory")));
             echo(pid, [""]);
         } else {
             status_code = 1;
@@ -90,12 +90,12 @@ let cmd = function () { //_namespace
 
         if (args.length === 0){
 
-            echo(pid, [native.get(pid, "working_directory")]);
+            echo(pid, [Native.get(pid, "working_directory")]);
 
         }else{
             var target_path;
             if (args[0] === ".."){
-                target_path = native.get(pid, "working_directory").split("\\");
+                target_path = Native.get(pid, "working_directory").split("\\");
                 if (target_path.length !== 1){
                     target_path.pop();
                 }
@@ -122,12 +122,12 @@ let cmd = function () { //_namespace
 
         var path;
         if (args.length === 0){
-            path = native.get(pid, "working_directory")
+            path = Native.get(pid, "working_directory")
         }else{
             path = args[0];
         }
 
-        var cur_dir = filesystem.get_directory(path);
+        var cur_dir = filesystem.getDirectory(path);
         console.log(cur_dir);
         var output = [];
         output[0] = "";
@@ -217,11 +217,11 @@ let cmd = function () { //_namespace
 
         let path = args[0];
         if (!filesystem.isPathAbsolute(path)){
-            path = native.get(pid, "working_directory") + "\\" + path;
+            path = Native.get(pid, "working_directory") + "\\" + path;
         }
 
         // Echo file contents
-        let file_contents = filesystem.read_file(path);
+        let file_contents = filesystem.readFile(path);
         if (file_contents === -1) {
             echo(pid, ["Could not read file."]);
 
@@ -260,7 +260,7 @@ let cmd = function () { //_namespace
 
     /* Private */
     function set_errorlevel(pid, errorcode){
-        native.set(pid, "errorlevel", errorcode)
+        Native.set(pid, "errorlevel", errorcode)
     }
     
     let utils = function() { /* Tab completion and other that should not be accessible from cmd, but from js*/

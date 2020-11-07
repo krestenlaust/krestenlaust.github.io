@@ -1,23 +1,23 @@
 //import {system} from "./system";
 //export class native{
-let native = function () {
-    let _environmental_variables = { // Er vel det samme som er i System.ts.
+let Native = function () {
+    let _environmentalVariables = { // Er vel det samme som er i System.ts.
     };
     let _envObject = {
         "working_directory": system.env.user_home,
         "errorlevel": 0
     };
     function get(pid, key) {
-        if (_environmental_variables[pid] === undefined) {
-            _environmental_variables[pid] = _envObject;
+        if (_environmentalVariables[pid] === undefined) {
+            _environmentalVariables[pid] = _envObject;
         }
-        return _environmental_variables[pid][key];
+        return _environmentalVariables[pid][key];
     }
     function set(pid, key, value) {
-        if (_environmental_variables[pid] === undefined) {
-            _environmental_variables[pid] = _envObject;
+        if (_environmentalVariables[pid] === undefined) {
+            _environmentalVariables[pid] = _envObject;
         }
-        _environmental_variables[pid][key] = value;
+        _environmentalVariables[pid][key] = value;
     }
     return {
         get: get,

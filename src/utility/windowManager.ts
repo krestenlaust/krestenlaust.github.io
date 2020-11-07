@@ -1,20 +1,20 @@
 
 //export class windowmanager{
-let windowmanager = function(){
+let WindowManager = function(){
     const ZINDEX_WINDOW_MIN = 9;
     const ZINDEX_WINDOW_MAX = 5000;
 
-    let window_hierarchy = [
+    let windowHierarchy = [
 
     ];
     let maximized_windows = [
 
     ];
 
-    function minimize_window(pid){
+    function minimizeWindow(pid){
 
     }
-    function maximize_window(pid) {
+    function maximizeWindow(pid) {
         let window = document.getElementById(`window-${pid}`);
         window.setAttribute("data-top", window.style.top);
         window.setAttribute("data-left", window.style.left);
@@ -22,7 +22,7 @@ let windowmanager = function(){
         // Add window to fullscreen list
         maximized_windows.push(pid);
     }
-    function refresh_maximized_windows(){
+    function refreshMaximizedWindows(){
         for (let i=0; i < maximized_windows.length; i++){
             let window = document.getElementById(`window-${maximized_windows[i]}`);
             
@@ -30,7 +30,7 @@ let windowmanager = function(){
             window.style.height = document.body.clientHeight.toString();
         }
     }
-    function restore_window(pid: string) {
+    function restoreWindow(pid: string) {
         let window = document.getElementById(`window-${pid}`);
         let top = window.getAttribute("data-top");
         let left = window.getAttribute("data-left");
@@ -47,13 +47,13 @@ let windowmanager = function(){
         while(index !== -1);
     }
 
-    function bring_front(pid: string){
+    function bringFront(pid: string){
         console.log("Brought to front");
     }
 
     function update_window_hierarchy() {
         /*
-        for (i = 0; i < window_hierarchy.length; i++) {
+        for (i = 0; i < windowHierarchy.length; i++) {
             if ((i + ZINDEX_WINDOW_MIN) % 2 === 0) {
                 console.log(i);
             }
@@ -63,10 +63,11 @@ let windowmanager = function(){
     /* Privates */
 
     return {
-        minimize_window: minimize_window,
-        maximize_window: maximize_window,
-        restore_window: restore_window,
-        bring_front: bring_front
+        minimizeWindow: minimizeWindow,
+        maximizeWindow: maximizeWindow,
+        restoreWindow: restoreWindow,
+        bringFront: bringFront,
+        windowHierarchy: windowHierarchy
     };
 }();
 

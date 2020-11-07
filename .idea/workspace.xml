@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="15275d0b-836b-40ec-8006-7f695f22777c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applications/cmd/cmd.js" beforeDir="false" afterPath="$PROJECT_DIR$/applications/cmd/cmd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bio.kresten" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/utility/desktop.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/desktop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/utility/desktop.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/desktop.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/filesystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/filesystem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/filesystem.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/filesystem.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/native.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/native.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/native.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/native.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/saveload-system.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/saveload-system.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/saveload-system.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/saveload-system.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/taskbar/taskbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskbar/taskbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/taskbar/taskbar.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskbar/taskbar.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/taskmanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskmanager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/taskmanager.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskmanager.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/windowmanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/windowmanager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/windowmanager.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/windowmanager.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utility/desktop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/desktop.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/filesystem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/filesystem.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/native.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/native.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/saveload-system.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/saveload-system.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/taskbar/taskbar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/taskbar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/taskmanager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/windowmanager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/windowManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utility/context-menu/context-menu-base.js" beforeDir="false" afterPath="$PROJECT_DIR$/utility/context-menu/context-menu-base.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +75,6 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="375" />
-    <option name="y" value="90" />
-    <option name="width" value="1205" />
-    <option name="height" value="835" />
-  </component>
   <component name="ProjectId" id="1XrcIhFdIi2hmNY8I2720G3pLtM" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -64,14 +95,14 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jsx.switch.disabled" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Midttrafik-Radar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -82,11 +113,15 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
-    <property name="ts.external.directory.path" value="C:\Users\kress\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\193.6494.34\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="ts.external.directory.path" value="C:\Users\kress\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\202.7660.23\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="typescript-compiler-editor-notification" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\resources\Windows-icons" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\src\utility" />
       <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\utility\context-menu" />
@@ -94,10 +129,8 @@
       <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\utility" />
       <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\resources\windowsicons" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\kress\Documents\GitHub\kres0345.github.io\resources\Windows-icons" />
-    </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -171,6 +204,7 @@
       <workItem from="1581627826164" duration="5059000" />
       <workItem from="1581807581279" duration="353000" />
       <workItem from="1586065943962" duration="6460000" />
+      <workItem from="1604781702021" duration="3884000" />
     </task>
     <task id="LOCAL-00001" summary="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?">
       <created>1546041435632</created>
@@ -204,7 +238,24 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/utility/taskbar/taskbar.js.map" />
+        <option value="$PROJECT_DIR$/src/utility/taskbar/taskbar.js" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?" />
@@ -212,17 +263,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="Restructering, yet again." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="243" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586070002004">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1604784245723">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="243" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834/1920.0.1088.584@0.0.1536.834" timestamp="1586070002004" />
-    <state x="299" y="126" key="SettingsEditor" timestamp="1586070103887">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="299" y="126" key="SettingsEditor/0.0.1536.834/1920.0.1088.584@0.0.1536.834" timestamp="1586070103887" />
-    <state x="451" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1586070081004">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="451" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834/1920.0.1088.584@0.0.1536.834" timestamp="1586070081004" />
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824/1920.0.1093.574@0.0.1536.824" timestamp="1604784245723" />
   </component>
 </project>

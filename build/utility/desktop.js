@@ -1,6 +1,6 @@
-const doubleclick_interval = 500; //Windows standard according to https://ux.stackexchange.com/a/40366
-const gridWidth = 8;
-const gridHeight = 4;
+const DOUBLE_CLICK_INTERVAL = 500; //Windows standard according to https://ux.stackexchange.com/a/40366
+const GRID_WIDTH = 8;
+const GRID_HEIGHT = 4;
 const gridicons = {
     0: {
         "type": "shortcut",
@@ -21,46 +21,46 @@ const gridicons = {
         "name": "Notepad"
     }
 };
-let doubleclick_pending = false;
-let desktop = function () {
-    let icon_array = [];
-    function generate_shortcut(icon_href, icon_text, icon_launch, index) {
+let doubleClickPending = false;
+let Desktop = function () {
+    let iconArray = [];
+    function generateShortcut(icon_href, icon_text, icon_launch, index) {
         return `<div ondrop="desktop_drop(event)" ondragover="desktop_dragOver(event)" class="icon-parent"><div class="space desktop-icon" data-index="${index}" data-launch="${icon_launch}" onclick="icon_click(this)" draggable="true" ondragstart="desktop_dragStart(event)"><img class="desktop-icon-image" src="${icon_href}"><p class="desktop-icon-text">${icon_text}</p></div></div>`;
     }
-    function empty_icon(index) {
+    function emptyIcon(index) {
         return `<div ondrop="desktop_drop(event)" ondragover="desktop_dragOver(event)" class="icon-parent"><div class="space" data-index="${index}"></div></div>`;
     }
-    function refresh_desktop() {
+    function refreshDesktop() {
         // @ts-ignore
-        let desktop_directory = filesystem.get_directory("C:\\Users\\kress\\desktop");
+        let desktopDirectory = filesystem.getDirectory("C:\\Users\\kress\\desktop");
         let icons = [];
         document.getElementById("desktop").innerHTML = "";
-        for (let i = 0; i < gridHeight * gridWidth; i++) {
+        for (let i = 0; i < GRID_HEIGHT * GRID_WIDTH; i++) {
             let current_icon = gridicons[i];
             if (current_icon === undefined) {
-                document.getElementById("desktop").innerHTML += empty_icon(i);
+                document.getElementById("desktop").innerHTML += emptyIcon(i);
             }
             else if (current_icon["type"] === "shortcut") {
-                document.getElementById("desktop").innerHTML += generate_shortcut(current_icon["icon"], current_icon["name"], current_icon["launch"], i);
+                document.getElementById("desktop").innerHTML += generateShortcut(current_icon["icon"], current_icon["name"], current_icon["launch"], i);
             }
         }
     }
     return {
-        refresh_desktop: refresh_desktop
+        refreshDesktop: refreshDesktop
     };
 }();
 function icon_click(element) {
-    if (doubleclick_pending) {
+    if (doubleClickPending) {
         eval(element.dataset.launch);
-        doubleclick_pending = false;
+        doubleClickPending = false;
     }
-    doubleclick_pending = true;
+    doubleClickPending = true;
     doubleclick_timer_start();
 }
 // @ts-ignore
 let doubleclick_timer_start = _.debounce(function () {
-    doubleclick_pending = false;
-}, doubleclick_interval);
+    doubleClickPending = false;
+}, DOUBLE_CLICK_INTERVAL);
 let selectionProperties = {
     selected_icons: [],
     keyboardSelectionIndex: 0
@@ -81,9 +81,9 @@ function update_selected_icons() {
 }
 function desktop_click(e) {
     console.log("Desktop click");
-    if (windows_start.is_open) {
-        windows_start.is_open = false;
-        windows_start.refresh_menu_state();
+    if (WindowsStart.isOpen) {
+        WindowsStart.isOpen = false;
+        WindowsStart.refresh_menu_state();
     }
     let objectDiv;
     switch (e.target.tagName) {
@@ -138,7 +138,7 @@ function desktop_drop(e) {
             if (e.dataTransfer.items[i].kind === "file") {
                 let file = e.dataTransfer.items[i].getAsFile();
                 // @ts-ignore
-                filesystem.make_file("C:\\Users\\kress\\desktop", file.name, file, file.text);
+                filesystem.makeFile("C:\\Users\\kress\\desktop", file.name, file, file.text);
             }
         }
     }
@@ -159,7 +159,7 @@ function desktop_drop(e) {
         let tempObj = gridicons[fromIndex];
         gridicons[fromIndex] = gridicons[toIndex];
         gridicons[toIndex] = tempObj;
-        desktop.refresh_desktop();
+        Desktop.refreshDesktop();
     }
     console.log(e);
 }
@@ -173,9 +173,9 @@ function desktop_keydown(e) {
         switch (e.code) {
             case "ArrowUp":
                 //selection = index - width
-                selectionProperties.keyboardSelectionIndex -= gridWidth;
+                selectionProperties.keyboardSelectionIndex -= GRID_WIDTH;
                 if (selectionProperties.keyboardSelectionIndex < 0) {
-                    selectionProperties.keyboardSelectionIndex += gridWidth;
+                    selectionProperties.keyboardSelectionIndex += GRID_WIDTH;
                 }
                 if (e.shiftKey) {
                     //selectionProperties.selected_icons = [... range(lastIndex, dawdwa)]
@@ -186,9 +186,9 @@ function desktop_keydown(e) {
                 break;
             case "ArrowDown":
                 //selection = index + width
-                selectionProperties.keyboardSelectionIndex += gridWidth;
-                if (selectionProperties.keyboardSelectionIndex >= gridWidth * gridHeight) {
-                    selectionProperties.keyboardSelectionIndex -= gridWidth;
+                selectionProperties.keyboardSelectionIndex += GRID_WIDTH;
+                if (selectionProperties.keyboardSelectionIndex >= GRID_WIDTH * GRID_HEIGHT) {
+                    selectionProperties.keyboardSelectionIndex -= GRID_WIDTH;
                 }
                 break;
             case "ArrowLeft":
@@ -201,7 +201,7 @@ function desktop_keydown(e) {
             case "ArrowRight":
                 //selection = index + 1
                 selectionProperties.keyboardSelectionIndex += 1;
-                if (selectionProperties.keyboardSelectionIndex >= gridWidth * gridHeight) {
+                if (selectionProperties.keyboardSelectionIndex >= GRID_WIDTH * GRID_HEIGHT) {
                     selectionProperties.keyboardSelectionIndex -= 1;
                 }
                 break;

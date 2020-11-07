@@ -1,6 +1,7 @@
 
 //export class saveload{
-let saveload = function (){
+// primarily used internally by other classes.
+let SaveLoad = function (){
 
     let supported = typeof(Storage) !== "undefined";  // false
 
@@ -24,9 +25,9 @@ let saveload = function (){
                 new_addr += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
                 new_addr += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
             }
-            while (exists(new_addr)); //Will result in page freeze if more than 129600 addresses exist
+            while (exists(new_addr)); // Will result in page freeze if more than 129600 addresses exist
 
-            saveload.address.write(new_addr, ""); //Opens address
+            SaveLoad.address.write(new_addr, ""); //Opens address
             return new_addr;
         }
 
@@ -70,7 +71,7 @@ let saveload = function (){
 
     //let address = function () {
 
-    function write_file_auto(data) {
+    function writeFileAuto(data) {
         /* Automatically generates memory address and returns it */
         let new_address = address.generate();
         address.write(new_address, data);
@@ -78,7 +79,7 @@ let saveload = function (){
     }
 
     return {
-        write_file_auto: write_file_auto,
+        writeFileAuto: writeFileAuto,
         address: address
     }
 }();

@@ -1,75 +1,7 @@
-/* Windows Peek */
-let windows_peek = function () {
-    let mouse_hover_timeout;
-    //let peek_clicked = false;
-    /**
-     * @type {{peek_opacity}}
-     * @description Note, to also change animation, change keyframe called "peek_opacity" in index.css.
-     */
-    let peek_opacity = "0.1";
-    function peek_on() {
-        let windows = document.getElementsByClassName("window");
-        for (let i = 0; i < windows.length; i++) {
-            windows[i].style.animation = "peek_opacity 0.3s";
-            windows[i].style.opacity = "0.1";
-        }
-    }
-    function peek_off() {
-        let windows = document.getElementsByClassName("window");
-        for (let i = 0; i < windows.length; i++) {
-            windows[i].style.animation = "";
-            windows[i].style.opacity = "";
-        }
-    }
-    function peek_click() {
-        console.log("Peek clicked");
-    }
-    function __init__() {
-        document.getElementById("windows-peek").addEventListener("mouseenter", function (e) {
-            mouse_hover_timeout = setTimeout(function () {
-                peek_on();
-            }, 500);
-        }, false);
-        document.getElementById("windows-peek").addEventListener("mouseleave", function (e) {
-            //mouse_hovering = false;
-            clearTimeout(mouse_hover_timeout);
-            peek_off();
-        }, false);
-        document.getElementById("windows-peek").addEventListener("click", peek_click);
-    }
-    return {
-        __init__: __init__,
-        peek_opacity
-    };
-}();
-let windows_start = function () {
-    let is_open = false;
-    function refresh_menu_state() {
-        let elem = document.getElementsByClassName("startmenu")[0];
-        if (is_open) {
-            elem.setAttribute("data-expanded", "1");
-        }
-        else {
-            elem.setAttribute("data-expanded", "");
-        }
-    }
-    function start_click() {
-        is_open = !is_open;
-        refresh_menu_state();
-    }
-    function __init__() {
-        document.getElementById("windows-startbutton").addEventListener("click", start_click);
-    }
-    return {
-        __init__: __init__,
-        is_open: is_open,
-        refresh_menu_state: refresh_menu_state
-    };
-}();
-windows_peek.__init__();
-windows_start.__init__();
+WindowsPeek.__init__();
+WindowsStart.__init__();
 function close_window(window) {
-    taskmanager.kill_application(window.parentElement.parentElement.getAttribute("data-pid"));
+    TaskManager.killApplication(window.parentElement.parentElement.getAttribute("data-pid"));
 }
 function minimize_window(window) {
     //window.parentElement.parentElement.style.display = "none";
