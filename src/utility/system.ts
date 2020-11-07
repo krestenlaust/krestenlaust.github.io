@@ -1,5 +1,5 @@
 //export class system{
-let system = function(){
+let System = function(){
 
     let env = {
         "path": "C:\\WINDOWS\\System32;",

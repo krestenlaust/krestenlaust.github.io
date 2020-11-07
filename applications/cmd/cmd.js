@@ -12,7 +12,7 @@ let cmd = function () { //_namespace
     //let prompt_cur = prompt_var.replace("%cd%", filesystem.cd);
     
     function change_directory(pid, path) {
-        if (filesystem.validate_directory(path)){
+        if (Filesystem.validate_directory(path)){
             Native.set(pid, "working_directory", path);
             //local_env.cd = path;
             return true;
@@ -74,7 +74,7 @@ let cmd = function () { //_namespace
         let status_code = 0;
         console.log(args);
         if (args.length >= 1){
-            console.log(filesystem.makeDirectory(args[0], Native.get(pid, "working_directory")));
+            console.log(Filesystem.makeDirectory(args[0], Native.get(pid, "working_directory")));
             echo(pid, [""]);
         } else {
             status_code = 1;
@@ -127,7 +127,7 @@ let cmd = function () { //_namespace
             path = args[0];
         }
 
-        var cur_dir = filesystem.getDirectory(path);
+        var cur_dir = Filesystem.getDirectory(path);
         console.log(cur_dir);
         var output = [];
         output[0] = "";
@@ -216,12 +216,12 @@ let cmd = function () { //_namespace
         }
 
         let path = args[0];
-        if (!filesystem.isPathAbsolute(path)){
+        if (!Filesystem.isPathAbsolute(path)){
             path = Native.get(pid, "working_directory") + "\\" + path;
         }
 
         // Echo file contents
-        let file_contents = filesystem.readFile(path);
+        let file_contents = Filesystem.readFile(path);
         if (file_contents === -1) {
             echo(pid, ["Could not read file."]);
 

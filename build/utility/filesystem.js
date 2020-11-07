@@ -1,8 +1,8 @@
 //import {saveload} from "./saveload-system";
-let filesystem = function () {
+let Filesystem = function () {
     //export class filesystem{
-    const illegal_characters = [':', ';', '+', '\\'];
-    const illegalNames = ['..'];
+    const ILLEGAL_CHARACTERS = [':', ';', '+', '\\'];
+    const ILLEGAL_NAMES = ['..'];
     const _systemdrive = {
         "c": {
             "@property": { truename: "C", directory: true },
@@ -42,7 +42,7 @@ let filesystem = function () {
         return path.length >= 2 && path.slice(1, 2) === ":";
     }
     function validateDirectory(path) {
-        return filesystem.getDirectory(path).length !== 0;
+        return Filesystem.getDirectory(path).length !== 0;
     }
     function getDirectory(path) {
         if (path === undefined) {
@@ -59,11 +59,11 @@ let filesystem = function () {
     // instance, first arg
     function makeDirectory(path, directoryName) {
         // Verify that the directory name is valid
-        if (illegalNames.indexOf(directoryName) !== -1) {
+        if (ILLEGAL_NAMES.indexOf(directoryName) !== -1) {
             return 1;
         }
-        for (let i = 0; i < illegal_characters.length; i++) {
-            if (directoryName.indexOf(illegal_characters[i])) {
+        for (let i = 0; i < ILLEGAL_CHARACTERS.length; i++) {
+            if (directoryName.indexOf(ILLEGAL_CHARACTERS[i])) {
                 return 1;
             }
         }
@@ -93,12 +93,12 @@ let filesystem = function () {
         fileObj["@property"].address = address;
         // @ts-ignore
         SaveLoad.address.write(address, data);
-        let path_array = path.replace(":", "").toLowerCase().split("\\");
-        console.log("Parsed path", path_array);
+        let pathArray = path.replace(":", "").toLowerCase().split("\\");
+        console.log("Parsed path", pathArray);
         // Generate file-creation string
         let evaluation = "_systemdrive";
-        for (let i = 0; i < path_array.length; i++) {
-            evaluation += '["' + path_array[i] + '"]';
+        for (let i = 0; i < pathArray.length; i++) {
+            evaluation += '["' + pathArray[i] + '"]';
         }
         evaluation += '["' + filename.toLowerCase() + '"]=' + JSON.stringify(fileObj);
         console.log(evaluation);

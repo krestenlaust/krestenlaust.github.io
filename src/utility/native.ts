@@ -8,7 +8,7 @@ let Native = function () {
     };
 
     let _envObject = {
-        "working_directory": system.env.user_home,
+        "working_directory": System.env.user_home,
         "errorlevel": 0
     };
 

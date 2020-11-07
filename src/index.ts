@@ -1,18 +1,5 @@
 
 
-WindowsPeek.__init__();
-WindowsStart.__init__();
-
-function close_window(window){
-    TaskManager.killApplication(window.parentElement.parentElement.getAttribute("data-pid"));
-}
-function minimize_window(window){
-    //window.parentElement.parentElement.style.display = "none";
-}
-function maximize_window(window){
-
-}
-
 //Compressed
 function make_draggable(a,b){function c(k){k=k||window.event,k.preventDefault(),i=k.clientX,j=k.clientY,document.onmouseup=f,document.onmousemove=d}function d(k){k=k||window.event,k.preventDefault(),g=i-k.clientX,h=j-k.clientY,i=k.clientX,j=k.clientY,a.style.top=a.offsetTop-h+"px",a.style.left=a.offsetLeft-g+"px"}function f(){document.onmouseup=null,document.onmousemove=null}let g=0,h=0,i=0,j=0;b?b.onmousedown=c:a.onmousedown=c}
 

@@ -52,6 +52,6 @@ let WindowsPeek = function(){
 
     return {
         __init__: __init__,
-        peek_opacity: peekOpacity
+        peekOpacity: peekOpacity
     }
 }();

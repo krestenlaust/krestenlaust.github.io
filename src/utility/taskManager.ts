@@ -35,12 +35,12 @@ let TaskManager = function (){
             runningApplications.push(pid);
 
             WindowManager.windowHierarchy.unshift(pid);
-            // @ts-ignore
             Taskbar.addProcess(appname, pid);
 
+            // can't exactly remember what the purpose of this condition is?
             if (document.querySelector("script[src*='cmd.js']") === null){
                 // @ts-ignore
-                $.getScript('applications/'+appname+"/"+appname+".js");
+                $.getScript(`applications/${appname}/${appname}.js`);
             }
 
             let onload = interpretOnload(pid, document.getElementById("window-"+pid));
@@ -61,16 +61,16 @@ let TaskManager = function (){
     
     /* Private methods */
     function generatePid() { /* 10*10*6*6*6 */
-        let cur_pid: string;
-        do {
-            cur_pid = Math.floor(Math.random() * 10).toString() + Math.floor(Math.random() * 10).toString();
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-            cur_pid += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
-        }
-        while (runningApplications.includes(cur_pid));
+        let generatedProcessID: string;
 
-        return cur_pid;
+        do {
+            generatedProcessID = Math.floor(Math.random() * 10).toString() + Math.floor(Math.random() * 10).toString();
+            generatedProcessID += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
+            generatedProcessID += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
+            generatedProcessID += String.fromCharCode(Math.floor(Math.random() * 7) + 97);
+        } while (runningApplications.includes(generatedProcessID));
+
+        return generatedProcessID;
     }
 
     function interpretOnload(pid: string, element: HTMLElement){
@@ -79,23 +79,37 @@ let TaskManager = function (){
         let variables = [];
         let lastFound = 0;
 
-
+        // search for local environment variables
         for (let i=0; i < occurrences; i++){
             let openBracket = target_str.indexOf("${", lastFound);
+
+            // check for escape sequence
             if (1 - openBracket >= 0 && target_str.slice(openBracket-1,openBracket) === "\\"){
                 continue;
             }
+
             let closingBracket = target_str.indexOf("}", openBracket);
+
             if (openBracket < closingBracket && 2 + openBracket < closingBracket){
                 variables.push(target_str.slice(openBracket + 2, closingBracket));
                 lastFound = closingBracket;
             }
         }
 
-        for (let i=0; i<variables.length;i++){
-            let variableValue = eval(variables[i]);
-            target_str = target_str.replace("${" + variables[i] + "}", variableValue)
+        for (let variableName in variables){
+            let value;
+
+            switch (variableName.toLowerCase()){
+                case "pid":
+                    value = pid;
+                    break;
+                default:
+                    value = "null";
+            }
+
+            target_str = target_str.replace("${" + variableName + "}", value)
         }
+
         return target_str;
     }
 

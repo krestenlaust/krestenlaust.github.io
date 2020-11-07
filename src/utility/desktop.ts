@@ -10,13 +10,13 @@ const gridicons = {
     },
     3: {
         "type": "shortcut",
-        "launch": "taskmanager.start_application('cmd')",
+        "launch": "TaskManager.startApplication('cmd')",
         "icon": "resources/Windows-icons/cmd.ico",
         "name": "Command Prompt"
     },
     2: {
         "type": "shortcut",
-        "launch": "taskmanager.start_application('notepad')",
+        "launch": "TaskManager.startApplication('notepad')",
         "icon": "resources/Windows-icons/notepad.ico",
         "name": "Notepad"
     }
@@ -36,7 +36,7 @@ let Desktop = function () {
 
     function refreshDesktop() {
         // @ts-ignore
-        let desktopDirectory = filesystem.getDirectory("C:\\Users\\kress\\desktop");
+        let desktopDirectory = Filesystem.getDirectory("C:\\Users\\kress\\desktop");
         let icons = [];
         document.getElementById("desktop").innerHTML = "";
 
@@ -154,7 +154,7 @@ function desktop_drop(e) {
             if (e.dataTransfer.items[i].kind === "file"){
                 let file = e.dataTransfer.items[i].getAsFile();
                 // @ts-ignore
-                filesystem.makeFile("C:\\Users\\kress\\desktop", file.name, file, file.text);
+                Filesystem.makeFile("C:\\Users\\kress\\desktop", file.name, file, file.text);
             }
         }
     }
