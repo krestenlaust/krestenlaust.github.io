@@ -22,21 +22,6 @@
     <list default="true" id="15275d0b-836b-40ec-8006-7f695f22777c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applications/cmd/cmd.js" beforeDir="false" afterPath="$PROJECT_DIR$/applications/cmd/cmd.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/explorer/explorer.js" beforeDir="false" afterPath="$PROJECT_DIR$/applications/explorer/explorer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/applications/notepad/notepad.js" beforeDir="false" afterPath="$PROJECT_DIR$/applications/notepad/notepad.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/filesystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/filesystem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/filesystem.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/filesystem.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/taskbar/windowsPeak.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskbar/windowsPeak.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/taskbar/windowsPeak.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskbar/windowsPeak.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/taskbar/windowsStart.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskbar/windowsStart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/taskbar/windowsStart.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskbar/windowsStart.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/filesystem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/filesystem.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/taskbar/windowsPeak.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/windowsPeak.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/taskbar/windowsStart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/windowsStart.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,6 +180,7 @@
       <workItem from="1586065943962" duration="6460000" />
       <workItem from="1604781702021" duration="5742000" />
       <workItem from="1604851410949" duration="2556000" />
+      <workItem from="1604854371878" duration="1621000" />
     </task>
     <task id="LOCAL-00001" summary="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?">
       <created>1546041435632</created>

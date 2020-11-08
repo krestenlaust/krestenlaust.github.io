@@ -4,13 +4,23 @@ let cmd = function () { //_namespace
 
     let promptVar = "%cd%>";
 
+    /* Private */
+    function setErrorlevel(pid, errorcode){
+        Native.set(pid, "errorlevel", errorcode)
+    }
+
+    /* Public */
     function changeDirectory(pid, path) {
+        let statusCode;
         if (Filesystem.validate_directory(path)){
             Native.set(pid, "working_directory", path);
-            return 0;
+            statusCode = 0;
         }else{
-            return 1;
+            statusCode = 1;
         }
+
+        setErrorlevel(pid, statusCode);
+        return statusCode;
     }
 
     function getPrompt(pid){
@@ -21,7 +31,10 @@ let cmd = function () { //_namespace
         TaskManager.killApplication(pid);
     }
 
-    // Maybe look into implementing some sort of stdout and some sort of spool to update the command-line window
+    /* Maybe look into implementing some
+    * sort of stdout and some sort of spool
+    * to update the command-line window
+    */
     function echo(pid, args = []) {
         let statusCode = 0;
 
@@ -39,10 +52,6 @@ let cmd = function () { //_namespace
         emptyLines[0].readOnly = true;
         emptyLines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
 
-        /*
-        $(emptyLines[0]).clone().appendTo("#cmd-text-"+pid);
-        emptyLines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
-        */
         if (isEchoEnabled){
             $(emptyLines[0]).clone().appendTo("#cmd-text-"+pid);
             emptyLines[0].value = getPrompt();
@@ -50,7 +59,6 @@ let cmd = function () { //_namespace
             emptyLines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
         }
 
-        //local_env.errorlevel = statusCode;
         setErrorlevel(pid, statusCode);
         return statusCode;
     }
@@ -62,7 +70,9 @@ let cmd = function () { //_namespace
         promptVar = args[0];
     }
 
-    function md(pid, args = []) {
+    /* Not to be confused with Filesystem.makeDirectory,
+    * this is the cmd interface to the Filesystem command */
+    function makeDirectory(pid, args = []) {
         let statusCode = 0;
         console.log(args);
         if (args.length >= 1){
@@ -108,7 +118,8 @@ let cmd = function () { //_namespace
         return statusCode;
     }
 
-    function dir(pid, args = []) {
+    /* dir - Lists directory */
+    function listDirectory(pid, args = []) {
         let statusCode = 0;
 
         let path;
@@ -174,11 +185,11 @@ let cmd = function () { //_namespace
             }
         }
 
-        var notempty = document.getElementsByClassName("cmdline-"+pid);
-        for (var i=0; i<notempty.length;i++){
-            notempty[0].value = "";
-            notempty[0].readOnly = true;
-            notempty[0].setAttribute("class", `cmdline cmdline-empty-${pid} cmd`);
+        let notEmpty = document.getElementsByClassName("cmdline-"+pid);
+        for (let i = 0; i<notEmpty.length; i++){
+            notEmpty[0].value = "";
+            notEmpty[0].readOnly = true;
+            notEmpty[0].setAttribute("class", `cmdline cmdline-empty-${pid} cmd`);
         }
 
         children = document.getElementById("cmd-text-"+pid).children;
@@ -194,11 +205,11 @@ let cmd = function () { //_namespace
 
         $(document.getElementsByClassName("cmdline-empty-" + pid)[0]).clone().appendTo("#cmd-text-"+pid);
 
-        //local_env.errorlevel = statusCode;
         setErrorlevel(pid, statusCode);
         return statusCode;
     }
-    
+
+    /* writes a file's contents to standard out */
     function type(pid, args = []) {
         if (args.length === 0){
             echo(pid, ["The syntax of the command is incorrect."]);
@@ -249,11 +260,6 @@ let cmd = function () { //_namespace
 
     }*/
 
-    /* Private */
-    function setErrorlevel(pid, errorcode){
-        Native.set(pid, "errorlevel", errorcode)
-    }
-
     /* Tab completion and other things
      * that should not be accessible from cmd, but from js
      */
@@ -277,8 +283,8 @@ let cmd = function () { //_namespace
         set: set,
         type: type,
         prompt: prompt,
-        md: md,
-        dir: dir,
+        md: makeDirectory,
+        dir: listDirectory,
         cd: cd
         //help: help
     };
