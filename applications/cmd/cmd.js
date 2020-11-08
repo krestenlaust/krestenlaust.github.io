@@ -6,7 +6,7 @@ let cmd = function () { //_namespace
 
     /* Private */
     function setErrorlevel(pid, errorcode){
-        Native.set(pid, "errorlevel", errorcode)
+        Native.set(pid, "errorlevel", errorcode);
     }
 
     /* Public */
@@ -37,11 +37,10 @@ let cmd = function () { //_namespace
     */
     function echo(pid, args = []) {
         let statusCode = 0;
-
         let isEchoEnabled = true;
-        if (args.length >= 2){
+
+        if (args.length >= 2)
             isEchoEnabled = args[1];
-        }
 
         let currentLines = document.getElementsByClassName("cmdline-"+pid);
         currentLines[currentLines.length-1].readOnly = true;
@@ -64,9 +63,9 @@ let cmd = function () { //_namespace
     }
     
     function prompt(pid, args = []) {
-        if (args.length === 0 || typeof args[0] !== "string"){
+        if (args.length === 0 || typeof args[0] !== "string")
             return;
-        }
+
         promptVar = args[0];
     }
 
@@ -91,22 +90,20 @@ let cmd = function () { //_namespace
         let statusCode = 0;
 
         if (args.length === 0){
-
             echo(pid, [Native.get(pid, "working_directory")]);
-
         }else{
             let targetPath;
             if (args[0] === ".."){
                 targetPath = Native.get(pid, "working_directory").split("\\");
-                if (targetPath.length !== 1){
+                if (targetPath.length !== 1)
                     targetPath.pop();
-                }
+
                 targetPath = targetPath.join("\\");
             }else{
                 targetPath = args[0];
             }
             if (changeDirectory(pid, targetPath)){
-                echo(pid, [''])
+                echo(pid, ['']);
             }else{
                 echo(pid, ['Cannot find the path specified.']);
                 statusCode = 1;
@@ -122,43 +119,33 @@ let cmd = function () { //_namespace
     function listDirectory(pid, args = []) {
         let statusCode = 0;
 
-        let path;
-        if (args.length === 0){
-            path = Native.get(pid, "working_directory")
-        }else{
-            path = args[0];
-        }
+        let path = args.length === 0 ? Native.get(pid, "working_directory") : args[0];
+        let currentDirectory = Filesystem.getDirectory(path);
+        console.log(currentDirectory);
 
-        let currDir = Filesystem.getDirectory(path);
-        console.log(currDir);
-        let output = [];
-        output[0] = "";
-        output[1] = " Directory of " + path;
-        output[2] = "";
-        let currLine = 3;
+        let output = [
+            "",
+            " Directory of " + path,
+            ""
+        ];
 
-        delete currDir["@property"];
+        let currentLine = 3;
 
-        for (let item in currDir) {
-            if (!currDir.hasOwnProperty(item)){
+        delete currentDirectory["@property"];
+
+        for (let item in currentDirectory) {
+            if (!currentDirectory.hasOwnProperty(item))
                 continue;
-            }
 
-            output[currLine] = "";
-            //if (currDir[item]["@property"]["directory"] === true){
-            console.log(item);
-            //if (item["@property"]["directory"] === true) {
-            let property = currDir[item]["@property"];
-            if (property === undefined) {
+            output[currentLine] = "";
+            let property = currentDirectory[item]["@property"];
+
+            if (property === undefined)
                 continue;
-            }
-            if (property.directory === true) {
-                output[currLine] += "   <DIR>   "
-            }else {
-                output[currLine] += "           "
-            }
-            output[currLine] += item;
-            currLine++;
+
+            output[currentLine] += property.directory ? "   <DIR>   " : "           ";
+            output[currentLine] += item;
+            currentLine++;
         }
 
         for (let i = 0; i<output.length; i++){
@@ -186,7 +173,7 @@ let cmd = function () { //_namespace
         }
 
         let notEmpty = document.getElementsByClassName("cmdline-"+pid);
-        for (let i = 0; i<notEmpty.length; i++){
+        for (let i = 0; i < notEmpty.length; i++){
             notEmpty[0].value = "";
             notEmpty[0].readOnly = true;
             notEmpty[0].setAttribute("class", `cmdline cmdline-empty-${pid} cmd`);
@@ -218,19 +205,18 @@ let cmd = function () { //_namespace
         }
 
         let path = args[0];
-        if (!Filesystem.isPathAbsolute(path)){
+        if (!Filesystem.isPathAbsolute(path))
             path = Native.get(pid, "working_directory") + "\\" + path;
-        }
 
         // Echo file contents
-        let file_contents = Filesystem.readFile(path);
-        if (file_contents === -1) {
-            echo(pid, ["Could not read file."]);
+        let fileContents = Filesystem.readFile(path);
+        if (fileContents === -1) {
+            echo(pid, ["File not found."]);
 
             setErrorlevel(pid, 1);
             return 1;
         }
-        echo(pid, [file_contents]);
+        echo(pid, [fileContents]);
 
         setErrorlevel(pid, 0);
         return 0;
