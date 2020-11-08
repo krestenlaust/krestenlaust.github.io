@@ -1,5 +1,5 @@
 //make_draggable(document.getElementById("notepad-window-1"), document.getElementById("notepad-window-top-1"));
-let notepad = function () {
+let Notepad = function () {
     
     function save() {
         

@@ -1,4 +1,4 @@
-let explorer = function () {
+let Explorer = function () {
 
     return {
 

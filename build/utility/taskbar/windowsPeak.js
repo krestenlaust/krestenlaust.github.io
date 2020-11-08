@@ -29,7 +29,7 @@ let WindowsPeek = function () {
     function peekClick() {
         console.log("Peek clicked");
     }
-    function __init__() {
+    function setup() {
         document.getElementById("windows-peek").addEventListener("mouseenter", function (e) {
             mouseHoverTimeout = setTimeout(function () {
                 peekOn();
@@ -43,7 +43,7 @@ let WindowsPeek = function () {
         document.getElementById("windows-peek").addEventListener("click", peekClick);
     }
     return {
-        __init__: __init__,
+        setup: setup,
         peekOpacity: peekOpacity
     };
 }();

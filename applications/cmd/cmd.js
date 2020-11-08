@@ -2,27 +2,19 @@
 
 let cmd = function () { //_namespace
 
-    /* DEPRECATED
-    let local_env = {
-        "errorlevel": 0,
-        "cd": ""
-    };*/
+    let promptVar = "%cd%>";
 
-    let prompt_var = "%cd%>";
-    //let prompt_cur = prompt_var.replace("%cd%", filesystem.cd);
-    
-    function change_directory(pid, path) {
+    function changeDirectory(pid, path) {
         if (Filesystem.validate_directory(path)){
             Native.set(pid, "working_directory", path);
-            //local_env.cd = path;
-            return true;
+            return 0;
         }else{
-            return false;
+            return 1;
         }
     }
 
-    function get_prompt(pid){
-        return prompt_var.replace("%cd%", Native.get(pid, "working_directory"));
+    function getPrompt(pid){
+        return promptVar.replace("%cd%", Native.get(pid, "working_directory"));
     }
 
     function exit(pid, args = []) {
@@ -31,152 +23,151 @@ let cmd = function () { //_namespace
 
     // Maybe look into implementing some sort of stdout and some sort of spool to update the command-line window
     function echo(pid, args = []) {
-        let status_code = 0;
+        let statusCode = 0;
 
-        var echo_on = true;
+        let isEchoEnabled = true;
         if (args.length >= 2){
-            echo_on = args[1];
+            isEchoEnabled = args[1];
         }
 
-        var current_lines = document.getElementsByClassName("cmdline-"+pid);
-        current_lines[current_lines.length-1].readOnly = true;
+        let currentLines = document.getElementsByClassName("cmdline-"+pid);
+        currentLines[currentLines.length-1].readOnly = true;
 
-        var empty_lines = document.getElementsByClassName("cmdline-empty-"+pid);
-        $(empty_lines[0]).clone().appendTo("#cmd-text-"+pid);
-        empty_lines[0].value = args[0];
-        empty_lines[0].readOnly = true;
-        empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
+        let emptyLines = document.getElementsByClassName("cmdline-empty-"+pid);
+        $(emptyLines[0]).clone().appendTo("#cmd-text-"+pid);
+        emptyLines[0].value = args[0];
+        emptyLines[0].readOnly = true;
+        emptyLines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
 
         /*
-        $(empty_lines[0]).clone().appendTo("#cmd-text-"+pid);
-        empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
+        $(emptyLines[0]).clone().appendTo("#cmd-text-"+pid);
+        emptyLines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
         */
-        if (echo_on){
-            $(empty_lines[0]).clone().appendTo("#cmd-text-"+pid);
-            empty_lines[0].value = get_prompt();
-            empty_lines[0].readOnly = false;
-            empty_lines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
+        if (isEchoEnabled){
+            $(emptyLines[0]).clone().appendTo("#cmd-text-"+pid);
+            emptyLines[0].value = getPrompt();
+            emptyLines[0].readOnly = false;
+            emptyLines[0].setAttribute("class", `cmdline cmdline-${pid} cmd`);
         }
 
-        //local_env.errorlevel = status_code;
-        set_errorlevel(pid, status_code);
-        return status_code;
+        //local_env.errorlevel = statusCode;
+        setErrorlevel(pid, statusCode);
+        return statusCode;
     }
     
     function prompt(pid, args = []) {
         if (args.length === 0 || typeof args[0] !== "string"){
             return;
         }
-        prompt_var = args[0];
+        promptVar = args[0];
     }
 
     function md(pid, args = []) {
-        let status_code = 0;
+        let statusCode = 0;
         console.log(args);
         if (args.length >= 1){
             console.log(Filesystem.makeDirectory(args[0], Native.get(pid, "working_directory")));
             echo(pid, [""]);
         } else {
-            status_code = 1;
+            statusCode = 1;
         }
 
-        //local_env.errorlevel = status_code;
-        set_errorlevel(pid, status_code);
-        return status_code;
+        //local_env.errorlevel = statusCode;
+        setErrorlevel(pid, statusCode);
+        return statusCode;
     }
 
     function cd(pid, args = []) {
-        let status_code = 0;
+        let statusCode = 0;
 
         if (args.length === 0){
 
             echo(pid, [Native.get(pid, "working_directory")]);
 
         }else{
-            var target_path;
+            let targetPath;
             if (args[0] === ".."){
-                target_path = Native.get(pid, "working_directory").split("\\");
-                if (target_path.length !== 1){
-                    target_path.pop();
+                targetPath = Native.get(pid, "working_directory").split("\\");
+                if (targetPath.length !== 1){
+                    targetPath.pop();
                 }
-                target_path = target_path.join("\\");
+                targetPath = targetPath.join("\\");
             }else{
-                target_path = args[0];
+                targetPath = args[0];
             }
-            if (change_directory(pid, target_path)){
+            if (changeDirectory(pid, targetPath)){
                 echo(pid, [''])
             }else{
                 echo(pid, ['Cannot find the path specified.']);
-                status_code = 1;
+                statusCode = 1;
             }
 
         }
 
-        //local_env.errorlevel = status_code;
-        set_errorlevel(pid, status_code);
-        return status_code;
+        setErrorlevel(pid, statusCode);
+        return statusCode;
     }
 
     function dir(pid, args = []) {
-        let status_code = 0;
+        let statusCode = 0;
 
-        var path;
+        let path;
         if (args.length === 0){
             path = Native.get(pid, "working_directory")
         }else{
             path = args[0];
         }
 
-        var cur_dir = Filesystem.getDirectory(path);
-        console.log(cur_dir);
-        var output = [];
+        let currDir = Filesystem.getDirectory(path);
+        console.log(currDir);
+        let output = [];
         output[0] = "";
         output[1] = " Directory of " + path;
         output[2] = "";
-        var cur_line = 3;
+        let currLine = 3;
 
-        delete cur_dir["@property"];
+        delete currDir["@property"];
 
-        for (var item in cur_dir) {
-            if (!cur_dir.hasOwnProperty(item)){
+        for (let item in currDir) {
+            if (!currDir.hasOwnProperty(item)){
                 continue;
             }
 
-            output[cur_line] = "";
-            //if (cur_dir[item]["@property"]["directory"] === true){
+            output[currLine] = "";
+            //if (currDir[item]["@property"]["directory"] === true){
             console.log(item);
             //if (item["@property"]["directory"] === true) {
-            let property = cur_dir[item]["@property"];
+            let property = currDir[item]["@property"];
             if (property === undefined) {
                 continue;
             }
             if (property.directory === true) {
-                output[cur_line] += "   <DIR>   "
+                output[currLine] += "   <DIR>   "
             }else {
-                output[cur_line] += "           "
+                output[currLine] += "           "
             }
-            output[cur_line] += item;
-            cur_line++;
+            output[currLine] += item;
+            currLine++;
         }
-        for (var i=0;i<output.length;i++){
+
+        for (let i = 0; i<output.length; i++){
             echo(pid, [output[i], false]);
         }
+
         echo(pid, ['', true]);
 
-        //local_env.errorlevel = status_code;
-        set_errorlevel(pid, status_code);
-        return status_code;
+        setErrorlevel(pid, statusCode);
+        return statusCode;
     }
 
     function cls(pid, args = []) {
-        let status_code = 0;
-        //26
-        var cmdbox = document.getElementById("cmd-text-"+pid);
+        let statusCode = 0;
+        let cmdBox = document.getElementById("cmd-text-"+pid);
 
-        var children = cmdbox.children;
-        var amount = children.length;
-        for (var child in children){
-            cmdbox.removeChild(children[child]);
+        let children = cmdBox.children;
+        let amount = children.length;
+        for (let child in children){
+            cmdBox.removeChild(children[child]);
             amount--;
             if (amount <= 26) {
                 break;
@@ -195,23 +186,23 @@ let cmd = function () { //_namespace
         children[0].value = "";
         children[0].readOnly = true;
 
-        $(document.getElementsByClassName("cmdline-empty-"+pid)[0]).clone().appendTo("#cmd-text-"+pid);
+        $(document.getElementsByClassName("cmdline-empty-" + pid)[0]).clone().appendTo("#cmd-text-"+pid);
 
         children[1].setAttribute("class", `cmdline cmdline-${pid} cmd`);
-        children[1].value = get_prompt();
+        children[1].value = getPrompt();
         children[1].readOnly = false;
 
-        $(document.getElementsByClassName("cmdline-empty-"+pid)[0]).clone().appendTo("#cmd-text-"+pid);
+        $(document.getElementsByClassName("cmdline-empty-" + pid)[0]).clone().appendTo("#cmd-text-"+pid);
 
-        //local_env.errorlevel = status_code;
-        set_errorlevel(pid, status_code);
-        return status_code;
+        //local_env.errorlevel = statusCode;
+        setErrorlevel(pid, statusCode);
+        return statusCode;
     }
     
     function type(pid, args = []) {
         if (args.length === 0){
             echo(pid, ["The syntax of the command is incorrect."]);
-            set_errorlevel(pid, 1);
+            setErrorlevel(pid, 1);
             return 1;
         }
 
@@ -225,32 +216,32 @@ let cmd = function () { //_namespace
         if (file_contents === -1) {
             echo(pid, ["Could not read file."]);
 
-            set_errorlevel(pid, 1);
+            setErrorlevel(pid, 1);
             return 1;
         }
         echo(pid, [file_contents]);
 
-        set_errorlevel(pid, 0);
+        setErrorlevel(pid, 0);
         return 0;
     }
     
     function set(pid, args = []) {
-        let status_code = 0;
+        let statusCode = 0;
         console.log("Args: "+args);
+
         if (args.length === 0){
-            var env_keys = Object.keys(local_env);
-            var env_values = Object.values(local_env);
-            for (var i in env_keys){
+            let env_keys = Object.keys(local_env);
+            let env_values = Object.values(local_env);
+
+            for (let i in env_keys){
                 echo(pid, [env_keys[i] + '=' + env_values[i]]);
             }
-
         }else {
 
         }
 
-        //local_env.errorlevel = status_code;
-        set_errorlevel(pid, status_code);
-        return status_code;
+        setErrorlevel(pid, statusCode);
+        return statusCode;
     }
 
     /*
@@ -259,23 +250,26 @@ let cmd = function () { //_namespace
     }*/
 
     /* Private */
-    function set_errorlevel(pid, errorcode){
+    function setErrorlevel(pid, errorcode){
         Native.set(pid, "errorlevel", errorcode)
     }
-    
-    let utils = function() { /* Tab completion and other that should not be accessible from cmd, but from js*/
-        function tab_suggest(s) {
+
+    /* Tab completion and other things
+     * that should not be accessible from cmd, but from js
+     */
+    let Utils = function() {
+        function tabSuggest(s) {
 
         }
 
         return {
-            tab_suggest: tab_suggest
+            tabSuggest: tabSuggest
         }
     }();
 
     return { /* Globalization */
         //env: local_env,
-        utils: utils,
+        Utils: Utils,
 
         echo: echo,
         exit: exit,
@@ -291,11 +285,10 @@ let cmd = function () { //_namespace
 }();
 
 function focus_cmd(e) {
-    //console.log(e);
-    var pid = e.srcElement.parentNode.parentNode.dataset.pid;
+    let pid = e.srcElement.parentNode.parentNode.dataset.pid;
     if (pid !== undefined){
-        var cmdlines = document.getElementsByClassName("cmdline-"+pid);
-        cmdlines[cmdlines.length-1].focus();
+        let cmdLines = document.getElementsByClassName("cmdline-" + pid);
+        cmdLines[cmdLines.length-1].focus();
 
         //[document.getElementsByClassName("cmdline-"+pid).length-1].focus();
     }

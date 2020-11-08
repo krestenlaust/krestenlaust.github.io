@@ -20,29 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15275d0b-836b-40ec-8006-7f695f22777c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/kres0345.github.io website.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kres0345.github.io website.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/applications/cmd/cmd.js" beforeDir="false" afterPath="$PROJECT_DIR$/applications/cmd/cmd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applications/explorer/explorer.js" beforeDir="false" afterPath="$PROJECT_DIR$/applications/explorer/explorer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applications/notepad/notepad.js" beforeDir="false" afterPath="$PROJECT_DIR$/applications/notepad/notepad.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/System.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/System.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/desktop.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/desktop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/desktop.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/desktop.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/utility/filesystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/filesystem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/utility/filesystem.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/filesystem.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/native.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/native.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/utility/taskbar/windowsPeak.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskbar/windowsPeak.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/utility/taskbar/windowsPeak.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskbar/windowsPeak.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/taskmanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskmanager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/utility/taskmanager.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskmanager.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/taskbar/windowsStart.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskbar/windowsStart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/utility/taskbar/windowsStart.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/build/utility/taskbar/windowsStart.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/desktop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/desktop.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utility/filesystem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/filesystem.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/native.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/native.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/system.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/system.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utility/taskManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utility/taskbar/windowsPeak.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/windowsPeak.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/taskbar/windowsStart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/taskbar/windowsStart.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,6 +194,7 @@
       <workItem from="1581807581279" duration="353000" />
       <workItem from="1586065943962" duration="6460000" />
       <workItem from="1604781702021" duration="5742000" />
+      <workItem from="1604851410949" duration="2556000" />
     </task>
     <task id="LOCAL-00001" summary="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?">
       <created>1546041435632</created>
@@ -251,6 +246,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="I have now added some credentials because this project is really cool. Also &quot;fuck&quot; and &quot;shit&quot;: am I on http://www.commitlogsfromlastnight.com/ already?" />

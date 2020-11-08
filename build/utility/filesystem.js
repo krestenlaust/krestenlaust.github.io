@@ -131,22 +131,4 @@ let Filesystem = function () {
         _systemdrive: _systemdrive
     };
 }();
-/*
-    function change_directory(targ_path) {
-        var new_path;
-        if (targ_path.indexOf(":") === 1){ //Absolute path.
-            new_path = targ_path;
-        }else{ //Relative path.
-            new_path = cd + '\\' + targ_path;
-        }
-
-        var dir_result = get_directory(new_path);
-
-        if (dir_result !== undefined){ //Directory exists
-            this.cd = new_path;
-            return true;
-        }else { //Directory doesnt exist
-            return false;
-        }
-    }*/ 
 //# sourceMappingURL=filesystem.js.map
