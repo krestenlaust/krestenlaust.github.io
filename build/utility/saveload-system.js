@@ -28,7 +28,7 @@ let SaveLoad = function () {
         function write(addr, data) {
             if (supported) {
                 // @ts-ignore
-                let compressed = LZString.compress(data);
+                let compressed = data; //LZString.compress(data);
                 localStorage.setItem("f" + addr, compressed);
                 return compressed.length;
             }
@@ -39,17 +39,18 @@ let SaveLoad = function () {
             if (supported) {
                 let data = localStorage.getItem("f" + addr);
                 if (data === null) {
-                    return -1;
+                    return [-1];
                 }
-                // @ts-ignore
-                return LZString.decompress(data);
+                return [data]; //LZString.decompress(data);
             }
-            return -1;
+            return [-1];
         }
         function reset(addr) {
             if (supported) {
                 localStorage.removeItem("f" + addr);
+                return true;
             }
+            return false;
         }
         return {
             write: write,

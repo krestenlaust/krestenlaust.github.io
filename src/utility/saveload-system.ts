@@ -32,10 +32,10 @@ let SaveLoad = function (){
         }
 
         /* Public - Returns compressed byte-size or -1 */
-        function write(addr: string, data: string) {
+        function write(addr: string, data: string): number {
             if (supported) {
                 // @ts-ignore
-                let compressed = LZString.compress(data);
+                let compressed = data;//LZString.compress(data);
                 localStorage.setItem("f" + addr, compressed);
                 return compressed.length;
             }
@@ -43,22 +43,24 @@ let SaveLoad = function (){
         }
 
         /* Public - Returns string at address or -1 */
-        function read(addr: string) {
+        function read(addr: string): object {
             if (supported) {
                 let data = localStorage.getItem("f" + addr);
                 if (data === null) {
-                    return -1
+                    return [-1];
                 }
-                // @ts-ignore
-                return LZString.decompress(data);
+                return [data];//LZString.decompress(data);
             }
-            return -1;
+            return [-1];
         }
 
-        function reset(addr: string) {
+        function reset(addr: string): boolean {
             if (supported) {
                 localStorage.removeItem("f" + addr);
+                return true;
             }
+
+            return false;
         }
 
         return {

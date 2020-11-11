@@ -1,23 +1,24 @@
 //import {system} from "./system";
 //export class native{
 let Native = function () {
-    let _environmentalVariables = { // Er vel det samme som er i System.ts.
-    };
-    let _envObject = {
-        "working_directory": System.env.user_home,
-        "errorlevel": 0
+    // List of environments specified by process ID.
+    const _localEnvironmentList = {};
+    // Individual environment accessed by individual applications.
+    const _localEnvironment = {
+        "working_directory": System.globalEnv.user_home,
+        "errorlevel": 0,
     };
     function get(pid, key) {
-        if (_environmentalVariables[pid] === undefined) {
-            _environmentalVariables[pid] = _envObject;
+        if (_localEnvironmentList[pid] === undefined) {
+            _localEnvironmentList[pid] = _localEnvironment;
         }
-        return _environmentalVariables[pid][key];
+        return _localEnvironmentList[pid][key];
     }
     function set(pid, key, value) {
-        if (_environmentalVariables[pid] === undefined) {
-            _environmentalVariables[pid] = _envObject;
+        if (_localEnvironmentList[pid] === undefined) {
+            _localEnvironmentList[pid] = _localEnvironment;
         }
-        _environmentalVariables[pid][key] = value;
+        _localEnvironmentList[pid][key] = value;
     }
     return {
         get: get,

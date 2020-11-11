@@ -17,15 +17,7 @@ let Filesystem = function () {
                     "@property": {truename: "kress", directory: true},
 
                     "desktop": {
-                        "@property": {truename: "Desktop", directory: true},
-
-                        "notepad.lnk": {
-                            "@property": {address: ""}
-                        }
-                    },
-
-                    "readme.txt": {
-                        "@property": {address: ""}
+                        "@property": {truename: "Desktop", directory: true}
                     }
                 }
 
@@ -50,19 +42,24 @@ let Filesystem = function () {
 		"@property": {address: null}
 	};
 
-    function isPathAbsolute(path: string) {
+	function parsePath(path: string): string[]{
+        return path.replace(":", "").toLowerCase().split("\\");
+    }
+
+    function isPathAbsolute(path: string): boolean {
         return path.length >= 2 && path.slice(1, 2) === ":";
     }
 	
-    function validateDirectory(path: string) {
-        return Filesystem.getDirectory(path).length !== 0;
+    function validateDirectory(path: string): boolean {
+        return true;//Filesystem.getDirectory(path).length !== 0;
     }
 
-    function getDirectory(path: string) {
+    function getDirectory(path: string): object {
         if (path === undefined){
-            return []
+            return [];
         }
-        let pathArray = path.replace(":","").toLowerCase().split("\\");
+
+        let pathArray = parsePath(path);
 
         // Generate directory-query string
         let query = "_systemdrive";
@@ -81,7 +78,7 @@ let Filesystem = function () {
         }
 
         for (let i=0; i < ILLEGAL_CHARACTERS.length; i++){
-            if (directoryName.indexOf(ILLEGAL_CHARACTERS[i])){
+            if (directoryName.indexOf(ILLEGAL_CHARACTERS[i]) !== -1){
                 return 1;
             }
         }
@@ -90,7 +87,7 @@ let Filesystem = function () {
         let directoryObj = EMPTY_DIR;
         directoryObj["@property"].truename = directoryName;
 
-        let pathArray: string[] = path.replace(":","").toLowerCase().split("\\");
+        let pathArray: string[] = parsePath(path);
 
         // Generate directory-creation string
         let query = "_systemdrive";
@@ -104,35 +101,34 @@ let Filesystem = function () {
     }
 
     /* maybe convert into writeFile */
-    function makeFile(path: string, filename: string, data: object) {
-        console.log("Path", path);
-        console.log("Filename", filename);
+    function makeFile(filepath: string, data: string): boolean {
+        console.log(`WriteFile: ${filepath} - content: ${data}`);
         console.log("Data", data);
         // Check if filename is invalid.
 
         // Initialize new file object
         let fileObj = EMPTY_FILE;
-        // @ts-ignore
         let address = SaveLoad.address.generate();
         fileObj["@property"].address = address;
-        // @ts-ignore
         SaveLoad.address.write(address, data);
 
-        let pathArray: string[] = path.replace(":", "").toLowerCase().split("\\");
+        let pathArray: string[] = parsePath(filepath);
         console.log("Parsed path", pathArray);
+        let filename = pathArray.pop();
 
         // Generate file-creation string
         let evaluation = "_systemdrive";
         for (let i=0; i < pathArray.length; i++) {
             evaluation += '["' + pathArray[i] + '"]'
         }
+
         evaluation += '["' + filename.toLowerCase() + '"]=' + JSON.stringify(fileObj);
         console.log(evaluation);
         eval(evaluation);
-        return 0;
+        return true;
     }
     
-    function readFile(filepath: string) {
+    function readFile(filepath: string): string {
         let pathArray: string[] = filepath.replace(":", "").toLowerCase().split("\\");
 
         // Generate file-query string
@@ -144,8 +140,7 @@ let Filesystem = function () {
         query += '["@property"]["address"]';
 
         let fileAddress = eval(query);
-        // @ts-ignore
-        return SaveLoad.address.read(fileAddress);
+        return JSON.stringify(SaveLoad.address.read(fileAddress));
     }
     
     function filedrop(event: DragEvent, path: string) {

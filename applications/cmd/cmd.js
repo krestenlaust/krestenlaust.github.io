@@ -102,13 +102,13 @@ let cmd = function () { //_namespace
             }else{
                 targetPath = args[0];
             }
+
             if (changeDirectory(pid, targetPath)){
                 echo(pid, ['']);
             }else{
                 echo(pid, ['Cannot find the path specified.']);
                 statusCode = 1;
             }
-
         }
 
         setErrorlevel(pid, statusCode);
