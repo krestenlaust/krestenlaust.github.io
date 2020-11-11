@@ -5,7 +5,7 @@ let Native = function () {
     const _localEnvironmentList = {};
     // Individual environment accessed by individual applications.
     const _localEnvironment = {
-        "working_directory": System.globalEnv.user_home,
+        "cd": System.globalEnv.user_home,
         "errorlevel": 0,
     };
     function get(pid, key) {

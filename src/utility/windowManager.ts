@@ -14,7 +14,7 @@ let WindowManager = function(){
     function minimizeWindow(pid){
 
     }
-    function maximizeWindow(pid) {
+    function maximizeWindow(pid: string) {
         let window = document.getElementById(`window-${pid}`);
         window.setAttribute("data-top", window.style.top);
         window.setAttribute("data-left", window.style.left);

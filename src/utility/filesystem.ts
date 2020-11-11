@@ -144,7 +144,7 @@ let Filesystem = function () {
     }
     
     function filedrop(event: DragEvent, path: string) {
-        console.log(event);
+        console.log(event, "File has been dropped");
     }
 
     return {

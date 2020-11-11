@@ -13,7 +13,7 @@ let cmd = function () { //_namespace
     function changeDirectory(pid, path) {
         let statusCode;
         if (Filesystem.validate_directory(path)){
-            Native.set(pid, "working_directory", path);
+            Native.set(pid, "cd", path);
             statusCode = 0;
         }else{
             statusCode = 1;
@@ -24,7 +24,7 @@ let cmd = function () { //_namespace
     }
 
     function getPrompt(pid){
-        return promptVar.replace("%cd%", Native.get(pid, "working_directory"));
+        return promptVar.replace("%cd%", Native.get(pid, "cd"));
     }
 
     function exit(pid, args = []) {
@@ -75,7 +75,7 @@ let cmd = function () { //_namespace
         let statusCode = 0;
         console.log(args);
         if (args.length >= 1){
-            console.log(Filesystem.makeDirectory(args[0], Native.get(pid, "working_directory")));
+            console.log(Filesystem.makeDirectory(args[0], Native.get(pid, "cd")));
             echo(pid, [""]);
         } else {
             statusCode = 1;
@@ -90,11 +90,11 @@ let cmd = function () { //_namespace
         let statusCode = 0;
 
         if (args.length === 0){
-            echo(pid, [Native.get(pid, "working_directory")]);
+            echo(pid, [Native.get(pid, "cd")]);
         }else{
             let targetPath;
             if (args[0] === ".."){
-                targetPath = Native.get(pid, "working_directory").split("\\");
+                targetPath = Native.get(pid, "cd").split("\\");
                 if (targetPath.length !== 1)
                     targetPath.pop();
 
@@ -119,7 +119,7 @@ let cmd = function () { //_namespace
     function listDirectory(pid, args = []) {
         let statusCode = 0;
 
-        let path = args.length === 0 ? Native.get(pid, "working_directory") : args[0];
+        let path = args.length === 0 ? Native.get(pid, "cd") : args[0];
         let currentDirectory = Filesystem.getDirectory(path);
         console.log(currentDirectory);
 
@@ -206,7 +206,7 @@ let cmd = function () { //_namespace
 
         let path = args[0];
         if (!Filesystem.isPathAbsolute(path))
-            path = Native.get(pid, "working_directory") + "\\" + path;
+            path = Native.get(pid, "cd") + "\\" + path;
 
         // Echo file contents
         let fileContents = Filesystem.readFile(path);
@@ -241,10 +241,11 @@ let cmd = function () { //_namespace
         return statusCode;
     }
 
-    /*
     function help(pid, args = []){
-
-    }*/
+        echo(pid, [JSON.stringify(cmd)]);
+        setErrorlevel(pid, 0);
+        return 0;
+    }
 
     /* Tab completion and other things
      * that should not be accessible from cmd, but from js
@@ -271,7 +272,8 @@ let cmd = function () { //_namespace
         prompt: prompt,
         md: makeDirectory,
         dir: listDirectory,
-        cd: cd
+        cd: cd,
+        help: help
         //help: help
     };
 }();
@@ -286,60 +288,82 @@ function focus_cmd(e) {
     }
 }
 
+function getCursorPosition(element) {
+    var el = $(element).get(0);
+    var pos = 0;
+    if ('selectionStart' in el) {
+        pos = el.selectionStart;
+    } else if ('selection' in document) {
+        el.focus();
+        var Sel = document.selection.createRange();
+        var SelLength = document.selection.createRange().text.length;
+        Sel.moveStart('character', -el.value.length);
+        pos = Sel.text.length - SelLength;
+    }
+    return pos;
+}
 
-let cmd_log = [];
-let cmd_log_index = 0;
+// Doskey implementation
+let commandHistory = [];
+let commandHistoryIndex = 0;
 
 document.getElementsByTagName("body")[0].onkeydown = function(e) {
     if (document.activeElement.classList.contains("cmd")){
+        let pid = e.srcElement.offsetParent.dataset.pid;
+
         if (e.key === "Enter"){ // && document.activeElement.classList.contains("cmd")
             cmd_prompt_enter(e);
-            cmd_log_index = 0;
+            commandHistoryIndex = 0;
         }
         else if(e.key === "ArrowUp"){
-            console.log(cmd_log[cmd_log_index]);
-            if (cmd_log_index < cmd_log.length-1){
-                cmd_log_index++;
+            console.log(commandHistory[commandHistoryIndex]);
+            if (commandHistoryIndex < commandHistory.length-1){
+                commandHistoryIndex++;
             }else {
-                cmd_log_index = 0;
+                commandHistoryIndex = 0;
             }
         }else if(e.key === "ArrowDown"){
-            console.log(cmd_log[cmd_log_index]);
-            if (cmd_log_index-1 >= 0){
+            console.log(commandHistory[commandHistoryIndex]);
+            if (commandHistoryIndex-1 >= 0){
 
             } else {
 
+            }
+        }else if(e.key === "ArrowLeft" || e.key === "Backspace"){
+            let cmdLines = document.getElementsByClassName("cmdline-"+pid);
+            let lastLineElement = cmdLines[cmdLines.length - 1];
+            if (getCursorPosition(lastLineElement) === lastLineElement.value.indexOf(">") + 1){
+                e.preventDefault();
             }
         }
     }
 };
 
 function cmd_prompt_enter(e){
-    var pid = e.srcElement.offsetParent.dataset.pid;
-    var cmdlines = document.getElementsByClassName("cmdline-"+pid);
-    let lastline_value = cmdlines[cmdlines.length -1].value;
-    //cmd.echo(lastline_value, pid);
-    cmd_command(lastline_value, pid);
+    let pid = e.srcElement.offsetParent.dataset.pid;
+    let cmdLines = document.getElementsByClassName("cmdline-"+pid);
+    let lastLineValue = cmdLines[cmdLines.length -1].value;
+    cmd_command(lastLineValue, pid);
 
-    cmdlines[cmdlines.length-1].focus();
+    cmdLines[cmdLines.length-1].focus();
 }
 
 function cmd_command(stdin, pid){
     stdin = stdin.replace(stdin.slice(0, stdin.indexOf(">") + 1), "");
     console.log(stdin);
     //cmd_log.push(s);
-    cmd_log.unshift(stdin);
+    commandHistory.unshift(stdin);
 
     //let args = s.split(">")[s.split(">").length - 1].split(" "); //Command arguments
     let args = stdin.split(" ");
 
-    let args_only = stdin.substring(stdin.indexOf(' ') + 1); //Command arguments excluding first argument
+    let argsOnly = stdin.substring(stdin.indexOf(' ') + 1); //Command arguments excluding first argument
 
     let _count = (stdin.match(/ /g) || []).length;
-    if (_count === 0 || _count === args_only.length){ //Prevents arguments like "" or ones that's just multiple spaces in being sent
-        args_only = [];
+    if (_count === 0 || _count === argsOnly.length){ //Prevents arguments like "" or ones that's just multiple spaces in being sent
+        argsOnly = [];
     }else {
-        args_only = args_only.split(" ");
+        argsOnly = argsOnly.split(" ");
     }
     switch (args[0].toLowerCase()) {
         case "":
@@ -347,11 +371,12 @@ function cmd_command(stdin, pid){
             break;
         default:
             if (typeof cmd[args[0].toLowerCase()] === "function"){
-                cmd[args[0]](pid, args_only);
+                cmd[args[0]](pid, argsOnly);
             }else {
-                cmd.echo(pid, ["'" + args[0] + "' is not recognized as an internal or external command,\n" +
+                cmd.echo(pid, ["'" + args[0] + "' is not recognized as an internal or external command, " +
                 "operable program or batch file."]);
-                cmd.env.errorlevel = 9009;
+                //cmd.env.errorlevel = 9009;
+
             }
     }
 }

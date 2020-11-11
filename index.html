@@ -61,7 +61,7 @@
     </div -->
 
     <!-- Everything desktop related should be below-->
-    <div id="desktop" ondrop="Filesystem.filedrop(event, '')"><!--
+    <div id="desktop" ondrop="desktop_filedrop(event)"><!--
         <div class="desktop-icon" onclick="icon_click(this)">
             <img class="desktop-icon-image" src="resources/Windows-icons/recycle_bin.ico">
             <p class="desktop-icon-text">Recycle bin</p></div><div class="desktop-icon" data-launch="taskmanager.start_application('cmd')" onclick="icon_click(this)">
@@ -76,7 +76,6 @@
 
 <script src="ext/jquery-3.3.1.min.js"></script>
 <script src="ext/lodash.min.js"></script>
-
 
 <script src="build/index.js"></script>
 
@@ -94,7 +93,7 @@
 <script src="build/utility/taskbar/windowsStart.js"></script>
 <script src="build/utility/desktop.js"></script>
 <script src="build/utility/windowmanager.js"></script>
-<script src="applications/cmd/cmd.js"></script>
+<!--script src="applications/cmd/cmd.js"></script-->
 <script src="build/utility/taskmanager.js"></script>
 <script src="build/utility/taskbar/taskbar.js"></script>
 

@@ -112,7 +112,7 @@ let Filesystem = function () {
         return JSON.stringify(SaveLoad.address.read(fileAddress));
     }
     function filedrop(event, path) {
-        console.log(event);
+        console.log(event, "File has been dropped");
     }
     return {
         makeDirectory: makeDirectory,

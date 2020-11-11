@@ -1,3 +1,12 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 const DOUBLE_CLICK_INTERVAL = 500; //Windows standard according to https://ux.stackexchange.com/a/40366
 const GRID_WIDTH = 8;
 const GRID_HEIGHT = 4;
@@ -130,18 +139,34 @@ function desktop_dragStart(e) {
     draggingIndex = parseInt(targetElement.dataset.index);
 }
 let draggingIndex = 0;
+function desktop_filedrop(e) {
+    e.preventDefault();
+    if (!e.dataTransfer.items) {
+        return;
+    }
+    for (let i = 0; i < e.dataTransfer.items.length; i++) {
+        if (e.dataTransfer.items[i].kind === "file") {
+            let file = e.dataTransfer.items[i].getAsFile();
+            transferDataToFile(file);
+        }
+    }
+}
+function transferDataToFile(file) {
+    return __awaiter(this, void 0, void 0, function* () {
+        Filesystem.makeFile("C:\\Users\\kress\\desktop\\" + file.name, yield file.text());
+    });
+}
 function desktop_drop(e) {
     e.preventDefault();
     let targetElement = e.target;
-    if (e.dataTransfer.items) {
-        for (let i = 0; i < e.dataTransfer.items.length; i++) {
-            if (e.dataTransfer.items[i].kind === "file") {
+    /*if (e.dataTransfer.items){
+        for (let i=0; i < e.dataTransfer.items.length; i++){
+            if (e.dataTransfer.items[i].kind === "file"){
                 let file = e.dataTransfer.items[i].getAsFile();
-                // @ts-ignore
-                Filesystem.makeFile("C:\\Users\\kress\\desktop", file.name, file, file.text);
+                Filesystem.makeFile("C:\\Users\\kress\\desktop\\" + file.name, file.text);
             }
         }
-    }
+    }*/
     let fromIndex = draggingIndex;
     if (!targetElement.classList.contains("space")) {
         if (targetElement.classList.contains("icon-parent")) {
@@ -222,10 +247,5 @@ function doubleclick_timer() {
             resolve('resolved');
         }, 500);
     });
-}
-
-async function doubleclick_timer_start() {
-    var result = await doubleclick_timer();
-    console.log(result);
 }*/ 
 //# sourceMappingURL=desktop.js.map
