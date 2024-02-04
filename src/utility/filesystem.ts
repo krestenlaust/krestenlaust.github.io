@@ -1,12 +1,11 @@
-//import {saveload} from "./saveload-system";
+import {SaveLoad} from "./saveload-system";
 
-let Filesystem = function () {
-//export class filesystem{
+export class Filesystem {
 
-    const ILLEGAL_CHARACTERS = [':', ';', '+', '\\'];
-    const ILLEGAL_NAMES = ['..'];
+    static ILLEGAL_CHARACTERS = [':', ';', '+', '\\'];
+    static ILLEGAL_NAMES = ['..'];
 
-    const _systemdrive = {
+    static _systemdrive = {
         "c": {
             "@property": {truename: "C", directory: true},
 
@@ -31,39 +30,39 @@ let Filesystem = function () {
             }
         },
         "d": {
-            "@property":{truename: "D", directory: true}
+            "@property": {truename: "D", directory: true}
         }
     };
 
-    const EMPTY_DIR = {
+    static EMPTY_DIR = {
         "@property": {truename: undefined, directory: true}
     };
-	const EMPTY_FILE = {
-		"@property": {address: null}
-	};
+    static EMPTY_FILE = {
+        "@property": {address: undefined}
+    };
 
-	function parsePath(path: string): string[]{
+    static parsePath(path: string): string[] {
         return path.replace(":", "").toLowerCase().split("\\");
     }
 
-    function isPathAbsolute(path: string): boolean {
+    static isPathAbsolute(path: string): boolean {
         return path.length >= 2 && path.slice(1, 2) === ":";
     }
-	
-    function validateDirectory(path: string): boolean {
+
+    static validateDirectory(path: string): boolean {
         return true;//Filesystem.getDirectory(path).length !== 0;
     }
 
-    function getDirectory(path: string): object {
-        if (path === undefined){
+    static getDirectory(path: string): object {
+        if (path === undefined) {
             return [];
         }
 
-        let pathArray = parsePath(path);
+        let pathArray = Filesystem.parsePath(path);
 
         // Generate directory-query string
         let query = "_systemdrive";
-        for (let i=0; i < pathArray.length; i++){
+        for (let i = 0; i < pathArray.length; i++) {
             query += '["' + pathArray[i] + '"]'
         }
 
@@ -71,27 +70,27 @@ let Filesystem = function () {
     }
 
     // instance, first arg
-    function makeDirectory(path: string, directoryName: string) {
+    static makeDirectory(path: string, directoryName: string) {
         // Verify that the directory name is valid
-        if (ILLEGAL_NAMES.indexOf(directoryName) !== -1){
+        if (Filesystem.ILLEGAL_NAMES.indexOf(directoryName) !== -1) {
             return 1;
         }
 
-        for (let i=0; i < ILLEGAL_CHARACTERS.length; i++){
-            if (directoryName.indexOf(ILLEGAL_CHARACTERS[i]) !== -1){
+        for (let i = 0; i < Filesystem.ILLEGAL_CHARACTERS.length; i++) {
+            if (directoryName.indexOf(Filesystem.ILLEGAL_CHARACTERS[i]) !== -1) {
                 return 1;
             }
         }
 
         // Initialize new directory object
-        let directoryObj = EMPTY_DIR;
+        let directoryObj = Filesystem.EMPTY_DIR;
         directoryObj["@property"].truename = directoryName;
 
-        let pathArray: string[] = parsePath(path);
+        let pathArray: string[] = this.parsePath(path);
 
         // Generate directory-creation string
         let query = "_systemdrive";
-        for (let i=0; i < pathArray.length; i++){
+        for (let i = 0; i < pathArray.length; i++) {
             query += '["' + pathArray[i] + '"]'
         }
         query += '["' + directoryName.toLowerCase() + '"]=' + JSON.stringify(directoryObj);
@@ -101,24 +100,24 @@ let Filesystem = function () {
     }
 
     /* maybe convert into writeFile */
-    function makeFile(filepath: string, data: string): boolean {
+    static makeFile(filepath: string, data: string): boolean {
         console.log(`WriteFile: ${filepath} - content: ${data}`);
         console.log("Data", data);
         // Check if filename is invalid.
 
         // Initialize new file object
-        let fileObj = EMPTY_FILE;
-        let address = SaveLoad.address.generate();
+        let fileObj = Filesystem.EMPTY_FILE;
+        let address = SaveLoad.Address.generate();
         fileObj["@property"].address = address;
-        SaveLoad.address.write(address, data);
+        SaveLoad.Address.write(address, data);
 
-        let pathArray: string[] = parsePath(filepath);
+        let pathArray: string[] = Filesystem.parsePath(filepath);
         console.log("Parsed path", pathArray);
         let filename = pathArray.pop();
 
         // Generate file-creation string
         let evaluation = "_systemdrive";
-        for (let i=0; i < pathArray.length; i++) {
+        for (let i = 0; i < pathArray.length; i++) {
             evaluation += '["' + pathArray[i] + '"]'
         }
 
@@ -127,36 +126,23 @@ let Filesystem = function () {
         eval(evaluation);
         return true;
     }
-    
-    function readFile(filepath: string): string {
+
+    static readFile(filepath: string): string {
         let pathArray: string[] = filepath.replace(":", "").toLowerCase().split("\\");
 
         // Generate file-query string
         let query: string = "_systemdrive";
 
-        for (let i=0; i<pathArray.length; i++){
+        for (let i = 0; i < pathArray.length; i++) {
             query += '["' + pathArray[i] + '"]'
         }
         query += '["@property"]["address"]';
 
         let fileAddress = eval(query);
-        return JSON.stringify(SaveLoad.address.read(fileAddress));
+        return JSON.stringify(SaveLoad.Address.read(fileAddress));
     }
-    
-    function filedrop(event: DragEvent, path: string) {
+
+    static filedrop(event: DragEvent, path: string) {
         console.log(event, "File has been dropped");
     }
-
-    return {
-        makeDirectory: makeDirectory,
-        getDirectory: getDirectory,
-        validate_directory: validateDirectory,
-        readFile: readFile,
-        makeFile: makeFile,
-
-        isPathAbsolute: isPathAbsolute,
-        filedrop: filedrop,
-        
-        _systemdrive: _systemdrive
-    };
-}();
+}
