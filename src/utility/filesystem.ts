@@ -1,4 +1,4 @@
-import {SaveLoad} from "./saveload-system";
+import {SaveLoad} from "./saveloadSystem";
 
 export class Filesystem {
 

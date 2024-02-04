@@ -36,13 +36,14 @@ export class SaveLoad {
         }
 
         /* Public - Returns compressed byte-size or -1 */
-        static write(addr: string, data: string): number {
+        static write(addr: string, data: string): number | null {
             if (SaveLoad.supported) {
                 let compressed = data;//LZString.compress(data);
                 localStorage.setItem("f" + addr, compressed);
                 return compressed.length;
             }
-            return -1;
+
+            return null;
         }
 
         /* Public - Returns string at address or -1 */
