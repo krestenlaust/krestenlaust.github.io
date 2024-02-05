@@ -2,8 +2,8 @@ import {SaveLoad} from "./saveloadSystem";
 
 export class Filesystem {
 
-    static ILLEGAL_CHARACTERS = [':', ';', '+', '\\'];
-    static ILLEGAL_NAMES = ['..'];
+    static readonly ILLEGAL_CHARACTERS = [':', ';', '+', '\\'];
+    static readonly ILLEGAL_NAMES = ['..'];
 
     static _systemdrive = {
         "c": {

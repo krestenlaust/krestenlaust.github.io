@@ -1,4 +1,4 @@
-//import {windowmanager} from "../windowmanager";
+import {WindowManager} from "../windowManager";
 
 namespace Taskbar {
     class Taskbar {

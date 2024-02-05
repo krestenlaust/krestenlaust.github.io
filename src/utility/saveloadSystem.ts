@@ -35,25 +35,25 @@ export class SaveLoad {
             return new_addr;
         }
 
-        /* Public - Returns compressed byte-size or -1 */
-        static write(addr: string, data: string): number | null {
+        /* Public - Returns compressed byte-size or undefined */
+        static write(addr: string, data: string): number | undefined {
             if (SaveLoad.supported) {
                 let compressed = data;//LZString.compress(data);
                 localStorage.setItem("f" + addr, compressed);
                 return compressed.length;
             }
 
-            return null;
+            return undefined;
         }
 
         /* Public - Returns string at address or -1 */
-        static read(addr: string): string | null {
+        static read(addr: string): string | undefined {
             if (SaveLoad.supported) {
                 let data = localStorage.getItem("f" + addr);
                 return data;//LZString.decompress(data);
             }
 
-            return null;
+            return undefined;
         }
 
         static reset(addr: string): boolean {

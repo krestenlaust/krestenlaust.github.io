@@ -8,7 +8,7 @@ namespace Taskbar {
 
         static refreshMenuState() {
             let elem = document.getElementsByClassName("startmenu")[0];
-            if (isOpen) {
+            if (this.isOpen) {
                 elem.setAttribute("data-expanded", "1");
             } else {
                 elem.setAttribute("data-expanded", "");
