@@ -1,7 +1,18 @@
 import {WindowManager} from "../windowManager";
 
 namespace Taskbar {
-    class Taskbar {
+    export class Taskbar {
+        containerElement: HTMLDivElement;
+        windowsStart: WindowsStart;
+
+        constructor(containerElement: HTMLDivElement) {
+            this.containerElement = containerElement;
+
+            this.windowsStart = new WindowsStart(
+                <HTMLDivElement>containerElement.getElementsByClassName("windows-start-button")[0]
+            )
+        }
+
         iconClick(element: HTMLElement) {
             console.log(element);
             let pid: string = element.dataset.pid;

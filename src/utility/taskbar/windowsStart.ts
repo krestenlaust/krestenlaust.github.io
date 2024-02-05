@@ -1,13 +1,16 @@
 namespace Taskbar {
     export class WindowsStart {
-        static isOpen = false;
+        isOpen = false;
+        containerElement: HTMLDivElement;
 
-        setup() {
-            document.getElementById("windows-startbutton").addEventListener("click", startClick);
+        constructor(containerElement: HTMLDivElement) {
+            this.containerElement = containerElement;
+
+            containerElement.addEventListener("click", this.startClick);
         }
 
-        static refreshMenuState() {
-            let elem = document.getElementsByClassName("startmenu")[0];
+        refreshMenuState() {
+            let elem = this.containerElement.getElementsByClassName("startmenu")[0];
             if (this.isOpen) {
                 elem.setAttribute("data-expanded", "1");
             } else {
@@ -15,7 +18,7 @@ namespace Taskbar {
             }
         }
 
-        static startClick() {
+        startClick() {
             this.isOpen = !this.isOpen;
             this.refreshMenuState();
         }
