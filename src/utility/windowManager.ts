@@ -48,7 +48,7 @@ export class WindowManager{
         console.log("Brought to front");
     }
 
-    static update_window_hierarchy() {
+    static updateWindowHierarchy() {
         /*
         for (i = 0; i < windowHierarchy.length; i++) {
             if ((i + ZINDEX_WINDOW_MIN) % 2 === 0) {
