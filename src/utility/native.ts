@@ -1,37 +1,28 @@
-//import {system} from "./system";
+import {System} from "./system";
 
-//export class native{
-let Native = function () {
-
+export class Native {
     // List of environments specified by process ID.
-    const _localEnvironmentList = {
-
-    };
+    static localEnvironmentList = {};
 
     // Individual environment accessed by individual applications.
-    const _localEnvironment = {
-        "cd": System.globalEnv.user_home,
+    static localEnvironment = {
+        "cd": System.env.user_home,
         "errorlevel": 0,
     };
 
-    function get(pid: string, key: string): object {
-        if (_localEnvironmentList[pid] === undefined){
-            _localEnvironmentList[pid] = _localEnvironment;
+    static get(pid: string, key: string): object {
+        if (Native.localEnvironmentList[pid] === undefined) {
+            Native.localEnvironmentList[pid] = Native.localEnvironment;
         }
 
-        return _localEnvironmentList[pid][key];
+        return Native.localEnvironmentList[pid][key];
     }
 
-    function set(pid: string, key: string, value: object) {
-        if (_localEnvironmentList[pid] === undefined){
-            _localEnvironmentList[pid] = _localEnvironment;
+    static set(pid: string, key: string, value: object) {
+        if (Native.localEnvironmentList[pid] === undefined) {
+            Native.localEnvironmentList[pid] = Native.localEnvironment;
         }
 
-        _localEnvironmentList[pid][key] = value;
+        Native.localEnvironmentList[pid][key] = value;
     }
-
-    return {
-        get: get,
-        set: set
-    }
-}();
+}

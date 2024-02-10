@@ -1,28 +1,26 @@
-// start menu class
-let WindowsStart = function () {
-    let isOpen = false;
+namespace Taskbar {
+    export class WindowsStart {
+        isOpen = false;
+        containerElement: HTMLDivElement;
 
-    function setup() {
-        document.getElementById("windows-startbutton").addEventListener("click", startClick);
-    }
-    
-    function refreshMenuState() {
-        let elem = document.getElementsByClassName("startmenu")[0];
-        if (isOpen){
-            elem.setAttribute("data-expanded", "1");
-        }else{
-            elem.setAttribute("data-expanded", "");
+        constructor(containerElement: HTMLDivElement) {
+            this.containerElement = containerElement;
+
+            containerElement.addEventListener("click", this.startClick);
+        }
+
+        refreshMenuState() {
+            let elem = this.containerElement.getElementsByClassName("startmenu")[0];
+            if (this.isOpen) {
+                elem.setAttribute("data-expanded", "1");
+            } else {
+                elem.setAttribute("data-expanded", "");
+            }
+        }
+
+        startClick() {
+            this.isOpen = !this.isOpen;
+            this.refreshMenuState();
         }
     }
-
-    function startClick() {
-        isOpen = !isOpen;
-        refreshMenuState();
-    }
-
-    return{
-        setup: setup,
-        isOpen: isOpen,
-        refresh_menu_state: refreshMenuState
-    }
-}();
+}

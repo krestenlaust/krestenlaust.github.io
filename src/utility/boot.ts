@@ -1,6 +1,9 @@
+import {Filesystem} from "./filesystem";
+import {System} from "./system";
 
-// Loads hard-coded things onto the system if they aren't already present
-function loadSystem(){
-    Filesystem.makeFile(`C:\\Users\\${System.globalEnv.username}\\readme.txt`, "Hello there");
+export class Boot {
+    // Loads hard-coded things onto the system if they aren't already present
+    static loadSystem() {
+        Filesystem.makeFile(`C:\\Users\\${System.env.username}\\readme.txt`, "Hello there");
+    }
 }
-loadSystem();

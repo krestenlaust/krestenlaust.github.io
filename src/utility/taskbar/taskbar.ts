@@ -1,32 +1,37 @@
-//import {windowmanager} from "../windowmanager";
+import {WindowManager} from "../windowManager";
 
-//class taskbar{
-let Taskbar = function(){
+namespace Taskbar {
+    export class Taskbar {
+        containerElement: HTMLDivElement;
+        windowsStart: WindowsStart;
 
-    function iconClick(element: HTMLElement){
-        console.log(element);
-        let pid: string = element.dataset.pid;
+        constructor(containerElement: HTMLDivElement) {
+            this.containerElement = containerElement;
 
-        WindowManager.bringFront(pid);
-    }
+            this.windowsStart = new WindowsStart(
+                <HTMLDivElement>containerElement.getElementsByClassName("windows-start-button")[0]
+            )
+        }
 
-    function updateProcess(){
-        document.getElementById("taskbar-process")
-    }
+        iconClick(element: HTMLElement) {
+            console.log(element);
+            let pid: string = element.dataset.pid;
 
-    function addProcess(programname: string, pid: string){
-        /*
-        if (document.getElementsByClassName(`taskbar-icon-${programname}`).length !== 0){
+            WindowManager.bringFront(pid);
+        }
 
-        }*/
-        document.getElementById("taskbar-process").innerHTML += `<div class="taskbar-icon taskbar-icon-${programname} taskbar-icon-${pid}" onclick="Taskbar.iconClick(this);" data-pid="${pid}">
+        updateProcess() {
+            document.getElementById("taskbar-process")
+        }
+
+        addProcess(programname: string, pid: string) {
+            /*
+            if (document.getElementsByClassName(`taskbar-icon-${programname}`).length !== 0){
+
+            }*/
+            document.getElementById("taskbar-process").innerHTML += `<div class="taskbar-icon taskbar-icon-${programname} taskbar-icon-${pid}" onclick="Taskbar.iconClick(this);" data-pid="${pid}">
                 <img class="taskbar-icon-image" src="resources/Windows-icons/${programname}.png">
             </div>`;
+        }
     }
-
-    return{
-        iconClick: iconClick,
-        updateProcess: updateProcess,
-        addProcess: addProcess
-    }
-}();
+}
